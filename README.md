@@ -8,6 +8,8 @@ npm install sun-react-ui --save
 
 ### 使用
 
+[使用文档](https://jgchenu.github.io/sun-react-ui)
+
 ```javascript
 // 加载样式
 import "sun-react-ui/dist/index.css";

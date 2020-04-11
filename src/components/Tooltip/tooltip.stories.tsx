@@ -26,7 +26,7 @@ const placementTooltip = () => (
       <span style={{ margin: "10px" }}>bottom placement Tooltip</span>
     </Tooltip>
     <Tooltip title={<span>tooltip title</span>} placement="top">
-      <span style={{ margin: "10px" }}>bottom placement Tooltip</span>
+      <span style={{ margin: "10px" }}>top placement Tooltip</span>
     </Tooltip>
     <Tooltip title={<span>tooltip title</span>} placement="left">
       <span style={{ margin: "10px" }}>left placement Tooltip</span>

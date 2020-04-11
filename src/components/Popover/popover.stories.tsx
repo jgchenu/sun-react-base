@@ -32,7 +32,7 @@ const placementPopover = () => (
       content={<span style={{ padding: "40px" }}>Popover content</span>}
       placement="top"
     >
-      <span style={{ margin: "10px" }}>bottom placement Popover</span>
+      <span style={{ margin: "10px" }}>top placement Popover</span>
     </Popover>
     <Popover
       content={<span style={{ padding: "40px" }}>Popover content</span>}

@@ -1,6 +1,6 @@
 {
   "name": "sun-react-ui",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "React components library",
   "author": "jgchenu",
   "private": false,
@@ -43,14 +43,20 @@
     "eject": "react-scripts eject",
     "build-ts": "tsc -p tsconfig.build.json",
     "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
+    "start:docs": "start-storybook -p 9009 -s public",
+    "build:docs": "build-storybook -s public",
+    "pub:docs": "npm run build:docs && storybook-to-ghpages --existing-output-dir=storybook-static",
     "prepublishOnly": "npm run test:nowatch && npm run lint && npm run build"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run test:nowatch && npm run lint"
     }
+  },
+  "storybook-deployer": {
+    "gitUsername": "jgchenu",
+    "gitEmail": "jgchenu@foxmail.com",
+    "commitMessage": "docs: deploy docs"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -73,6 +79,7 @@
     "@storybook/addon-links": "^5.2.8",
     "@storybook/addons": "^5.2.8",
     "@storybook/react": "^5.2.8",
+    "@storybook/storybook-deployer": "^2.8.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@types/classnames": "^2.2.9",
