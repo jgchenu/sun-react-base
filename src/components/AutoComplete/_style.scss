@@ -18,6 +18,7 @@
     align-items: center;
     justify-content: center;
     min-height: 75px;
+    animation: always-rotate 1000ms linear infinite;
   }
   .suggestion-item {
     padding: $menu-item-padding-y $menu-item-padding-x;
@@ -31,5 +32,14 @@
     &:hover {
       color: $menu-item-active-color !important;
     }
+  }
+}
+
+@keyframes always-rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(180deg);
   }
 }

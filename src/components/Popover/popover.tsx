@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-
+import classnames from "classnames";
 import Tooltip from "../Tooltip";
 
 export type Placement =
@@ -21,6 +21,8 @@ export type Trigger = "hover" | "click";
 export interface PopoverProps {
   /**气泡显示隐藏回调函数 */
   onVisibleChange?: (isVisible: boolean) => void;
+  /** 提示标题 */
+  title?: React.ReactElement | string;
   /** 提示内容 */
   content?: React.ReactElement | string;
   /**触发方式 */
@@ -38,11 +40,29 @@ export interface PopoverProps {
   children: React.ReactElement; // 必须为element节点
   positionType?: PositionType; //  气泡的定位属性
   autoAdjustOverflow?: boolean; // 被遮挡时自动调整
+  wrapperClassName?: string; // 气泡包裹层的自定义className
 }
 
+const prefixClassName = "popover";
 export const Popover: FC<PopoverProps> = (props) => {
+  const classes = classnames(
+    `${prefixClassName}-wrapper`,
+    props.wrapperClassName
+  );
+  const title = (
+    <>
+      {props.title && (
+        <div className={`${prefixClassName}-title-header`}>{props.title}</div>
+      )}
+      {props.content && (
+        <div className={`${prefixClassName}-title-content`}>
+          {props.content}
+        </div>
+      )}
+    </>
+  );
   return (
-    <Tooltip {...props} title="">
+    <Tooltip {...props} wrapperClassName={classes} title={title}>
       {props.children}
     </Tooltip>
   );

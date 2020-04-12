@@ -13,20 +13,18 @@
     "UI",
     "React"
   ],
-  "homepage": "https://github/jgchenu/sun-react-ui",
+  "homepage": "https://github.com/jgchenu/sun-react-ui",
   "repository": {
     "type": "git",
-    "url": "https://github/jgchenu/sun-react-ui"
+    "url": "https://github.com/jgchenu/sun-react-ui"
   },
   "files": [
     "dist"
   ],
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.26",
-    "@fortawesome/free-solid-svg-icons": "^5.12.0",
-    "@fortawesome/react-fontawesome": "^0.1.8",
     "axios": "^0.19.1",
     "classnames": "^2.2.6",
+    "react-icons": "^3.9.0",
     "react-transition-group": "^4.3.0"
   },
   "peerDependencies": {

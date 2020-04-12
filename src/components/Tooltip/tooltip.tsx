@@ -10,7 +10,7 @@ import React, {
 } from "react";
 import { createPortal } from "react-dom";
 import { usePropsRef } from "./../../hooks/useProps";
-import { debounce } from "../../utils/debouce";
+import { debounce, isUndefined } from "../../utils";
 import Transition, { AnimationName } from "../Transition";
 
 export type Placement =
@@ -34,30 +34,36 @@ export interface TooltipProps {
   onVisibleChange?: (isVisible: boolean) => void;
   /**提示标题 */
   title: React.ReactElement | string;
-  /** 用于popover复用，tooltip不可用 */
-  content?: React.ReactElement | string;
   /**触发方式 */
   trigger?: Trigger;
   /**气泡位置 */
   placement?: Placement;
   /**气泡深浅色主题 */
   theme?: Theme;
-  arrowPointAtCenter?: boolean; // 气泡三角居中对齐
-  mouseEnterDelay?: number; //鼠标移入显示延迟
-  mouseLeaveDelay?: number; // 鼠标移出消失延迟
-  isArrowHidden?: boolean; // 是否隐藏三角形
-  disabled?: boolean; // 禁用
+  /**气泡三角居中对齐 */
+  arrowPointAtCenter?: boolean;
+  /**鼠标移入显示延迟 */
+  mouseEnterDelay?: number;
+  /**鼠标移出消失延迟 */
+  mouseLeaveDelay?: number;
+  /**是否隐藏三角形 */
+  isArrowHidden?: boolean;
+  /**禁用 */
+  disabled?: boolean;
   visible?: boolean; // 受控显示
   children: React.ReactElement; // 必须为element节点
   positionType?: PositionType; //  气泡的定位属性
   autoAdjustOverflow?: boolean; // 被遮挡时自动调整
+  wrapperClassName?: string; // 气泡包裹层的自定义className
 }
 
 // 组件的classname前缀
 const prefixClassName = "tooltip";
-// 三角形偏移量
+// 三角形距离气泡偏移量
 const arrowOffset = 14;
+// 三角形的宽度
 const arrowWidth = 8;
+// 计算居中的buffer
 const bufferOffset = arrowOffset + arrowWidth / 2;
 
 /**
@@ -69,7 +75,6 @@ const bufferOffset = arrowOffset + arrowWidth / 2;
 export const Tooltip: FC<TooltipProps> = (props) => {
   const {
     title,
-    content,
     theme,
     trigger,
     autoAdjustOverflow,
@@ -82,10 +87,11 @@ export const Tooltip: FC<TooltipProps> = (props) => {
     mouseEnterDelay,
     mouseLeaveDelay,
     arrowPointAtCenter,
+    wrapperClassName,
   } = props;
   // 是否hover触发
   const isHover = trigger === "hover";
-  // 气泡跟trigger元素的偏移量
+  // 气泡跟trigger元素的偏移量，如果是隐藏三角形，应该缩小偏移量
   const offset = isArrowHidden ? 0 : 5;
   const [mounted, setMounted] = useState(false);
   const [adjustPlacement, setAdjustPlacement] = useState(
@@ -116,7 +122,7 @@ export const Tooltip: FC<TooltipProps> = (props) => {
       propsRef.current.onVisibleChange &&
         propsRef.current.onVisibleChange(true);
       // 如果props的visible控制 则不做任何操作
-      if (propsRef.current.visible !== undefined) {
+      if (!isUndefined(propsRef.current.visible)) {
         return;
       }
       setMounted(true);
@@ -303,7 +309,7 @@ export const Tooltip: FC<TooltipProps> = (props) => {
 
   useEffect(() => {
     // 用于根据上层传过来的visibleFromProps 进行portal的节点挂载跟动画开始
-    if (visibleFromProps !== undefined) {
+    if (!isUndefined(visibleFromProps)) {
       // visibleFromProps为true的时候，直接挂载节点跟执行显示动画
       if (visibleFromProps) {
         setMounted(visibleFromProps);
@@ -348,7 +354,7 @@ export const Tooltip: FC<TooltipProps> = (props) => {
         !triggerWrapper.current.contains(e.target as Node)
       ) {
         // 如果props的visible控制 则不做任何操作,回调告诉外层的onVisbleChange函数
-        if (visibleFromProps !== undefined) {
+        if (!isUndefined(visibleFromProps)) {
           onVisibleChange && onVisibleChange(false);
           return;
         }
@@ -358,30 +364,22 @@ export const Tooltip: FC<TooltipProps> = (props) => {
   }
 
   function renderContent() {
-    if (!title && !content) return null;
     return (
       <>
-        <div
-          className={classnames(`${prefixClassName}-arrow`, {
-            [`${prefixClassName}-title-arrow`]: !!title,
-          })}
-        ></div>
-        {!!title && !content && (
-          <div className={`${prefixClassName}-title`}>{title}</div>
+        {!isArrowHidden && (
+          <div className={classnames(`${prefixClassName}-arrow`)}></div>
         )}
-        {!!content && !title && (
-          <div className={`${prefixClassName}-content`}>{content}</div>
-        )}
+        {title && <div className={`${prefixClassName}-title`}>{title}</div>}
       </>
     );
   }
 
-  // 判断是非htmlelement则包裹一层,支持ref
-  const savetyChildren =
-    typeof props.children.type === "string" ? (
+  // 判断是非html-element则包裹一层,支持ref, 主要为了避免FC组件没有做forwardRef的兼容
+  const safetyChildren =
+    typeof props.children.type !== "function" ? (
       props.children
     ) : (
-      <span className="component-wrap">{props.children}</span>
+      <span className="fc-component-wrapper">{props.children}</span>
     );
 
   return (
@@ -397,8 +395,8 @@ export const Tooltip: FC<TooltipProps> = (props) => {
               `${prefixClassName}-wrapper`,
               `${prefixClassName}-position-${computedPlacement}`,
               `${prefixClassName}-${theme}`,
+              wrapperClassName,
               {
-                [`${prefixClassName}-hidden-arrow`]: isArrowHidden,
                 [`${prefixClassName}-wrapper-fixed`]:
                   positionTypeFromProps === "fixed" ||
                   positionTypeFromProps === "sticky",
@@ -414,7 +412,7 @@ export const Tooltip: FC<TooltipProps> = (props) => {
         </Transition>,
         document.body
       )}
-      {cloneElement(savetyChildren, {
+      {cloneElement(safetyChildren, {
         ref: triggerWrapper,
         ...bindTriggerEvents,
       })}

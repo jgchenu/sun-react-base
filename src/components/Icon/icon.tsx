@@ -1,9 +1,23 @@
 import React from "react";
-import classNames from "classnames";
 import {
-  FontAwesomeIcon,
-  FontAwesomeIconProps,
-} from "@fortawesome/react-fontawesome";
+  FiVolume2,
+  FiLoader,
+  FiCheckCircle,
+  FiXCircle,
+  FiAlertCircle,
+  FiX,
+  FiChevronUp,
+  FiChevronDown,
+  FiChevronRight,
+  FiChevronLeft,
+  FiUploadCloud,
+  FiCalendar,
+  FiHardDrive,
+  FiUser,
+  FiEye,
+  FiEyeOff,
+} from "react-icons/fi";
+import { IoMdCloseCircle } from "react-icons/io";
 
 export type ThemeProps =
   | "primary"
@@ -15,17 +29,41 @@ export type ThemeProps =
   | "light"
   | "dark";
 
-export interface IconProps extends FontAwesomeIconProps {
-  theme?: ThemeProps;
+export interface IconBaseProps extends React.SVGAttributes<SVGElement> {
+  children?: React.ReactNode;
+  size?: string | number;
+  color?: string;
+  title?: string;
 }
 
-const Icon: React.FC<IconProps> = (props) => {
-  // icon-primary
-  const { className, theme, ...restProps } = props;
-  const classes = classNames("simple-icon", className, {
-    [`icon-${theme}`]: theme,
-  });
-  return <FontAwesomeIcon className={classes} {...restProps} />;
-};
-
-export default Icon;
+export const InfoIcon = (props: IconBaseProps) => <FiVolume2 {...props} />;
+export const LoadingIcon = (props: IconBaseProps) => <FiLoader {...props} />;
+export const SuccessIcon = (props: IconBaseProps) => (
+  <FiCheckCircle {...props} />
+);
+export const ErrorIcon = (props: IconBaseProps) => <FiXCircle {...props} />;
+export const WarningIcon = (props: IconBaseProps) => (
+  <FiAlertCircle {...props} />
+);
+export const CloseIcon = (props: IconBaseProps) => <FiX {...props} />;
+export const UpIcon = (props: IconBaseProps) => <FiChevronUp {...props} />;
+export const DownIcon = (props: IconBaseProps) => <FiChevronDown {...props} />;
+export const ArrowRightIcon = (props: IconBaseProps) => (
+  <FiChevronRight {...props} />
+);
+export const ArrowLeftIcon = (props: IconBaseProps) => (
+  <FiChevronLeft {...props} />
+);
+export const FileUploadIcon = (props: IconBaseProps) => (
+  <FiUploadCloud {...props} />
+);
+export const CalendarIcon = (props: IconBaseProps) => <FiCalendar {...props} />;
+export const CloseCircleIcon = (props: IconBaseProps) => (
+  <IoMdCloseCircle {...props} />
+);
+export const EmptyIcon = (props: IconBaseProps) => <FiHardDrive {...props} />;
+export const UserIcon = (props: IconBaseProps) => <FiUser {...props} />;
+export const PasswordShowIcon = (props: IconBaseProps) => <FiEye {...props} />;
+export const PasswordHideIcon = (props: IconBaseProps) => (
+  <FiEyeOff {...props} />
+);

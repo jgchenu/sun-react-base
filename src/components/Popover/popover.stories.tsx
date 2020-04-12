@@ -3,21 +3,19 @@ import { storiesOf } from "@storybook/react";
 
 import Popover from "./popover";
 
+const content = <div style={{ padding: "40px" }}>Popover content</div>;
 const defaultPopover = () => (
-  <Popover content={<span style={{ padding: "40px" }}>Popover content</span>}>
+  <Popover title={<span>Popover title</span>} content={content}>
     <span style={{ margin: "10px" }}>默认 Popover</span>
   </Popover>
 );
 
 const triggerPopover = () => (
   <div>
-    <Popover content={<span style={{ padding: "40px" }}>Popover content</span>}>
+    <Popover content={content}>
       <span style={{ margin: "10px" }}>hover Popover</span>
     </Popover>
-    <Popover
-      content={<span style={{ padding: "40px" }}>Popover content</span>}
-      trigger="click"
-    >
+    <Popover content={content} trigger="click">
       <span style={{ margin: "10px" }}>click Popover</span>
     </Popover>
   </div>
@@ -25,25 +23,16 @@ const triggerPopover = () => (
 
 const placementPopover = () => (
   <div>
-    <Popover content={<span style={{ padding: "40px" }}>Popover content</span>}>
+    <Popover content={content}>
       <span style={{ margin: "10px" }}>bottom placement Popover</span>
     </Popover>
-    <Popover
-      content={<span style={{ padding: "40px" }}>Popover content</span>}
-      placement="top"
-    >
+    <Popover content={content} placement="top">
       <span style={{ margin: "10px" }}>top placement Popover</span>
     </Popover>
-    <Popover
-      content={<span style={{ padding: "40px" }}>Popover content</span>}
-      placement="left"
-    >
+    <Popover content={content} placement="left">
       <span style={{ margin: "10px" }}>left placement Popover</span>
     </Popover>
-    <Popover
-      content={<span style={{ padding: "40px" }}>Popover content</span>}
-      placement="right"
-    >
+    <Popover content={content} placement="right">
       <span style={{ margin: "10px" }}>right placement Popover</span>
     </Popover>
   </div>
@@ -51,32 +40,20 @@ const placementPopover = () => (
 
 const timeDelayPopover = () => (
   <div>
-    <Popover
-      content={<span style={{ padding: "40px" }}>Popover content</span>}
-      mouseEnterDelay={1000}
-    >
+    <Popover content={content} mouseEnterDelay={1000}>
       <span style={{ margin: "10px" }}>延迟出现 Popover</span>
     </Popover>
-    <Popover
-      content={<span style={{ padding: "40px" }}>Popover content</span>}
-      mouseLeaveDelay={1000}
-    >
+    <Popover content={content} mouseLeaveDelay={1000}>
       <span style={{ margin: "10px" }}>延迟消失 Popover</span>
     </Popover>
   </div>
 );
 const themePopover = () => (
   <div>
-    <Popover
-      content={<span style={{ padding: "40px" }}>Popover content</span>}
-      theme="dark"
-    >
+    <Popover content={content} theme="dark">
       <span style={{ margin: "10px" }}>深色 Popover</span>
     </Popover>
-    <Popover
-      content={<span style={{ padding: "40px" }}>Popover content</span>}
-      theme="light"
-    >
+    <Popover content={content} theme="light">
       <span style={{ margin: "10px" }}>浅色 Popover</span>
     </Popover>
   </div>

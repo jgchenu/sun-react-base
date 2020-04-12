@@ -9,7 +9,7 @@ import React, {
 } from "react";
 import classNames from "classnames";
 import Input, { InputProps } from "../Input/input";
-import Icon from "../Icon/icon";
+import { LoadingIcon } from "../Icon";
 import Transition from "../Transition/transition";
 import useDebounce from "../../hooks/useDebounce";
 import useClickOutside from "../../hooks/useClickOutside";
@@ -126,7 +126,7 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
         <ul className="suggestion-list">
           {loading && (
             <div className="suggstions-loading-icon">
-              <Icon icon="spinner" spin />
+              <LoadingIcon />
             </div>
           )}
           {suggestions.map((item, index) => {

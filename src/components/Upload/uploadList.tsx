@@ -1,6 +1,12 @@
 import React, { FC } from "react";
 import { UploadFile } from "./upload";
-import Icon from "../Icon/icon";
+import {
+  FileUploadIcon,
+  LoadingIcon,
+  SuccessIcon,
+  CloseIcon,
+  ErrorIcon,
+} from "../Icon";
 import Progress from "../Progress/progress";
 interface UploadListProps {
   fileList: UploadFile[];
@@ -16,23 +22,20 @@ export const UploadList: FC<UploadListProps> = (props) => {
         return (
           <li className="sun-upload-list-item" key={item.uid}>
             <span className={`file-name file-name-${item.status}`}>
-              <Icon icon="file-alt" theme="secondary" />
+              <FileUploadIcon className="icon-secondary" />
               {item.name}
             </span>
             <span className="file-status">
               {(item.status === "uploading" || item.status === "ready") && (
-                <Icon icon="spinner" spin theme="primary" />
+                <LoadingIcon className="icon-primary" />
               )}
               {item.status === "success" && (
-                <Icon icon="check-circle" theme="success" />
+                <SuccessIcon className="icon-success" />
               )}
-              {item.status === "error" && (
-                <Icon icon="times-circle" theme="danger" />
-              )}
+              {item.status === "error" && <ErrorIcon className="icon-danger" />}
             </span>
             <span className="file-actions">
-              <Icon
-                icon="times"
+              <CloseIcon
                 onClick={() => {
                   onRemove(item);
                 }}
