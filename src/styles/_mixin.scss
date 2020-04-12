@@ -23,7 +23,7 @@
   }
   &:focus,
   &.focus {
-    outline-color: lighten($primary, 40%);
+    outline: none;
     color: $hover-color;
     background: $hover-background;
     border-color: $hover-border;

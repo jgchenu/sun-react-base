@@ -8,7 +8,7 @@ npm install sun-react-ui --save
 
 ### 使用
 
-[使用文档](https://jgchenu.github.io/sun-react-ui)
+[组件使用文档](https://jgchenu.github.io/sun-react-ui)
 
 ```javascript
 // 加载样式
