@@ -1,5 +1,5 @@
 // 外部组件的包裹层，用于FC组件获取ref
-.fc-component-wrapper {
+.fc-component-wrap {
   display: inline-block;
 }
 
@@ -24,7 +24,7 @@
   text-align: center;
 }
 
-.popover-wrapper {
+.popover-wrap {
   // 如果是popover，要把默认气泡padding重制
   & .tooltip-title {
     padding: 0;
@@ -33,15 +33,15 @@
 }
 
 // 气泡的z-index以及三角形的定位
-.tooltip-wrapper {
+.tooltip-wrap {
   position: absolute;
   z-index: $tooltip-z-index;
 
-  &.tooltip-wrapper-fixed {
+  &.tooltip-wrap-fixed {
     position: fixed;
   }
 
-  &.popover-wrapper {
+  &.popover-wrap {
     // popover下的三角形会大一些
     .tooltip-arrow {
       width: $popover-triangle-width;

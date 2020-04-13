@@ -50,11 +50,16 @@ export interface TooltipProps {
   isArrowHidden?: boolean;
   /**禁用 */
   disabled?: boolean;
-  visible?: boolean; // 受控显示
-  children: React.ReactElement; // 必须为element节点
-  positionType?: PositionType; //  气泡的定位属性
-  autoAdjustOverflow?: boolean; // 被遮挡时自动调整
-  wrapperClassName?: string; // 气泡包裹层的自定义className
+  /**受控显示 */
+  visible?: boolean;
+  /** 必须为element节点 */
+  children: React.ReactElement;
+  /**气泡的定位属性 */
+  positionType?: PositionType;
+  /**被遮挡时自动调整 */
+  autoAdjustOverflow?: boolean;
+  /**气泡包裹层的自定义className */
+  className?: string;
 }
 
 // 组件的classname前缀
@@ -87,7 +92,7 @@ export const Tooltip: FC<TooltipProps> = (props) => {
     mouseEnterDelay,
     mouseLeaveDelay,
     arrowPointAtCenter,
-    wrapperClassName,
+    className,
   } = props;
   // 是否hover触发
   const isHover = trigger === "hover";
@@ -379,7 +384,7 @@ export const Tooltip: FC<TooltipProps> = (props) => {
     typeof props.children.type !== "function" ? (
       props.children
     ) : (
-      <span className="fc-component-wrapper">{props.children}</span>
+      <span className="fc-component-wrap">{props.children}</span>
     );
 
   return (
@@ -392,12 +397,12 @@ export const Tooltip: FC<TooltipProps> = (props) => {
         >
           <div
             className={classnames(
-              `${prefixClassName}-wrapper`,
+              `${prefixClassName}-wrap`,
               `${prefixClassName}-position-${computedPlacement}`,
               `${prefixClassName}-${theme}`,
-              wrapperClassName,
+              className,
               {
-                [`${prefixClassName}-wrapper-fixed`]:
+                [`${prefixClassName}-wrap-fixed`]:
                   positionTypeFromProps === "fixed" ||
                   positionTypeFromProps === "sticky",
               }

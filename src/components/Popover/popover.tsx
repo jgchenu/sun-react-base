@@ -31,24 +31,31 @@ export interface PopoverProps {
   placement?: Placement;
   /**气泡深浅色主题 */
   theme?: Theme;
-  arrowPointAtCenter?: boolean; // 气泡三角居中对齐
-  mouseEnterDelay?: number; //鼠标移入显示延迟
-  mouseLeaveDelay?: number; // 鼠标移出消失延迟
-  isArrowHidden?: boolean; // 是否隐藏三角形
-  disabled?: boolean; // 禁用
-  visible?: boolean; // 受控显示
-  children: React.ReactElement; // 必须为element节点
-  positionType?: PositionType; //  气泡的定位属性
-  autoAdjustOverflow?: boolean; // 被遮挡时自动调整
-  wrapperClassName?: string; // 气泡包裹层的自定义className
+  /**气泡三角居中对齐 */
+  arrowPointAtCenter?: boolean;
+  /**鼠标移入显示延迟 */
+  mouseEnterDelay?: number;
+  /**鼠标移出消失延迟 */
+  mouseLeaveDelay?: number;
+  /**是否隐藏三角形 */
+  isArrowHidden?: boolean;
+  /**禁用 */
+  disabled?: boolean;
+  /**受控显示 */
+  visible?: boolean;
+  /** 必须为element节点 */
+  children: React.ReactElement;
+  /**气泡的定位属性 */
+  positionType?: PositionType;
+  /**被遮挡时自动调整 */
+  autoAdjustOverflow?: boolean;
+  /**气泡包裹层的自定义className */
+  className?: string;
 }
 
 const prefixClassName = "popover";
 export const Popover: FC<PopoverProps> = (props) => {
-  const classes = classnames(
-    `${prefixClassName}-wrapper`,
-    props.wrapperClassName
-  );
+  const classes = classnames(`${prefixClassName}-wrap`, props.className);
   const title = (
     <>
       {props.title && (
@@ -62,7 +69,7 @@ export const Popover: FC<PopoverProps> = (props) => {
     </>
   );
   return (
-    <Tooltip {...props} wrapperClassName={classes} title={title}>
+    <Tooltip {...props} className={classes} title={title}>
       {props.children}
     </Tooltip>
   );

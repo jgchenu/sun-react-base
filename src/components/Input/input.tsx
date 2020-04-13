@@ -33,7 +33,7 @@ export interface InputProps
  */
 export const Input: FC<InputProps> = (props) => {
   const { disabled, size, icon, prepend, append, style, ...restProps } = props;
-  const cnames = classNames("sun-input-wrapper", {
+  const cnames = classNames("sun-input-wrap", {
     [`input-size-${size}`]: size,
     "is-disabled": disabled,
     "input-group": prepend || append,
@@ -53,7 +53,7 @@ export const Input: FC<InputProps> = (props) => {
   return (
     <div className={cnames} style={style}>
       {prepend && <div className="sun-input-group-prepend">{prepend}</div>}
-      {icon && <div className="icon-wrapper">{icon}</div>}
+      {icon && <div className="icon-wrap">{icon}</div>}
       <input className="sun-input-inner" disabled={disabled} {...restProps} />
       {append && <div className="sun-input-group-append">{append}</div>}
     </div>

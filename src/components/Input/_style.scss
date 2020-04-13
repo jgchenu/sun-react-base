@@ -1,9 +1,9 @@
-.sun-input-wrapper {
+.sun-input-wrap {
   display: flex;
   width: 100%;
   margin-bottom: 30px;
   position: relative;
-  .icon-wrapper {
+  .icon-wrap {
     position: absolute;
     height: 100%;
     width: 35px;
@@ -18,7 +18,7 @@
     }
   }
 }
-.icon-wrapper + .sun-input-inner {
+.icon-wrap + .sun-input-inner {
   padding-right: 35px;
 }
 .sun-input-inner {

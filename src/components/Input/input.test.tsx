@@ -28,14 +28,14 @@ describe("test Input component", () => {
   });
   it("should render different input sizes on size property", () => {
     const wrapper = render(<Input placeholder="sizes" size="lg" />);
-    const testContainer = wrapper.container.querySelector(".sun-input-wrapper");
+    const testContainer = wrapper.container.querySelector(".sun-input-wrap");
     expect(testContainer).toHaveClass("input-size-lg");
   });
   it("should render prepand and append element on prepand/append property", () => {
     const { queryByText, container } = render(
       <Input placeholder="pend" prepend="https://" append=".com" />
     );
-    const testContainer = container.querySelector(".sun-input-wrapper");
+    const testContainer = container.querySelector(".sun-input-wrap");
     expect(testContainer).toHaveClass(
       "input-group input-group-append input-group-prepend"
     );
