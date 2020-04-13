@@ -2,6 +2,7 @@
 @include zoom-animation("left", scale(0.45, 0.45), scale(1, 1), top left);
 @include zoom-animation("right", scale(0.45, 0.45), scale(1, 1), top right);
 @include zoom-animation("bottom", scaleY(0), scaleY(1), center bottom);
+
 @include slide-animation(
   "bottom",
   translate3d(0, 15px, 0),
@@ -16,5 +17,12 @@
 @include slide-animation(
   "right",
   translate3d(15px, 0, 0),
+  translate3d(0, 0, 0)
+);
+
+@include slide-animation("mask", translate3d(0, 0, 0), translate3d(0, 0, 0));
+@include slide-animation(
+  "modal",
+  translate3d(0, -50px, 0),
   translate3d(0, 0, 0)
 );

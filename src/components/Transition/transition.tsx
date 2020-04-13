@@ -10,7 +10,9 @@ export type AnimationName =
   | "slide-in-bottom"
   | "slide-in-top"
   | "slide-in-left"
-  | "slide-in-right";
+  | "slide-in-right"
+  | "slide-in-mask"
+  | "slide-in-modal";
 
 export interface TransitionProps extends CSSTransitionProps {
   animation?: AnimationName;

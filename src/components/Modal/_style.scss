@@ -3,7 +3,6 @@ $modal-mask-z-index: 400;
 $modal-mask-bg: rgba(0, 0, 0, 0.45);
 $modal-border-color: $gray-400;
 $modal-title-border-color: $gray-300;
-
 $modal-bg: $white;
 
 .modal-mask {
@@ -19,22 +18,26 @@ $modal-bg: $white;
   z-index: $modal-mask-z-index;
 }
 
-.modal-wrapper {
-  min-width: 400px;
-  background-color: $modal-bg;
+.modal-wrap {
   position: fixed;
-  top: 50%;
-  left: 50%;
   z-index: $modal-z-index;
-  transform: translate(-50%, -50%);
+  overflow: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  outline: 0;
+}
+
+.modal {
+  position: relative;
+  z-index: $modal-z-index;
+  width: 520px;
+  background-color: $modal-bg;
   border: 1px solid $modal-border-color;
   border-radius: 4px;
-
-  &.modal-centered {
-    & .modal-title {
-      text-align: center;
-    }
-  }
+  top: 100px;
+  margin: 0 auto 100px auto;
 
   & .modal-title {
     position: relative;

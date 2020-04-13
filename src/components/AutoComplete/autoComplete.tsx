@@ -10,7 +10,7 @@ import React, {
 import classNames from "classnames";
 import Input, { InputProps } from "../Input/input";
 import { LoadingIcon } from "../Icon";
-import Transition from "../Transition/transition";
+import Transition from "../Transition";
 import useDebounce from "../../hooks/useDebounce";
 import useClickOutside from "../../hooks/useClickOutside";
 interface DataSourceObject {

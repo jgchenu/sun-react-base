@@ -67,16 +67,16 @@
 
 @mixin slide-animation(
   $direction: "bottom",
-  $scaleStart: translate3d(0, 15px, 0),
-  $scaleEnd: translate3d(0, 0, 0)
+  $transformStart: translate3d(0, 15px, 0),
+  $transformEnd: translate3d(0, 0, 0)
 ) {
   .slide-in-#{$direction}-enter {
     opacity: 0;
-    transform: $scaleStart;
+    transform: $transformStart;
   }
   .slide-in-#{$direction}-enter-active {
     opacity: 1;
-    transform: $scaleEnd;
+    transform: $transformEnd;
     transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
       opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   }
@@ -85,7 +85,7 @@
   }
   .slide-in-#{$direction}-exit-active {
     opacity: 0;
-    transform: $scaleStart;
+    transform: $transformStart;
     transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
       opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
   }

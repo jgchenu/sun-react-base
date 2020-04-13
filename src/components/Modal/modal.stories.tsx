@@ -8,6 +8,7 @@ import { action } from "@storybook/addon-actions";
 import { useState } from "@storybook/addons";
 
 const title = <div>这是个标题</div>;
+const content = <div>这是内容</div>;
 
 const DefaultModal = () => {
   const [visible, setVisible] = useState(false);
@@ -66,6 +67,25 @@ const TitleContentModal = () => {
   );
 };
 
+const MethodModal = () => {
+  return (
+    <>
+      <Button
+        onClick={(e) => {
+          e.stopPropagation();
+          Modal.open({
+            title,
+            content,
+          });
+        }}
+      >
+        Modal.open 打开
+      </Button>
+    </>
+  );
+};
+
 storiesOf("Modal Component", module)
   .add("defaultModal", DefaultModal)
-  .add("有titile,content,button的modal", TitleContentModal);
+  .add("完整的modal", TitleContentModal)
+  .add("静态方法打开的modal", MethodModal);
