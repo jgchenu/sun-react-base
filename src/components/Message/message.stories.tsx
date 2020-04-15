@@ -7,23 +7,23 @@ const DefaultMessage = () => {
   return (
     <section>
       <p>
-        <Button onClick={() => Message.info({ title: "默认信息" })}>
+        <Button onClick={() => Message.info({ title: " Info message" })}>
           Info message
         </Button>
       </p>
       <p>
-        <Button onClick={() => Message.warning({ title: "默认信息" })}>
+        <Button onClick={() => Message.warning({ title: "Warning message" })}>
           Warning message
         </Button>
       </p>
       <p>
-        <Button onClick={() => Message.success({ title: "默认信息" })}>
+        <Button onClick={() => Message.success({ title: "Success message" })}>
           Success message
         </Button>
       </p>
       <p>
         <Button
-          onClick={() => Message.error({ title: "默认信息" })}
+          onClick={() => Message.error({ title: "Error message" })}
           btnType="danger"
         >
           Error message
@@ -31,7 +31,7 @@ const DefaultMessage = () => {
       </p>
       <p>
         <Button
-          onClick={() => Message.loading({ title: "默认信息" })}
+          onClick={() => Message.loading({ title: "Loading message" })}
           btnType="primary"
         >
           Loading message
@@ -41,4 +41,32 @@ const DefaultMessage = () => {
   );
 };
 
-storiesOf("Message component", module).add("DefaultMessage", DefaultMessage);
+const ThemeMessage = () => {
+  return (
+    <section>
+      <p>
+        <Button
+          onClick={() =>
+            Message.info({ title: " Light Theme message", theme: "light" })
+          }
+        >
+          Light Theme message
+        </Button>
+      </p>
+      <p>
+        <Button
+          onClick={() =>
+            Message.info({ title: "Dark Theme message", theme: "dark" })
+          }
+          btnType="primary"
+        >
+          Dark Theme message
+        </Button>
+      </p>
+    </section>
+  );
+};
+
+storiesOf("Message component", module)
+  .add("不同icon的message", DefaultMessage)
+  .add("不同主题的message", ThemeMessage);
