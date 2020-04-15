@@ -1,29 +1,29 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import Message from "./message";
+import message from "./message";
 import Button from "./../Button";
 
 const DefaultMessage = () => {
   return (
     <section>
       <p>
-        <Button onClick={() => Message.info({ title: " Info message" })}>
+        <Button onClick={() => message.info({ title: " Info message" })}>
           Info message
         </Button>
       </p>
       <p>
-        <Button onClick={() => Message.warning({ title: "Warning message" })}>
+        <Button onClick={() => message.warning({ title: "Warning message" })}>
           Warning message
         </Button>
       </p>
       <p>
-        <Button onClick={() => Message.success({ title: "Success message" })}>
+        <Button onClick={() => message.success({ title: "Success message" })}>
           Success message
         </Button>
       </p>
       <p>
         <Button
-          onClick={() => Message.error({ title: "Error message" })}
+          onClick={() => message.error({ title: "Error message" })}
           btnType="danger"
         >
           Error message
@@ -31,7 +31,7 @@ const DefaultMessage = () => {
       </p>
       <p>
         <Button
-          onClick={() => Message.loading({ title: "Loading message" })}
+          onClick={() => message.loading({ title: "Loading message" })}
           btnType="primary"
         >
           Loading message
@@ -47,7 +47,7 @@ const ThemeMessage = () => {
       <p>
         <Button
           onClick={() =>
-            Message.info({ title: " Light Theme message", theme: "light" })
+            message.info({ title: " Light Theme message", theme: "light" })
           }
         >
           Light Theme message
@@ -56,7 +56,7 @@ const ThemeMessage = () => {
       <p>
         <Button
           onClick={() =>
-            Message.info({ title: "Dark Theme message", theme: "dark" })
+            message.info({ title: "Dark Theme message", theme: "dark" })
           }
           btnType="primary"
         >
@@ -67,6 +67,6 @@ const ThemeMessage = () => {
   );
 };
 
-storiesOf("Message component", module)
+storiesOf("message component", module)
   .add("不同icon的message", DefaultMessage)
   .add("不同主题的message", ThemeMessage);
