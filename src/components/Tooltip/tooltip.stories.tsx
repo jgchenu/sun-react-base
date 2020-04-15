@@ -10,18 +10,18 @@ const defaultTooltip = () => (
 );
 
 const triggerTooltip = () => (
-  <div>
+  <section>
     <Tooltip title={<span>tooltip title</span>}>
       <span style={{ margin: "10px" }}>hover Tooltip</span>
     </Tooltip>
     <Tooltip title={<span>tooltip title</span>} trigger="click">
       <span style={{ margin: "10px" }}>click Tooltip</span>
     </Tooltip>
-  </div>
+  </section>
 );
 
 const placementTooltip = () => (
-  <div>
+  <section>
     <Tooltip title={<span>tooltip title</span>}>
       <span style={{ margin: "10px" }}>bottom placement Tooltip</span>
     </Tooltip>
@@ -34,28 +34,28 @@ const placementTooltip = () => (
     <Tooltip title={<span>tooltip title</span>} placement="right">
       <span style={{ margin: "10px" }}>right placement Tooltip</span>
     </Tooltip>
-  </div>
+  </section>
 );
 
 const timeDelayTooltip = () => (
-  <div>
+  <section>
     <Tooltip title={<span>tooltip title</span>} mouseEnterDelay={1000}>
       <span style={{ margin: "10px" }}>延迟出现 Tooltip</span>
     </Tooltip>
     <Tooltip title={<span>tooltip title</span>} mouseLeaveDelay={1000}>
       <span style={{ margin: "10px" }}>延迟消失 Tooltip</span>
     </Tooltip>
-  </div>
+  </section>
 );
 const themeTooltip = () => (
-  <div>
+  <section>
     <Tooltip title={<span>tooltip title</span>} theme="dark">
       <span style={{ margin: "10px" }}>深色 Tooltip</span>
     </Tooltip>
     <Tooltip title={<span>tooltip title</span>} theme="light">
       <span style={{ margin: "10px" }}>浅色 Tooltip</span>
     </Tooltip>
-  </div>
+  </section>
 );
 storiesOf("Tooltip Component", module)
   .add("Tooltip", defaultTooltip)

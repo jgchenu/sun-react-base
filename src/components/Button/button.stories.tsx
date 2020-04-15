@@ -9,20 +9,20 @@ const defaultButton = () => (
 );
 
 const buttonWithSize = () => (
-  <>
+  <section>
     <Button size="lg"> large button </Button>
     <Button size="sm"> small button </Button>
-  </>
+  </section>
 );
 
 const buttonWithType = () => (
-  <>
+  <section>
     <Button btnType="primary"> primary button </Button>
     <Button btnType="danger"> danger button </Button>
     <Button btnType="link" href="https://baidu.com">
       link button
     </Button>
-  </>
+  </section>
 );
 storiesOf("Button Component", module)
   .add("Button", defaultButton)

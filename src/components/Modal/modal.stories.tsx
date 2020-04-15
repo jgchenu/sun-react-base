@@ -13,7 +13,7 @@ const content = <div>这是内容</div>;
 const DefaultModal = () => {
   const [visible, setVisible] = useState(false);
   return (
-    <>
+    <section>
       <Button
         onClick={(e) => {
           e.stopPropagation();
@@ -31,14 +31,14 @@ const DefaultModal = () => {
       >
         <div>显示的内容</div>
       </Modal>
-    </>
+    </section>
   );
 };
 
 const TitleContentModal = () => {
   const [visible, setVisible] = useState(false);
   return (
-    <>
+    <section>
       <Button
         onClick={(e) => {
           e.stopPropagation();
@@ -63,13 +63,13 @@ const TitleContentModal = () => {
       >
         <div>显示的内容</div>
       </Modal>
-    </>
+    </section>
   );
 };
 
 const MethodModal = () => {
   return (
-    <>
+    <section>
       <Button
         onClick={(e) => {
           e.stopPropagation();
@@ -81,7 +81,7 @@ const MethodModal = () => {
       >
         Modal.open 打开
       </Button>
-    </>
+    </section>
   );
 };
 

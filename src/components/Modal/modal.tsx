@@ -48,6 +48,7 @@ export const Modal: ModalFuncProps = (props) => {
     maskClosable,
     showMask,
     children,
+    className,
     ...restProps
   } = props;
 
@@ -96,9 +97,9 @@ export const Modal: ModalFuncProps = (props) => {
         ></div>
       </Transition>
       <Transition animation="slide-in-modal" timeout={300} in={computedVisible}>
-        <div className={classnames(`${prefixClassName}-wrap`)}>
+        <div className={`${prefixClassName}-wrap`}>
           <div
-            className={prefixClassName}
+            className={classnames(prefixClassName, className)}
             {...restProps}
             style={{
               ...style,
@@ -152,12 +153,13 @@ Modal.defaultProps = {
   closable: true,
 };
 
+// TODO Transition 使用render 函数渲染的时候没生效，考虑使用自定义的class重写
 Modal.open = function (props: ModalProps) {
   const div = document.createElement("div");
   document.body.appendChild(div);
   render(
     <Modal
-      {...props}
+      {...{ ...Modal.defaultProps, ...props }}
       isStaticMethod
       onCancel={(event: React.MouseEvent) => {
         props.onCancel && props.onCancel(event);

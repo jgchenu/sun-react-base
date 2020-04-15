@@ -11,18 +11,18 @@ const defaultPopover = () => (
 );
 
 const triggerPopover = () => (
-  <div>
+  <section>
     <Popover content={content}>
       <span style={{ margin: "10px" }}>hover Popover</span>
     </Popover>
     <Popover content={content} trigger="click">
       <span style={{ margin: "10px" }}>click Popover</span>
     </Popover>
-  </div>
+  </section>
 );
 
 const placementPopover = () => (
-  <div>
+  <section>
     <Popover content={content}>
       <span style={{ margin: "10px" }}>bottom placement Popover</span>
     </Popover>
@@ -35,28 +35,28 @@ const placementPopover = () => (
     <Popover content={content} placement="right">
       <span style={{ margin: "10px" }}>right placement Popover</span>
     </Popover>
-  </div>
+  </section>
 );
 
 const timeDelayPopover = () => (
-  <div>
+  <section>
     <Popover content={content} mouseEnterDelay={1000}>
       <span style={{ margin: "10px" }}>延迟出现 Popover</span>
     </Popover>
     <Popover content={content} mouseLeaveDelay={1000}>
       <span style={{ margin: "10px" }}>延迟消失 Popover</span>
     </Popover>
-  </div>
+  </section>
 );
 const themePopover = () => (
-  <div>
+  <section>
     <Popover content={content} theme="dark">
       <span style={{ margin: "10px" }}>深色 Popover</span>
     </Popover>
     <Popover content={content} theme="light">
       <span style={{ margin: "10px" }}>浅色 Popover</span>
     </Popover>
-  </div>
+  </section>
 );
 storiesOf("Popover Component", module)
   .add("Popover", defaultPopover)
