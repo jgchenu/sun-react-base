@@ -304,12 +304,22 @@ $modal-bg: $white;
 
 // Spin
 
-// spin svg color
 $spin-color: $primary;
-// spin-animation
 $spin-animation: spinning 1500ms linear infinite;
-// tip color
 $spin-tip-color: $primary;
 $spin-small-size: 22px;
 $spin-default-size: 32px;
 $spin-large-size: 42px;
+
+// Message
+
+$message-z-index: 1000;
+$message-width: 220px;
+$message-height: 140px;
+$message-padding: 12px 25px;
+$border-radius: 4px;
+$default-shadow: 0 4px 22px 0 rgba(15, 35, 95, 0.12);
+$message-title-font-size: 22px;
+$message-icon-font-size: 32px;
+$message-theme-dark-bg: $gray-200;
+$message-theme-dark-font-color: $white;
