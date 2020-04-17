@@ -8,7 +8,7 @@ import {
   LoadingIcon,
 } from "./../Icon";
 import Transition from "../Transition";
-import { render, unmountComponentAtNode } from "react-dom";
+import { render, unmountComponentAtNode, createPortal } from "react-dom";
 export type MessageTheme = "dark" | "light";
 export type MessageIconType =
   | "info"
@@ -48,7 +48,7 @@ const Message: MessageFuncProps = (props) => {
       onClose && onClose();
     }, duration * 1000);
   }, [duration, onClose, props.onClose]);
-  return (
+  return createPortal(
     <Transition in={visible} animation="slide-in-modal" timeout={300}>
       <div
         className={classnames(
@@ -63,20 +63,19 @@ const Message: MessageFuncProps = (props) => {
             [`${prefixClassName}-${type}`]: !!type,
           })}
         >
-          <div className={`${prefixClassName}-icon`}>
+          <span className={`${prefixClassName}-icon`}>
             {type === "info" ? <InfoIcon /> : undefined}
             {type === "success" ? <SuccessIcon /> : undefined}
             {type === "error" ? <ErrorIcon /> : undefined}
             {type === "warning" ? <WarningIcon /> : undefined}
             {type === "loading" ? <LoadingIcon /> : undefined}
-          </div>
+          </span>
 
-          <div className={`${prefixClassName}-title`}>
-            <span>{title}</span>
-          </div>
+          <span className={`${prefixClassName}-title`}>{title}</span>
         </div>
       </div>
-    </Transition>
+    </Transition>,
+    document.body
   );
 };
 

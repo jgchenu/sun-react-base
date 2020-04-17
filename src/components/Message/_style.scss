@@ -1,15 +1,11 @@
 .sun-message {
   position: fixed;
   z-index: $message-z-index;
-  height: $message-height;
-  margin: auto;
+  top: 16px;
   left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  pointer-events: none;
+  text-align: center;
 
   &::before,
   &::after {
@@ -20,15 +16,13 @@
   }
 
   .sun-message-title-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: $message-height;
+    display: inline-block;
     padding: $message-padding;
     border-radius: $border-radius;
     box-shadow: $default-shadow;
     background-color: $message-theme-light-bg;
     border-radius: $border-radius;
+    pointer-events: all;
   }
 
   .sun-message-icon {
