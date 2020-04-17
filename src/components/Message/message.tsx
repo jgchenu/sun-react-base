@@ -59,21 +59,21 @@ const Message: MessageFuncProps = (props) => {
         {...restProps}
       >
         <div
-          className={classnames(`${prefixClassName}-title-custom`, {
+          className={classnames(`${prefixClassName}-title-wrap`, {
             [`${prefixClassName}-${type}`]: !!type,
           })}
         >
-          <p className={`${prefixClassName}-icon`}>
+          <div className={`${prefixClassName}-icon`}>
             {type === "info" ? <InfoIcon /> : undefined}
             {type === "success" ? <SuccessIcon /> : undefined}
             {type === "error" ? <ErrorIcon /> : undefined}
             {type === "warning" ? <WarningIcon /> : undefined}
             {type === "loading" ? <LoadingIcon /> : undefined}
-          </p>
+          </div>
 
-          <p className={`${prefixClassName}-title`}>
+          <div className={`${prefixClassName}-title`}>
             <span>{title}</span>
-          </p>
+          </div>
         </div>
       </div>
     </Transition>

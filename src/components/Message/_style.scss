@@ -1,18 +1,15 @@
 .sun-message {
   position: fixed;
   z-index: $message-z-index;
-  width: $message-width;
   height: $message-height;
-  transform: translate3d(0, 0, 0);
   margin: auto;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  overflow: auto;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
   &::before,
   &::after {
@@ -22,52 +19,66 @@
     zoom: 1;
   }
 
-  padding: $message-padding;
-  border-radius: $border-radius;
-  box-shadow: $default-shadow;
-  background: $white;
-  text-align: center;
+  .sun-message-title-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $message-height;
+    padding: $message-padding;
+    border-radius: $border-radius;
+    box-shadow: $default-shadow;
+    background-color: $message-theme-light-bg;
+    border-radius: $border-radius;
+  }
 
-  &-icon {
+  .sun-message-icon {
     svg,
     i {
       font-size: $message-icon-font-size;
     }
   }
 
-  &-title {
+  .sun-message-title {
+    margin-left: 10px;
     font-size: $message-title-font-size;
   }
 
   &.sun-message-theme-dark {
-    background: $message-theme-dark-bg;
-    color: $message-theme-dark-font-color;
+    .sun-message-title-wrap {
+      background: $message-theme-dark-bg;
+      color: $message-theme-dark-font-color;
+    }
     svg,
     i,
     .sun-message-title {
       color: $message-theme-dark-font-color !important;
     }
   }
+
   .sun-message-info {
     svg {
       color: $primary;
     }
   }
+
   .sun-message-error {
     svg {
       color: $danger;
     }
   }
+
   .sun-message-success {
     svg {
       color: $success;
     }
   }
+
   .sun-message-warning {
     svg {
       color: $warning;
     }
   }
+
   .sun-message-loading {
     svg {
       color: $primary;

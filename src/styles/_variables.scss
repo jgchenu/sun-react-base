@@ -314,12 +314,13 @@ $spin-large-size: 42px;
 // Message
 
 $message-z-index: 1000;
-$message-width: 220px;
-$message-height: 160px;
-$message-padding: 12px 25px;
+$message-width: 200px;
+$message-height: 40px;
+$message-padding: 8px 16px;
 $border-radius: 4px;
-$default-shadow: 0 4px 22px 0 rgba(15, 35, 95, 0.12);
-$message-title-font-size: 16px;
-$message-icon-font-size: 32px;
+$default-shadow: 0 2px 10px 0 rgba(15, 35, 95, 0.12);
+$message-title-font-size: 14px;
+$message-icon-font-size: 18px;
 $message-theme-dark-bg: rgba(0, 0, 0, 0.5);
 $message-theme-dark-font-color: $white;
+$message-theme-light-bg: $white;
