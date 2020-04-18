@@ -33,7 +33,8 @@ export interface BaseModalProps {
   className?: string;
 }
 
-type ModalProps = BaseModalProps & HTMLAttributes<HTMLElement>;
+type ModalProps = BaseModalProps &
+  Omit<HTMLAttributes<HTMLDivElement>, "title">;
 export interface ModalFuncProps extends FC<ModalProps> {
   open: (props: ModalProps) => void;
 }
