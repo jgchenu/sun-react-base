@@ -1,9 +1,9 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import classnames from "classnames";
 import { LoadingIcon } from "../Icon";
 
 type Size = "default" | "small" | "large";
-export interface SpinProps {
+export interface BaseSpinProps {
   size?: Size;
   tip?: string;
   children: React.ReactElement | null;
@@ -11,7 +11,7 @@ export interface SpinProps {
   className?: string;
   spinning?: boolean;
 }
-
+type SpinProps = BaseSpinProps & HTMLAttributes<HTMLElement>;
 const prefixClassName = "spin";
 export const Spin = (props: SpinProps) => {
   const {

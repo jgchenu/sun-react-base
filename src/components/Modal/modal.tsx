@@ -1,4 +1,11 @@
-import React, { FC, useMemo, useState, useRef, useCallback } from "react";
+import React, {
+  FC,
+  useMemo,
+  useState,
+  useRef,
+  useCallback,
+  HTMLAttributes,
+} from "react";
 import { createPortal, render, unmountComponentAtNode } from "react-dom";
 import classnames from "classnames";
 import Button from "../Button";
@@ -8,7 +15,7 @@ import { CloseIcon } from "../Icon";
 import Transition from "../Transition";
 import useClickOutside from "../../hooks/useClickOutside";
 
-export interface ModalProps {
+export interface BaseModalProps {
   isStaticMethod?: boolean;
   width?: number;
   style?: React.StyleHTMLAttributes<HTMLElement>;
@@ -26,6 +33,7 @@ export interface ModalProps {
   className?: string;
 }
 
+type ModalProps = BaseModalProps & HTMLAttributes<HTMLElement>;
 export interface ModalFuncProps extends FC<ModalProps> {
   open: (props: ModalProps) => void;
 }

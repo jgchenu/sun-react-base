@@ -1,4 +1,4 @@
-import React, { useEffect, useState, FC } from "react";
+import React, { useEffect, useState, FC, HTMLAttributes } from "react";
 import classnames from "classnames";
 import {
   InfoIcon,
@@ -17,7 +17,7 @@ export type MessageIconType =
   | "warning"
   | "loading";
 
-interface MessageProps {
+interface BaseMessageProps {
   theme?: MessageTheme;
   className?: string;
   title?: string;
@@ -25,6 +25,8 @@ interface MessageProps {
   onClose?: () => void;
   duration?: number;
 }
+
+type MessageProps = BaseMessageProps & HTMLAttributes<HTMLElement>;
 
 const prefixClassName = "sun-message";
 export interface MessageFuncProps extends FC<MessageProps> {
