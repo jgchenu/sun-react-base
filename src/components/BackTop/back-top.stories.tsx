@@ -23,7 +23,7 @@ const customPositionBackTop = () => {
         visibilityHeight={200}
         style={{
           right: 100,
-          bottom: 400,
+          bottom: 200,
         }}
       />
     </section>
