@@ -279,22 +279,30 @@ export const Tooltip: FC<TooltipProps> = (props) => {
     }
     let resetPlacement = String(placementFromProps);
     if (positions[placementFromProps].top - scrollY < 0) {
-      resetPlacement = resetPlacement.replace("top", "bottom");
+      resetPlacement = resetPlacement
+        .replace("top", "bottom")
+        .replace("Top", "Bottom");
     }
     if (
       positions[placementFromProps].top + offset + wrapperHeight - scrollY >
       innerHeight
     ) {
-      resetPlacement = resetPlacement.replace("bottom", "top");
+      resetPlacement = resetPlacement
+        .replace("bottom", "top")
+        .replace("Bottom", "Top");
     }
     if (positions[placementFromProps].left - scrollX < 0) {
-      resetPlacement = resetPlacement.replace("left", "right");
+      resetPlacement = resetPlacement
+        .replace("left", "right")
+        .replace("Left", "Right");
     }
     if (
       positions[placementFromProps].left + wrapperWidth + offset - scrollX >
       innerWidth
     ) {
-      resetPlacement = resetPlacement.replace("right", "left");
+      resetPlacement = resetPlacement
+        .replace("right", "left")
+        .replace("Right", "Left");
     }
     setAdjustPlacement(resetPlacement);
     setPositions(positions[resetPlacement as keyof typeof positions]);
