@@ -3,11 +3,11 @@ node_js:
   - "stable"
 cache:
   directories:
-  - node_modules
+    - node_modules
 env:
   - CI=true
 script:
-  - npm run build-storybook
+  - yarn pub:docs
 deploy:
   provider: pages
   skip_cleanup: true
@@ -15,5 +15,3 @@ deploy:
   local_dir: storybook-static
   on:
     branch: master
-  
-  
