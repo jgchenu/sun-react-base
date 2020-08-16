@@ -50,7 +50,7 @@
     "docs": "start-storybook -p 6006 -s public",
     "pub:docs": "yarn build:docs && storybook-to-ghpages --existing-output-dir=storybook-static",
     "build:docs": "build-storybook -s public",
-    "prepublish": "yarn test:nowatch && yarn lint && yarn build"
+    "prepublishOnly": "yarn test:nowatch && yarn lint && yarn build"
   },
   "husky": {
     "hooks": {
