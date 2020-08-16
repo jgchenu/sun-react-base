@@ -2,8 +2,6 @@
   "name": "sun-react-ui",
   "version": "0.1.13",
   "description": "React components library",
-  "author": "jgchenu",
-  "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,33 +20,42 @@
     "dist"
   ],
   "dependencies": {
-    "axios": "^0.19.1",
+    "@testing-library/jest-dom": "^5.11.3",
+    "@testing-library/react": "^10.4.8",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
     "classnames": "^2.2.6",
-    "react-icons": "^3.9.0",
-    "react-transition-group": "^4.3.0"
-  },
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-icons": "^3.10.0",
+    "react-scripts": "3.4.3",
+    "react-transition-group": "^4.4.1",
+    "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "clean": "rimraf ./dist",
-    "lint": "eslint --ext js,ts,tsx src --max-warnings 5",
-    "build": "npm run clean && npm run build-ts && npm run build-css",
+    "clean": "rimraf ./dist ./storybook-static",
+    "start": "yarn docs",
+    "build": "yarn clean && yarn build:css && yarn build:ts",
+    "eslint": "eslint --ext js,ts,tsx src --max-warnings 5",
+    "stylelint": "stylelint src/**/*.less src/**/*.css",
+    "lint": "yarn eslint && yarn stylelint",
+    "build:ts": "tsc -p tsconfig.build.json",
+    "build:css": "lessc ./src/styles/index.less ./dist/index.css",
     "test": "react-scripts test",
     "test:nowatch": "cross-env CI=true react-scripts test",
     "eject": "react-scripts eject",
-    "build-ts": "tsc -p tsconfig.build.json",
-    "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
-    "start:docs": "start-storybook -p 9009 -s public",
+    "docs": "start-storybook -p 6006 -s public",
+    "pub:docs": "yarn build:docs && storybook-to-ghpages --existing-output-dir=storybook-static",
     "build:docs": "build-storybook -s public",
-    "pub:docs": "npm run build:docs && storybook-to-ghpages --existing-output-dir=storybook-static",
-    "prepublishOnly": "npm run test:nowatch && npm run lint && npm run build"
+    "prepublish": "yarn test:nowatch && yarn lint && yarn build"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test:nowatch && npm run lint"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "./pre_commit.sh && yarn test:nowatch && yarn lint && yarn stylelint"
     }
   },
   "storybook-deployer": {
@@ -72,29 +79,30 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^5.2.8",
-    "@storybook/addon-info": "^5.2.8",
-    "@storybook/addon-links": "^5.2.8",
-    "@storybook/addons": "^5.2.8",
-    "@storybook/react": "^5.2.8",
+    "@babel/core": "^7.11.1",
+    "@storybook/addon-actions": "^6.0.10",
+    "@storybook/addon-essentials": "^6.0.10",
+    "@storybook/addon-info": "^5.3.19",
+    "@storybook/addon-links": "^6.0.10",
     "@storybook/storybook-deployer": "^2.8.5",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@types/classnames": "^2.2.9",
-    "@types/jest": "24.0.23",
-    "@types/node": "12.12.14",
-    "@types/react": "^16.9.13",
-    "@types/react-dom": "16.9.4",
-    "@types/react-transition-group": "^4.2.3",
+    "@storybook/node-logger": "^6.0.10",
+    "@storybook/preset-create-react-app": "^3.1.4",
+    "@storybook/react": "^6.0.10",
+    "@types/classnames": "^2.2.10",
+    "@types/react-transition-group": "^4.4.0",
     "@types/storybook__addon-info": "^5.2.1",
+    "babel-loader": "^8.1.0",
     "cross-env": "^7.0.0",
-    "husky": "^4.2.1",
-    "node-sass": "^4.13.0",
-    "react": "^16.12.0",
-    "react-docgen-typescript-loader": "^3.6.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.2.0",
-    "rimraf": "^3.0.1",
-    "typescript": "3.7.2"
+    "husky": "^4.2.5",
+    "less": "^3.12.2",
+    "less-loader": "^6.2.0",
+    "react-is": "^16.13.1",
+    "rimraf": "^3.0.2",
+    "stylelint": "^12.0.0",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-webpack-plugin": "^1.2.1",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4"
   }
 }

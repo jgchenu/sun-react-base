@@ -5,7 +5,7 @@ import Button from "../Button";
 const defaultBackTop = () => (
   <section
     style={{
-      height: 1000,
+      height: 400,
     }}
   >
     <BackTop />
@@ -16,7 +16,7 @@ const customPositionBackTop = () => {
   return (
     <section
       style={{
-        height: 1000,
+        height: 400,
       }}
     >
       <BackTop

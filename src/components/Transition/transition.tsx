@@ -14,10 +14,10 @@ export type AnimationName =
   | "slide-in-mask"
   | "slide-in-modal";
 
-export interface TransitionProps extends CSSTransitionProps {
+export type TransitionProps = CSSTransitionProps & {
   animation?: AnimationName;
   wrapper?: boolean;
-}
+};
 
 const Transition: React.FC<TransitionProps> = (props) => {
   const { children, classNames, animation, wrapper, ...restProps } = props;

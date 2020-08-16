@@ -12,9 +12,12 @@ import Transition from "../Transition";
 import { usePropsRef } from "../../hooks/useProps";
 
 interface BaseBackTopProps {
+  /** 点击的回调函数 */
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
+  /** 距离容器的可见高度 */
   visibilityHeight?: string | number;
   children?: React.ReactElement;
+  /** 自定义容器 */
   target?: () => Window | HTMLElement;
   className?: string;
 }
@@ -24,6 +27,14 @@ type BackTopProps = BaseBackTopProps & HTMLAttributes<HTMLElement>;
 const prefixClassName = "sun-back-top";
 const raf = window.requestAnimationFrame;
 
+/**
+ * 页面中最常用的的返回顶部
+ * ### 引用方法
+ *
+ * ~~~js
+ * import { BackTop } from 'sun-react-ui'
+ * ~~~
+ */
 export const BackTop: FC<BackTopProps> = (props) => {
   const {
     visibilityHeight = 400,
@@ -40,7 +51,7 @@ export const BackTop: FC<BackTopProps> = (props) => {
     debounce(() => {
       const scrollTop = getScroll(getDefaultTarget(), true);
       setVisible(scrollTop > propsRef.current);
-    }, 100)
+    }, 10)
   ).current;
 
   const getCurrentScrollTop = () => {

@@ -6,10 +6,13 @@ storiesOf("Welcome page", module).add(
   () => {
     return (
       <>
-        <h1>欢迎来到 sun-react-ui 组件库</h1>
-        <p>从零到一学习写ui组件</p>
-        <h3>安装试试</h3>
-        <code>npm install sun-react-ui --save</code>
+        <h1>欢迎使用 sun-react-ui 组件库</h1>
+        <br />
+        <h1>
+          安装使用：
+          <code>npm install sun-react-ui --save</code> or &nbsp;
+          <code>yarn add sun-react-ui</code>
+        </h1>
       </>
     );
   },

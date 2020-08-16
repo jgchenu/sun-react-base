@@ -1,0 +1,93 @@
+.btn {
+  position: relative;
+  display: inline-block;
+  border: @btn-border-width solid transparent;
+  background-image: none;
+  box-shadow: @btn-box-shadow;
+  color: @body-color;
+  cursor: pointer;
+  font-weight: @btn-font-weight;
+  line-height: @btn-line-height;
+  text-align: center;
+  transition: @btn-transition;
+  vertical-align: middle;
+  white-space: nowrap;
+  .button-size(
+    @btn-padding-y,
+    @btn-padding-x,
+    @btn-font-size,
+    @border-radius
+  );
+
+  &.disabled,
+  &[disabled] {
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: @btn-disabled-opacity;
+
+    > * {
+      pointer-events: none;
+    }
+  }
+}
+
+.btn-lg {
+  .button-size(
+    @btn-padding-y-lg,
+    @btn-padding-x-lg,
+    @btn-font-size-lg,
+    @btn-border-radius-lg
+  );
+}
+
+.btn-sm {
+  .button-size(
+    @btn-padding-y-sm,
+    @btn-padding-x-sm,
+    @btn-font-size-sm,
+    @btn-border-radius-sm
+  );
+}
+
+.btn-primary {
+  .button-style(@primary, @primary, @white);
+}
+
+.btn-danger {
+  .button-style(@danger, @danger, @white);
+}
+
+.btn-default {
+  .button-style(
+    @white,
+    @gray-400,
+    @body-color,
+    @white,
+    @primary,
+    @primary
+  );
+}
+
+.btn-link {
+  box-shadow: none;
+  color: @btn-link-color;
+  font-weight: @font-weight-normal;
+  text-decoration: @link-decoration;
+
+  &:hover {
+    color: @btn-link-hover-color;
+    text-decoration: @link-hover-decoration;
+  }
+
+  &:focus,
+  &.focus {
+    box-shadow: none;
+    text-decoration: @link-hover-decoration;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: @btn-link-disabled-color;
+    pointer-events: none;
+  }
+}
