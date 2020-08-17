@@ -36,8 +36,8 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "publish": "yarn test:nowatch && yarn lint && yarn build && yarn npm:publish && yarn post:version",
-    "npm:publish": "npm login --registry http://registry.npmjs.org/  && npm publish --registry http://registry.npmjs.org/",
+    "release": "yarn prepublishOnly && yarn post:version && yarn npm:publish",
+    "npm:publish": "npm login --registry http://registry.npmjs.org && npm publish --registry http://registry.npmjs.org",
     "post:version": "npm version patch -m \"feat(version): upgrade to %s for reasons\"",
     "clean": "rimraf ./dist ./storybook-static",
     "start": "yarn docs",
