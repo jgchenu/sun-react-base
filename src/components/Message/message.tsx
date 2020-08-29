@@ -7,7 +7,6 @@ import {
   WarningIcon,
   LoadingIcon,
 } from "./../Icon";
-import Transition from "../Transition";
 import { render, unmountComponentAtNode, createPortal } from "react-dom";
 export type MessageTheme = "dark" | "light";
 export type MessageIconType =
@@ -50,35 +49,35 @@ const Message: MessageFuncProps = (props) => {
       onClose && onClose();
     }, duration * 1000);
   }, [duration, onClose, props.onClose]);
-  return createPortal(
-    <Transition in={visible} animation="slide-in-modal" timeout={300}>
-      <div
-        className={classnames(
-          prefixClassName,
-          className,
-          `${prefixClassName}-theme-${theme}`
-        )}
-        {...restProps}
-      >
+  return visible
+    ? createPortal(
         <div
-          className={classnames(`${prefixClassName}-title-wrap`, {
-            [`${prefixClassName}-${type}`]: !!type,
-          })}
+          className={classnames(
+            prefixClassName,
+            className,
+            `${prefixClassName}-theme-${theme}`
+          )}
+          {...restProps}
         >
-          <span className={`${prefixClassName}-icon`}>
-            {type === "info" ? <InfoIcon /> : undefined}
-            {type === "success" ? <SuccessIcon /> : undefined}
-            {type === "error" ? <ErrorIcon /> : undefined}
-            {type === "warning" ? <WarningIcon /> : undefined}
-            {type === "loading" ? <LoadingIcon /> : undefined}
-          </span>
+          <div
+            className={classnames(`${prefixClassName}-title-wrap`, {
+              [`${prefixClassName}-${type}`]: !!type,
+            })}
+          >
+            <span className={`${prefixClassName}-icon`}>
+              {type === "info" ? <InfoIcon /> : undefined}
+              {type === "success" ? <SuccessIcon /> : undefined}
+              {type === "error" ? <ErrorIcon /> : undefined}
+              {type === "warning" ? <WarningIcon /> : undefined}
+              {type === "loading" ? <LoadingIcon /> : undefined}
+            </span>
 
-          <span className={`${prefixClassName}-title`}>{title}</span>
-        </div>
-      </div>
-    </Transition>,
-    document.body
-  );
+            <span className={`${prefixClassName}-title`}>{title}</span>
+          </div>
+        </div>,
+        document.body
+      )
+    : null;
 };
 
 Message.defaultProps = {

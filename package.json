@@ -32,7 +32,6 @@
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
     "react-scripts": "3.4.3",
-    "react-transition-group": "^4.4.1",
     "typescript": "~3.7.2"
   },
   "scripts": {
@@ -83,16 +82,17 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@storybook/addon-actions": "^6.0.10",
     "@storybook/addon-essentials": "^6.0.10",
     "@storybook/addon-info": "^5.3.19",
     "@storybook/addon-links": "^6.0.10",
-    "@storybook/storybook-deployer": "^2.8.5",
     "@storybook/node-logger": "^6.0.10",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.0.10",
+    "@storybook/storybook-deployer": "^2.8.5",
     "@types/classnames": "^2.2.10",
-    "@types/react-transition-group": "^4.4.0",
     "@types/storybook__addon-info": "^5.2.1",
     "babel-loader": "^8.1.0",
     "cross-env": "^7.0.0",
@@ -104,8 +104,6 @@
     "stylelint": "^12.0.0",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-config-standard": "^19.0.0",
-    "stylelint-webpack-plugin": "^1.2.1",
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4"
+    "stylelint-webpack-plugin": "^1.2.1"
   }
 }

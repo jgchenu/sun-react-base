@@ -8,7 +8,6 @@ import {
   easeInOutCubic,
 } from "../../utils";
 import { UpIcon } from "./../Icon";
-import Transition from "../Transition";
 import { usePropsRef } from "../../hooks/useProps";
 
 interface BaseBackTopProps {
@@ -102,20 +101,20 @@ export const BackTop: FC<BackTopProps> = (props) => {
     };
   }, [handleScroll]);
 
-  return createPortal(
-    <Transition animation="slide-in-mask" in={visible} timeout={300}>
-      <div className={classnames(prefixClassName, className)} {...restProps}>
-        <div className={`${prefixClassName}-inner`} onClick={scrollToTop}>
-          {children || (
-            <div className={`${prefixClassName}-inner-icon`}>
-              <UpIcon />
-            </div>
-          )}
-        </div>
-      </div>
-    </Transition>,
-    document.body
-  );
+  return visible
+    ? createPortal(
+        <div className={classnames(prefixClassName, className)} {...restProps}>
+          <div className={`${prefixClassName}-inner`} onClick={scrollToTop}>
+            {children || (
+              <div className={`${prefixClassName}-inner-icon`}>
+                <UpIcon />
+              </div>
+            )}
+          </div>
+        </div>,
+        document.body
+      )
+    : null;
 };
 
 BackTop.defaultProps = {

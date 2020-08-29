@@ -12,7 +12,6 @@ import Button from "../Button";
 import { isUndefined } from "util";
 import useDisableBodyScroll from "../../hooks/useDisableBodyScroll";
 import { CloseIcon } from "../Icon";
-import Transition from "../Transition";
 import useClickOutside from "../../hooks/useClickOutside";
 
 export interface BaseModalProps {
@@ -29,11 +28,11 @@ export interface BaseModalProps {
   closable?: boolean;
   maskClosable?: boolean;
   showMask?: boolean;
-  children?: React.ReactElement;
+  children?: React.ReactNode;
   className?: string;
 }
 
-type ModalProps = BaseModalProps &
+export type ModalProps = BaseModalProps &
   Omit<HTMLAttributes<HTMLDivElement>, "title">;
 export interface ModalFuncProps extends FC<ModalProps> {
   open: (props: ModalProps) => void;
@@ -93,67 +92,64 @@ export const Modal: ModalFuncProps = (props) => {
     setVisible(false);
   }
 
-  return createPortal(
-    <div className={`${prefixClassName}-root`}>
-      <Transition
-        animation="slide-in-mask"
-        timeout={300}
-        in={computedVisible && showMask}
-      >
-        <div
-          className={classnames(`${prefixClassName}-mask`)}
-          onClick={handleMaskClick}
-        ></div>
-      </Transition>
-      <Transition animation="slide-in-modal" timeout={300} in={computedVisible}>
-        <div className={`${prefixClassName}-wrap`}>
-          <div
-            className={classnames(prefixClassName, className)}
-            {...restProps}
-            style={{
-              ...style,
-              width,
-            }}
-            ref={modalRef}
-          >
-            {title && (
-              <header className={`${prefixClassName}-title`}>
-                {title}
-                {closable && (
-                  <CloseIcon
-                    className={`${prefixClassName}-close-icon`}
-                    onClick={handleCancelClick}
-                  />
-                )}
-              </header>
-            )}
-            {(children || content) && (
-              <section className={`${prefixClassName}-content`}>
-                {children || content}
-              </section>
-            )}
-            {(okText || cancelText) && (
-              <footer className={`${prefixClassName}-footer`}>
-                {cancelText && (
-                  <Button onClick={handleCancelClick}>{cancelText}</Button>
-                )}
-                {okText && (
-                  <Button
-                    btnType="primary"
-                    onClick={handleOkClick}
-                    className={`${prefixClassName}-ok-btn`}
-                  >
-                    {okText}
-                  </Button>
-                )}
-              </footer>
-            )}
+  return computedVisible
+    ? createPortal(
+        <div className={`${prefixClassName}-root`}>
+          {showMask && (
+            <div
+              className={classnames(`${prefixClassName}-mask`)}
+              onClick={handleMaskClick}
+            ></div>
+          )}
+          <div className={`${prefixClassName}-wrap`}>
+            <div
+              className={classnames(prefixClassName, className)}
+              {...restProps}
+              style={{
+                ...style,
+
+                width,
+              }}
+              ref={modalRef}
+            >
+              {title && (
+                <header className={`${prefixClassName}-title`}>
+                  {title}
+                  {closable && (
+                    <CloseIcon
+                      className={`${prefixClassName}-close-icon`}
+                      onClick={handleCancelClick}
+                    />
+                  )}
+                </header>
+              )}
+              {(children || content) && (
+                <section className={`${prefixClassName}-content`}>
+                  {children || content}
+                </section>
+              )}
+              {(okText || cancelText) && (
+                <footer className={`${prefixClassName}-footer`}>
+                  {cancelText && (
+                    <Button onClick={handleCancelClick}>{cancelText}</Button>
+                  )}
+                  {okText && (
+                    <Button
+                      btnType="primary"
+                      onClick={handleOkClick}
+                      className={`${prefixClassName}-ok-btn`}
+                    >
+                      {okText}
+                    </Button>
+                  )}
+                </footer>
+              )}
+            </div>
           </div>
-        </div>
-      </Transition>
-    </div>,
-    document.body
-  );
+        </div>,
+        document.body
+      )
+    : null;
 };
 
 Modal.defaultProps = {

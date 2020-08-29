@@ -11,7 +11,6 @@ import React, {
 import { createPortal } from "react-dom";
 import { usePropsRef } from "./../../hooks/useProps";
 import { debounce, isUndefined } from "../../utils";
-import Transition, { AnimationName } from "../Transition";
 
 export type Placement =
   | "top"
@@ -102,10 +101,10 @@ export const Tooltip: FC<TooltipProps> = (props) => {
   const [adjustPlacement, setAdjustPlacement] = useState(
     String(placementFromProps)
   );
-  const [positionsState, setPositions] = useState({
-    left: 0,
-    top: 0,
-  });
+  const [positionsState, setPositions] = useState<null | {
+    top: number;
+    left: number;
+  }>(null);
   const propsRef = usePropsRef(props);
   const wrapper = useRef<HTMLDivElement>(null);
   const triggerWrapper = useRef<HTMLDivElement>(null);
@@ -397,34 +396,30 @@ export const Tooltip: FC<TooltipProps> = (props) => {
 
   return (
     <>
-      {createPortal(
-        <Transition
-          in={mounted}
-          timeout={300}
-          animation={`slide-in-${computedPlacement}` as AnimationName}
-        >
-          <div
-            className={classnames(
-              `${prefixClassName}-wrap`,
-              `${prefixClassName}-position-${computedPlacement}`,
-              `${prefixClassName}-${theme}`,
-              className,
-              {
-                [`${prefixClassName}-wrap-fixed`]:
-                  positionTypeFromProps === "fixed" ||
-                  positionTypeFromProps === "sticky",
-              }
-            )}
-            style={positionsState}
-            ref={wrapper}
-            onMouseEnter={isHover ? onOpenTooltip : undefined}
-            onMouseLeave={isHover ? onCloseTooltip : undefined}
-          >
-            {renderContent()}
-          </div>
-        </Transition>,
-        document.body
-      )}
+      {mounted
+        ? createPortal(
+            <div
+              className={classnames(
+                `${prefixClassName}-wrap`,
+                `${prefixClassName}-position-${computedPlacement}`,
+                `${prefixClassName}-${theme}`,
+                className,
+                {
+                  [`${prefixClassName}-wrap-fixed`]:
+                    positionTypeFromProps === "fixed" ||
+                    positionTypeFromProps === "sticky",
+                }
+              )}
+              style={positionsState ? positionsState : { visibility: "hidden" }}
+              ref={wrapper}
+              onMouseEnter={isHover ? onOpenTooltip : undefined}
+              onMouseLeave={isHover ? onCloseTooltip : undefined}
+            >
+              {renderContent()}
+            </div>,
+            document.body
+          )
+        : null}
       {cloneElement(safetyChildren, {
         ref: triggerWrapper,
         ...bindTriggerEvents,

@@ -1,30 +1,44 @@
 import React from "react";
-import { storiesOf } from "@storybook/react";
+import Button, { ButtonProps } from "./button";
 import { action } from "@storybook/addon-actions";
 
-import Button from "./button";
+// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
+import { Story, Meta } from "@storybook/react/types-6-0";
 
-const defaultButton = () => (
-  <Button onClick={action("clicked")}> default button </Button>
+export default {
+  title: "Button",
+  component: Button,
+} as Meta;
+
+const Template: Story<ButtonProps> = (args) => (
+  <Button {...args} onClick={action("click")} />
 );
 
-const buttonWithSize = () => (
-  <section>
-    <Button size="lg"> large button </Button>
-    <Button size="sm"> small button </Button>
-  </section>
-);
+export const Default = Template.bind({});
+Default.args = {
+  children: "default button",
+};
 
-const buttonWithType = () => (
-  <section>
-    <Button btnType="primary"> primary button </Button>
-    <Button btnType="danger"> danger button </Button>
-    <Button btnType="link" href="https://baidu.com">
-      link button
-    </Button>
-  </section>
-);
-storiesOf("Button Component", module)
-  .add("Button", defaultButton)
-  .add("不同尺寸的 Button", buttonWithSize)
-  .add("不同类型的 Button", buttonWithType);
+export const Primary = Template.bind({});
+Primary.args = {
+  btnType: "primary",
+  children: "default button",
+};
+
+export const Danger = Template.bind({});
+Danger.args = {
+  btnType: "danger",
+  children: "danger button",
+};
+
+export const Large = Template.bind({});
+Large.args = {
+  size: "lg",
+  children: "Large Button",
+};
+
+export const Small = Template.bind({});
+Small.args = {
+  size: "sm",
+  children: "Small Button",
+};

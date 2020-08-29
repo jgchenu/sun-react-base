@@ -1,5 +1,7 @@
 const path = require("path");
-const entryPath = path.resolve(__dirname, "../src");
+const process = require("process");
+const ROOT = process.cwd();
+const entryPath = path.resolve(ROOT, "./src");
 const StylelintPlugin = require("stylelint-webpack-plugin");
 
 module.exports = {

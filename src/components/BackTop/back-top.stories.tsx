@@ -5,9 +5,10 @@ import Button from "../Button";
 const defaultBackTop = () => (
   <section
     style={{
-      height: 400,
+      height: 800,
     }}
   >
+    滚动到底部
     <BackTop />
   </section>
 );
@@ -16,9 +17,10 @@ const customPositionBackTop = () => {
   return (
     <section
       style={{
-        height: 400,
+        height: 800,
       }}
     >
+      滚动到底部
       <BackTop
         visibilityHeight={200}
         style={{
