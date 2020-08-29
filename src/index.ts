@@ -1,7 +1,5 @@
 export * from "./components/Icon";
-export * from "./components/Transition";
 
-export { default as Transition } from "./components/Transition";
 export { default as Button } from "./components/Button";
 export { default as Input } from "./components/Input";
 export { default as Progress } from "./components/Progress";
