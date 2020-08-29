@@ -37,6 +37,10 @@
   line-height: @input-line-height;
   transition: @input-transition;
 
+  &:hover {
+    border-color: fade(@input-focus-border-color, 70);
+  }
+
   &:focus {
     border-color: @input-focus-border-color;
     background-color: @input-focus-bg;

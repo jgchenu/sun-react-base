@@ -38,7 +38,7 @@
 @font-family-base: @font-family-sans-serif;
 
 // 字体大小
-@font-size-base: 1rem; // Assumes the browser default, typically `16px`
+@font-size-base: 14px; // Assumes the browser default, typically `16px`
 @font-size-lg: @font-size-base * 1.25;
 @font-size-sm: @font-size-base * 0.875;
 @font-size-root: null;
@@ -167,6 +167,9 @@
 @box-shadow-lg: 0 1rem 3rem rgba(@black, 0.175);
 @box-shadow-inset: inset 0 1px 2px rgba(@black, 0.075);
 
+// 默认动画曲线
+@default-animation: all 0.3s ease-in-out;
+
 // 按钮
 // 按钮基本属性
 @btn-font-weight: 400;
@@ -246,7 +249,7 @@
 
 @input-height-border: @input-border-width * 2;
 
-@input-transition: all 0.3s ease-in-out;
+@input-transition: @default-animation;
 
 @input-group-addon-color: @input-color;
 @input-group-addon-bg: @gray-200;
@@ -321,3 +324,20 @@
 @back-top-icon-height: 50px;
 @back-top-icon-font-size: 24px;
 @back-top-icon-hover-color: @white;
+
+//switch
+//Switch 开关
+@switch-color: @primary;
+@switch-width: 44px;
+@switch-height: 22px;
+@switch-width-small: 28px;
+@switch-height-small: 16px;
+@switch-width-large: 56px;
+@switch-height-large: 26px;
+@switch-circle-width: @switch-height - 4px;
+@switch-circle-width-small: @switch-height-small - 4px;
+@switch-circle-width-large: @switch-height-large - 4px;
+@switch-border-radius: 100px;
+@switch-bg-color: rgba(0, 0, 0, 0.25);
+@switch-offset: 2px;
+@switch-animation: @default-animation;

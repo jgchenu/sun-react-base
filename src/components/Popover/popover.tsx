@@ -22,9 +22,9 @@ export interface PopoverProps {
   /**气泡显示隐藏回调函数 */
   onVisibleChange?: (isVisible: boolean) => void;
   /** 提示标题 */
-  title?: React.ReactElement | string;
+  title?: React.ReactNode;
   /** 提示内容 */
-  content?: React.ReactElement | string;
+  content?: React.ReactNode;
   /**触发方式 */
   trigger?: Trigger;
   /**气泡位置 */
