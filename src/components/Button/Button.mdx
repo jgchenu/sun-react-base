@@ -2,12 +2,23 @@
 name: Button
 route: /button
 ---
-import  Button  from './Button.tsx'
- 
-# Hello world
 
-Hello, I'm still a mdx file, but now I have a button component !
+import "../../styles/index.less";
+import Button from "./Button.tsx";
+import { Playground, Props } from "docz";
+
+# Props Uasge
+
+<Props of={Button} />
+
+# Default Button
 
 <Playground>
-  <Button onClick={() => { alert("You clicked me"); }}>Click me</Button>
+  <Button>default button</Button>
+</Playground>
+
+# Primary Button
+
+<Playground>
+  <Button btnType="primary">primary button</Button>
 </Playground>
