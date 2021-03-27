@@ -1,7 +1,10 @@
 {
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": true,
+    "source.fixAll.stylelint": true
+  },
+  "files.associations": {
+    "*.mdx": "mdx"
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

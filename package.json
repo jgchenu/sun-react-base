@@ -20,19 +20,12 @@
     "dist"
   ],
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.3",
-    "@testing-library/react": "^10.4.8",
-    "@testing-library/user-event": "^7.1.2",
     "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
     "classnames": "^2.2.6",
+    "docz": "^2.3.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-icons": "^3.10.0",
-    "react-scripts": "3.4.3",
-    "typescript": "~3.7.2"
+    "react-icons": "^3.10.0"
   },
   "scripts": {
     "release": "yarn prepublishOnly && yarn post:version && yarn npm:publish",
@@ -52,12 +45,15 @@
     "docs": "start-storybook -p 6006 -s public",
     "pub:docs": "yarn build:docs && storybook-to-ghpages --existing-output-dir=storybook-static",
     "build:docs": "build-storybook -s public",
-    "prepublishOnly": "yarn test:nowatch && yarn lint && yarn build"
+    "prepublishOnly": "yarn test:nowatch && yarn lint && yarn build",
+    "docz:dev": "docz dev",
+    "docz:build": "docz build",
+    "docz:serve": "docz build && docz serve"
   },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "./pre_commit.sh && yarn test:nowatch && yarn lint && yarn stylelint"
+      "pre-commit": "./pre_commit.sh && yarn lint && yarn stylelint"
     }
   },
   "storybook-deployer": {
@@ -81,19 +77,13 @@
     ]
   },
   "devDependencies": {
+    "typescript": "~3.7.2",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
     "@babel/core": "^7.11.1",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
-    "@storybook/addon-actions": "^6.0.10",
-    "@storybook/addon-essentials": "^6.0.10",
-    "@storybook/addon-info": "^5.3.19",
-    "@storybook/addon-links": "^6.0.10",
-    "@storybook/node-logger": "^6.0.10",
-    "@storybook/preset-create-react-app": "^3.1.4",
-    "@storybook/react": "^6.0.10",
-    "@storybook/storybook-deployer": "^2.8.5",
     "@types/classnames": "^2.2.10",
-    "@types/storybook__addon-info": "^5.2.1",
     "babel-loader": "^8.1.0",
     "cross-env": "^7.0.0",
     "husky": "^4.2.5",

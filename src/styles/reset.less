@@ -32,7 +32,6 @@ hr:not([size]) {
 // Reset margins on paragraphs
 // Similarly, the top margin on `<p>`s get reset. However, we also reset the
 // bottom margin to use `rem` units instead of `em`.
-
 p {
   margin-top: 0;
   margin-bottom: @paragraph-margin-bottom;
@@ -116,16 +115,12 @@ pre {
   }
 }
 
-// Figures
-
 // Apply a consistent margin strategy (matches our type styles).
-
 figure {
   margin: 0 0 1rem;
 }
 
 // Images and content
-
 img {
   vertical-align: middle;
 }
@@ -161,7 +156,6 @@ button {
 }
 
 // 1. Remove the margin in Firefox and Safari
-
 input,
 button,
 select,
@@ -174,21 +168,18 @@ textarea {
 }
 
 // Show the overflow in Edge
-
 button,
 input {
   overflow: visible;
 }
 
 // Remove the inheritance of text transform in Firefox
-
 button,
 select {
   text-transform: none;
 }
 
 // Remove the inheritance of word-wrap in Safari.
-//
 // Details at https://github.com/twbs/bootstrap/issues/24990
 
 select {
@@ -196,15 +187,13 @@ select {
 }
 
 // Remove the dropdown arrow in Chrome from inputs built with datalists.
-//
 // Source: https://stackoverflow.com/a/54997118
 
 [list]::-webkit-calendar-picker-indicator {
   display: none;
 }
 
-// 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
-//    controls in Android 4.
+// 1. Prevent a WebKit bug where (2) destroys native `audio` and `video` controls in Android 4.
 // 2. Correct the inability to style clickable types in iOS and Safari.
 // 3. Opinionated: add "hand" cursor to non-disabled button elements.
 
@@ -216,7 +205,6 @@ button,
 
 // Work around a Firefox/IE bug where the transparent `button` background
 // results in a loss of the default `button` focus styles.
-//
 // Credit: https://github.com/suitcss/base/
 
 button:focus {
@@ -225,7 +213,6 @@ button:focus {
 }
 
 // Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
-
 ::-moz-focus-inner {
   padding: 0;
   border-style: none;
@@ -246,7 +233,6 @@ input[type="month"] {
 
 // 1. Remove the default vertical scrollbar in IE.
 // 2. Textareas should really only resize vertically so they don't break their (horizontal) containers.
-
 textarea {
   overflow: auto; // 1
   resize: vertical; // 2
@@ -258,7 +244,6 @@ textarea {
 //    See https://github.com/twbs/bootstrap/issues/12359
 //    and https://html.spec.whatwg.org/multipage/#the-fieldset-and-legend-elements
 // 2. Reset the default outline behavior of fieldsets so they don't affect page layout.
-
 fieldset {
   min-width: 0; // 1
   padding: 0; // 2
@@ -269,7 +254,6 @@ fieldset {
 // 1. By using `float: left`, the legend will behave like a block element
 // 2. Correct the color inheritance from `fieldset` elements in IE.
 // 3. Correct the text wrapping in Edge and IE.
-
 legend {
   width: 100%;
   padding: 0;
@@ -288,14 +272,12 @@ mark {
 }
 
 // Add the correct vertical alignment in Chrome, Firefox, and Opera.
-
 progress {
   vertical-align: baseline;
 }
 
 // Fix height of inputs with a type of datetime-local, date, month, week, or time
 // See https://github.com/twbs/bootstrap/issues/18842
-
 ::-webkit-datetime-edit {
   overflow: visible;
   line-height: 0;
@@ -306,20 +288,17 @@ progress {
 //    `.form-control` class can properly style them. Note that this cannot simply
 //    be added to `.form-control` as it's not specific enough. For details, see
 //    https://github.com/twbs/bootstrap/issues/11586.
-
 [type="search"] {
   -webkit-appearance: textfield; // 2
   outline-offset: -2px; // 1
 }
 
 // Remove the inner padding in Chrome and Safari on macOS.
-
 ::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
 // Remove padding around color pickers in webkit browsers
-
 ::-webkit-color-swatch-wrap {
   padding: 0;
 }
@@ -346,7 +325,6 @@ summary {
 }
 
 // Add the correct display for template & main in IE 11
-
 template {
   display: none;
 }
