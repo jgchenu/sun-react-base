@@ -1,2 +1,2 @@
-import BackTop from "./back-top";
+import BackTop from "./BackTop";
 export default BackTop;

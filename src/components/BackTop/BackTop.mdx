@@ -1,0 +1,41 @@
+---
+name: BackTop
+route: /backtop
+---
+
+import "../../styles/index.less";
+import BackTop from "./BackTop.tsx";
+import Button from "../Button/Button.tsx";
+import { Playground, Props } from "docz";
+
+# Props Uasge
+
+<Props of={BackTop} />
+
+# Default BackTop
+
+<Playground>
+  <BackTop />
+</Playground>
+
+# Custom Position BackTop
+
+<Playground>
+  <BackTop
+    visibilityHeight={200}
+    style={{
+      right: 100,
+      bottom: 200,
+    }}
+  />
+</Playground>
+
+# Custom Icon BackTop
+
+<Playground>
+  <BackTop style={{
+      right: 300,
+    }} >
+    <Button>返回顶部</Button>
+  </BackTop>
+</Playground>

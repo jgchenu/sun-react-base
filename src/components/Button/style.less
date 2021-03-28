@@ -12,12 +12,7 @@
   transition: @btn-transition;
   vertical-align: middle;
   white-space: nowrap;
-  .button-size(
-    @btn-padding-y,
-    @btn-padding-x,
-    @btn-font-size,
-    @border-radius
-  );
+  .button-size(@btn-padding-y, @btn-padding-x, @btn-font-size, @border-radius);
 
   &.disabled,
   &[disabled] {
@@ -58,17 +53,11 @@
 }
 
 .btn-default {
-  .button-style(
-    @white,
-    @gray-400,
-    @body-color,
-    @white,
-    @primary,
-    @primary
-  );
+  .button-style(@white, @gray-400, @body-color, @white, @primary, @primary);
 }
 
 .btn-link {
+  background-color: transparent;
   box-shadow: none;
   color: @btn-link-color;
   font-weight: @font-weight-normal;

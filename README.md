@@ -1,18 +1,21 @@
 ## sun-react-ui 组件库
 
-### 安装
+### 如何安装
 
 ```javascript
 npm install sun-react-ui --save or yarn install sun-react-ui
 ```
 
-### [组件使用文档](https://jgchenu.github.io/sun-react-ui)
+### 如何使用
+
 ```javascript
 // 加载样式
 import "sun-react-ui/dist/index.css";
 // 引入组件
 import { Button } from "sun-react-ui";
 ```
+
+[更多使用参考文档](https://jgchenu.github.io/sun-react-ui)
 
 ### 相关知识
 

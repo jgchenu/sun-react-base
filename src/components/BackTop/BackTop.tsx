@@ -7,10 +7,10 @@ import {
   getDefaultTarget,
   easeInOutCubic,
 } from "../../utils";
-import { UpIcon } from "./../Icon";
+import { UpIcon } from "../Icon";
 import { usePropsRef } from "../../hooks/useProps";
 
-interface BaseBackTopProps {
+interface BackTopProps extends HTMLAttributes<HTMLElement> {
   /** 点击的回调函数 */
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
   /** 距离容器的可见高度 */
@@ -21,20 +21,13 @@ interface BaseBackTopProps {
   className?: string;
 }
 
-type BackTopProps = BaseBackTopProps & HTMLAttributes<HTMLElement>;
-
 const prefixClassName = "sun-back-top";
-const raf = window.requestAnimationFrame;
+const inBrowser = typeof window !== "undefined";
+const raf = inBrowser
+  ? window.requestAnimationFrame
+  : (callback: Function) => setTimeout(callback, 16.6);
 
-/**
- * 页面中最常用的的返回顶部
- * ### 引用方法
- *
- * ~~~js
- * import { BackTop } from 'sun-react-ui'
- * ~~~
- */
-export const BackTop: FC<BackTopProps> = (props) => {
+const BackTop: FC<BackTopProps> = (props) => {
   const {
     visibilityHeight = 400,
     onClick,
@@ -74,7 +67,7 @@ export const BackTop: FC<BackTopProps> = (props) => {
       const time = timestamp - startTime;
       setScrollTop(easeInOutCubic(time, scrollTop, 0, 450));
       if (time < 450) {
-        window.requestAnimationFrame(frameFunc);
+        raf(frameFunc);
       } else {
         setScrollTop(0);
       }

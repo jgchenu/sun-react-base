@@ -41,7 +41,6 @@
     "build:css": "lessc ./src/styles/index.less ./dist/index.css",
     "test": "react-scripts test",
     "test:nowatch": "cross-env CI=true react-scripts test",
-    "eject": "react-scripts eject",
     "docs": "start-storybook -p 6006 -s public",
     "pub:docs": "yarn build:docs && storybook-to-ghpages --existing-output-dir=storybook-static",
     "build:docs": "build-storybook -s public",

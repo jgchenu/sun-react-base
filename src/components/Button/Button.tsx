@@ -6,13 +6,13 @@ export type ButtonType = "primary" | "default" | "danger" | "link";
 
 interface BaseButtonProps {
   className?: string;
-  /** 设置 Button 的禁用 */
+  /** 禁用 */
   disabled?: boolean;
-  /** 设置 Button 的尺寸 */
+  /** 尺寸 */
   size?: ButtonSize;
-  /** 设置 Button 的类型 */
+  /** 类型 */
   btnType?: ButtonType;
-  children: React.ReactNode;
+  /** link类型button的href */
   href?: string;
 }
 type NativeButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLElement>;
@@ -30,13 +30,12 @@ const Button: FC<ButtonProps> = (props) => {
     href,
     ...restProps
   } = props;
-  // btn, btn-lg, btn-primary
   const classes = classNames("btn", className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
     disabled: btnType === "link" && disabled,
   });
-  if (btnType === "link" && href) {
+  if (btnType === "link") {
     return (
       <a className={classes} href={href} {...restProps}>
         {children}

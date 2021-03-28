@@ -14,11 +14,42 @@ import { Playground, Props } from "docz";
 # Default Button
 
 <Playground>
-  <Button>default button</Button>
+  <Button onClick={() => alert('click')}>default button</Button>
 </Playground>
+
+# Disable Button
+
+<Playground>
+  <Button onClick={() => alert('click')} disabled >disabled button</Button>
+</Playground>
+
+# Link Button
+
+<Playground>
+  <Button btnType='link' href='https://baidu.com'>default button</Button>
+</Playground>
+
 
 # Primary Button
 
 <Playground>
   <Button btnType="primary">primary button</Button>
+</Playground>
+
+# Danger Button
+
+<Playground>
+  <Button btnType="danger">primary button</Button>
+</Playground>
+
+# Large Button
+
+<Playground>
+  <Button size="lg">primary button</Button>
+</Playground>
+
+# Small Button
+
+<Playground>
+  <Button size="sm">primary button</Button>
 </Playground>
