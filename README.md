@@ -1,5 +1,3 @@
-## sun-react-ui 组件库
-
 ### 如何安装
 
 ```javascript

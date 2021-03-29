@@ -16,8 +16,8 @@ interface BackTopProps extends HTMLAttributes<HTMLElement> {
   /** 距离容器的可见高度 */
   visibilityHeight?: string | number;
   children?: React.ReactElement;
-  /** 自定义容器 */
-  target?: () => Window | HTMLElement;
+  /** 自定义容器,默认window */
+  target: () => Window | HTMLElement;
   className?: string;
 }
 
@@ -41,14 +41,13 @@ const BackTop: FC<BackTopProps> = (props) => {
 
   const handleScroll = useRef(
     debounce(() => {
-      const scrollTop = getScroll(getDefaultTarget(), true);
+      const scrollTop = getScroll(targetFunc(), true);
       setVisible(scrollTop > propsRef.current);
     }, 10)
   ).current;
 
   const getCurrentScrollTop = () => {
-    const getTarget = targetFunc || getDefaultTarget;
-    const targetNode = getTarget();
+    const targetNode = targetFunc();
     if (targetNode === window) {
       return (
         window.pageYOffset ||
@@ -77,8 +76,7 @@ const BackTop: FC<BackTopProps> = (props) => {
   };
 
   const setScrollTop = (value: number) => {
-    const getTarget = targetFunc || getDefaultTarget;
-    const targetNode = getTarget();
+    const targetNode = targetFunc();
     if (targetNode === window) {
       document.body.scrollTop = value;
       document.documentElement!.scrollTop = value;
@@ -88,11 +86,11 @@ const BackTop: FC<BackTopProps> = (props) => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    targetFunc().addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      targetFunc().removeEventListener("scroll", handleScroll);
     };
-  }, [handleScroll]);
+  }, [handleScroll, targetFunc]);
 
   return visible
     ? createPortal(
@@ -112,6 +110,7 @@ const BackTop: FC<BackTopProps> = (props) => {
 
 BackTop.defaultProps = {
   visibilityHeight: 400,
+  target: getDefaultTarget,
 };
 
 export default BackTop;
