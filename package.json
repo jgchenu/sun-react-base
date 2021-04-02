@@ -19,14 +19,13 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "@types/jest": "^24.0.0",
+  "peerDependencies": {
     "classnames": "^2.2.6",
-    "docz": "^2.3.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0"
   },
+  "dependencies": {},
   "scripts": {
     "release": "yarn prepublishOnly && yarn post:version && yarn npm:publish",
     "npm:publish": "npm login --registry http://registry.npmjs.org && npm publish --registry http://registry.npmjs.org",
@@ -41,7 +40,7 @@
     "build:css": "lessc ./src/styles/index.less ./dist/index.css",
     "test": "react-scripts test",
     "test:nowatch": "cross-env CI=true react-scripts test",
-    "docs": "start-storybook -p 6006 -s public",
+    "docs": "rm -rf .docz && docz dev",
     "pub:docs": "yarn build:docs && storybook-to-ghpages --existing-output-dir=storybook-static",
     "build:docs": "build-storybook -s public",
     "prepublishOnly": "yarn test:nowatch && yarn lint && yarn build",
@@ -81,20 +80,26 @@
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@types/classnames": "^2.2.10",
+    "@types/jest": "^24.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "babel-loader": "^8.1.0",
     "cross-env": "^7.0.0",
+    "docz": "^2.3.1",
     "gatsby-plugin-less": "^5.1.0",
     "husky": "^4.2.5",
     "less": "^3.12.2",
     "less-loader": "^6.2.0",
-    "react-is": "^16.13.1",
+    "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "stylelint": "^12.0.0",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-config-standard": "^19.0.0",
     "stylelint-webpack-plugin": "^1.2.1",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-icons": "^3.10.0",
+    "classnames": "^2.2.6"
   }
 }

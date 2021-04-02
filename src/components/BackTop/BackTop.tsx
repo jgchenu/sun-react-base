@@ -1,4 +1,11 @@
-import React, { useEffect, useState, useRef, FC, HTMLAttributes } from "react";
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  FC,
+  HTMLAttributes,
+  ReactElement,
+} from "react";
 import classnames from "classnames";
 import { createPortal } from "react-dom";
 import {
@@ -15,7 +22,7 @@ interface BackTopProps extends HTMLAttributes<HTMLElement> {
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
   /** 距离容器的可见高度 */
   visibilityHeight?: string | number;
-  children?: React.ReactElement;
+  children?: ReactElement;
   /** 自定义容器,默认window */
   target: () => Window | HTMLElement;
   className?: string;

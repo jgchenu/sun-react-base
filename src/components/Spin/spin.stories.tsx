@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 
-import Spin from "./spin";
+import Spin from "./Spin";
 import { CloseIcon, CloseCircleIcon, ErrorIcon } from "../Icon";
 
 const DefaultSpinComp = () => <Spin />;

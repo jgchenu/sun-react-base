@@ -5,20 +5,20 @@ route: /backtop
 
 import "../../styles/index.less";
 import BackTop from "./BackTop.tsx";
-import Button from "../Button/Button.tsx";
+import Button from "../Button";
 import { Playground, Props } from "docz";
 
-# Props Uasge
+# BackTop
 
 <Props of={BackTop} />
 
-# Default BackTop
+## Default BackTop
 
 <Playground>
   <BackTop />
 </Playground>
 
-# Custom Position BackTop
+## Custom Position BackTop
 
 <Playground>
   <BackTop
@@ -30,12 +30,14 @@ import { Playground, Props } from "docz";
   />
 </Playground>
 
-# Custom Icon BackTop
+## Custom Icon BackTop
 
 <Playground>
-  <BackTop style={{
+  <BackTop
+    style={{
       right: 300,
-    }} >
+    }}
+  >
     <Button>返回顶部</Button>
   </BackTop>
 </Playground>

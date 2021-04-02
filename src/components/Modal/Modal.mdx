@@ -1,0 +1,103 @@
+---
+name: Modal
+route: /modal
+---
+
+import "../../styles/index.less";
+import Button from "./../Button";
+import Modal from "./Modal";
+import { useState } from "react";
+import { Playground, Props } from "docz";
+
+# Modal
+
+<Props of={Modal} />
+
+## Default Modal
+
+<Playground>
+  {() => {
+    const [visible, setVisible] = useState(false);
+    return (
+      <section>
+        <Button
+          onClick={(e) => {
+            setVisible(true);
+          }}
+        >
+          显示Modal
+        </Button>
+        <Modal
+          visible={visible}
+          onCancel={() => {
+            console.log("点击了取消");
+            setVisible(false);
+          }}
+        >
+          <div>显示的内容</div>
+        </Modal>
+      </section>
+    );
+  }}
+</Playground>
+
+## Title Modal
+
+<Playground>
+  {() => {
+    const title = <div>这是个标题</div>;
+    const content = <div>这是内容</div>;
+    const [visible, setVisible] = useState(false);
+    return (
+      <section>
+        <Button
+          onClick={(e) => {
+            e.stopPropagation();
+            setVisible(true);
+          }}
+        >
+          显示Title-Content-Footer
+        </Button>
+        <Modal
+          title={title}
+          visible={visible}
+          okText="确认"
+          cancelText="取消"
+          onCancel={() => {
+            console.log("点击了取消");
+            setVisible(false);
+          }}
+          onOk={() => {
+            console.log("点击了确认");
+            setVisible(false);
+          }}
+        >
+          <div>显示的内容</div>
+        </Modal>
+      </section>
+    );
+  }}
+</Playground>
+
+## Method Modal
+
+<Playground>
+  {() => {
+    const title = <div>这是个标题</div>;
+    const content = <div>这是内容</div>;
+    return (
+      <section>
+        <Button
+          onClick={(e) => {
+            Modal.open({
+              title,
+              content,
+            });
+          }}
+        >
+          Modal.open 打开
+        </Button>
+      </section>
+    );
+  }}
+</Playground>

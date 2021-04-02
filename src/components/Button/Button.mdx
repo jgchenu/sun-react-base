@@ -7,49 +7,52 @@ import "../../styles/index.less";
 import Button from "./Button.tsx";
 import { Playground, Props } from "docz";
 
-# Props Uasge
+# Button
 
 <Props of={Button} />
 
-# Default Button
+## Default Button
 
 <Playground>
-  <Button onClick={() => alert('click')}>default button</Button>
+  <Button onClick={() => alert("click")}>default button</Button>
 </Playground>
 
-# Disable Button
+## Disable Button
 
 <Playground>
-  <Button onClick={() => alert('click')} disabled >disabled button</Button>
+  <Button onClick={() => alert("click")} disabled>
+    disabled button
+  </Button>
 </Playground>
 
-# Link Button
+## Link Button
 
 <Playground>
-  <Button btnType='link' href='https://baidu.com'>default button</Button>
+  <Button btnType="link" href="https://baidu.com">
+    link button
+  </Button>
 </Playground>
 
-
-# Primary Button
+## Primary Button
 
 <Playground>
   <Button btnType="primary">primary button</Button>
 </Playground>
 
-# Danger Button
+## Danger Button
 
 <Playground>
-  <Button btnType="danger">primary button</Button>
+  <Button btnType="danger">danger button</Button>
 </Playground>
 
-# Large Button
+## Large Button
 
 <Playground>
-  <Button size="lg">primary button</Button>
+  <Button size="lg">lg button</Button>
 </Playground>
 
-# Small Button
+## Small Button
 
 <Playground>
-  <Button size="sm">primary button</Button>
+  <Button size="sm">sm button</Button>
 </Playground>
