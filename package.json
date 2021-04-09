@@ -27,7 +27,7 @@
   },
   "dependencies": {},
   "scripts": {
-    "release": "standard-version",
+    "release": "yarn test && yarn lint && yarn build && standard-version",
     "npm:publish": "npm login --registry http://registry.npmjs.org && npm publish --registry http://registry.npmjs.org",
     "post:version": "npm version patch -m \"feat(version): upgrade to %s for reasons\"",
     "clean": "rimraf ./dist ./docz",
@@ -42,7 +42,6 @@
     "test:nowatch": "cross-env CI=true react-scripts test",
     "docs": "rm -rf .docz && docz dev",
     "pub:docs": "yarn build:docs && storybook-to-ghpages --existing-output-dir=storybook-static",
-    "prepublishOnly": "yarn test:nowatch && yarn lint && yarn build",
     "docz:dev": "docz dev",
     "docz:build": "docz build",
     "docz:serve": "docz build && docz serve"
