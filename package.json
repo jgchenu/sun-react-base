@@ -1,6 +1,6 @@
 {
   "name": "sun-react-ui",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "React components library",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -28,7 +28,7 @@
   "dependencies": {},
   "scripts": {
     "release": "yarn test && yarn lint && yarn build && standard-version",
-    "npm:publish": "npm login --registry http://registry.npmjs.org && npm publish --registry http://registry.npmjs.org",
+    "publish": "npm login --registry http://registry.npmjs.org && npm publish --registry http://registry.npmjs.org",
     "post:version": "npm version patch -m \"feat(version): upgrade to %s for reasons\"",
     "clean": "rimraf ./dist ./docz",
     "start": "yarn docs",
@@ -39,7 +39,6 @@
     "build:ts": "tsc -p tsconfig.build.json",
     "build:css": "lessc ./src/styles/index.less ./dist/index.css",
     "test": "jest",
-    "test:nowatch": "cross-env CI=true react-scripts test",
     "docs": "rm -rf .docz && docz dev",
     "pub:docs": "yarn build:docs && storybook-to-ghpages --existing-output-dir=storybook-static",
     "docz:dev": "docz dev",
