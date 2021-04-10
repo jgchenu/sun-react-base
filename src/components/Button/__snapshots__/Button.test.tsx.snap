@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test Button component Button should render correct html 1`] = `
+<button
+  className="btn btn-default"
+  disabled={false}
+  onClick={[MockFunction]}
+>
+  Nice
+</button>
+`;

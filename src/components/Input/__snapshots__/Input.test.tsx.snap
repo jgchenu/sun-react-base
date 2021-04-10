@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test Input component Button should render correct html 1`] = `
+<div
+  className="sun-input-wrap"
+>
+  <input
+    className="sun-input-inner"
+    onChange={[MockFunction]}
+    placeholder="test-input"
+  />
+</div>
+`;

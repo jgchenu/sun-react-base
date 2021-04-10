@@ -1,0 +1,45 @@
+---
+name: Spin
+route: /spin
+---
+
+import "../../styles/index.less";
+import Spin from "./Spin";
+import { CloseIcon, CloseCircleIcon, ErrorIcon } from "../Icon";
+import { Playground, Props } from "docz";
+
+# Progress
+
+<Props of={Spin} />
+
+## DefaultSpinComp
+
+<Playground>
+  <Spin />
+</Playground>
+
+## Spin Wrap Content
+
+<Playground>
+  <Spin tip="温馨提示">
+    <div style={{ padding: "100px", backgroundColor: "lightblue" }}>
+      this is content
+    </div>
+  </Spin>
+</Playground>
+
+## Different Size Spin
+
+<Playground>
+  <Spin size="small" />
+  <Spin size="default" />
+  <Spin size="large" />
+</Playground>
+
+## CustomIcon Spin
+
+<Playground>
+  <Spin indicator={<CloseIcon />} />
+  <Spin indicator={<CloseCircleIcon />} />
+  <Spin indicator={<ErrorIcon />} />
+</Playground>

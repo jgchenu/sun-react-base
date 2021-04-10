@@ -1,0 +1,70 @@
+---
+name: Message
+route: /message
+---
+
+import "../../styles/index.less";
+import message from "./Message";
+import Button from "../Button";
+import { Playground, Props } from "docz";
+
+# Messages
+
+<Props of={message} />
+
+## Info Message
+
+<Playground>
+  <Button onClick={() => { message.info({ title: " Info message" })}}>Info message</Button>
+</Playground>
+
+## Warning Message
+
+<Playground>
+  <Button onClick={() => message.warning({ title: "Warning message" })}>
+    Warning message
+  </Button>
+</Playground>
+
+## Success Message
+
+<Playground>
+  <Button onClick={() => message.success({ title: "Success message" })}>
+    Success message
+  </Button>
+</Playground>
+
+## Error Message
+
+<Playground>
+  <Button
+    onClick={() => message.error({ title: "Error message" })}
+    btnType="danger"
+  >
+    Error message
+  </Button>
+</Playground>
+
+## Loading Message
+
+<Playground>
+  <Button
+    onClick={() => message.loading({ title: "Loading message" })}
+    btnType="primary"
+  >
+    Loading message
+  </Button>
+</Playground>
+
+## Dark Message
+
+<Playground>
+  <Button
+    onClick={() =>
+      message.info({ title: "Dark Theme message", theme: "dark" })
+    }
+    btnType="primary"
+  >
+    Dark Theme message
+  </Button>
+</Playground>

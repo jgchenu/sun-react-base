@@ -1,0 +1,141 @@
+---
+name: Popover
+route: /popover
+---
+
+import "../../styles/index.less";
+import Popover from "./Popover";
+import { Playground, Props } from "docz";
+
+# Popover
+
+<Props of={Popover} />
+
+## Default Popover
+
+<Playground>
+  <Popover
+    title={<span>Popover title</span>}
+    content={<div style={{ padding: "40px" }}>Popover content</div>}
+  >
+    <span style={{ margin: "10px" }}>默认 Popover</span>
+  </Popover>
+</Playground>
+
+## Click Trigger Popover
+
+<Playground>
+  <section>
+    <div
+      style={{ margin: "20px 60px", width: "200px", display: "inline-block" }}
+    >
+      <Popover
+        title={<span>Popover title</span>}
+        content={<div style={{ padding: "40px" }}>Popover content</div>}
+      >
+        <span>hover Popover</span>
+      </Popover>
+    </div>
+    <div
+      style={{ margin: "20px 60px", width: "200px", display: "inline-block" }}
+    >
+      <Popover
+        title={<span>Popover title</span>}
+        content={<div style={{ padding: "40px" }}>Popover content</div>}
+        trigger="click"
+      >
+        <span>click Popover</span>
+      </Popover>
+    </div>
+  </section>
+</Playground>
+
+## Different Placement Popover
+
+<Playground>
+  <Popover
+    title={<span>Popover title</span>}
+    content={<div style={{ padding: "40px" }}>Popover content</div>}
+  >
+    <span style={{ margin: "10px" }}>bottom placement Popover</span>
+  </Popover>
+  <Popover
+    title={<span>Popover title</span>}
+    content={<div style={{ padding: "40px" }}>Popover content</div>}
+    placement="top"
+  >
+    <span style={{ margin: "10px" }}>top placement Popover</span>
+  </Popover>
+  <Popover
+    title={<span>Popover title</span>}
+    content={<div style={{ padding: "40px" }}>Popover content</div>}
+    placement="left"
+  >
+    <span style={{ margin: "10px" }}>left placement Popover</span>
+  </Popover>
+  <Popover
+    title={<span>Popover title</span>}
+    placement="right"
+    content={<div style={{ padding: "40px" }}>Popover content</div>}
+  >
+    <span style={{ margin: "10px" }}>right placement Popover</span>
+  </Popover>
+</Playground>
+
+## Time Delay Popover
+
+<Playground>
+  <section>
+    <div
+      style={{ margin: "20px 60px", width: "200px", display: "inline-block" }}
+    >
+      <Popover
+        title={<span>Popover title</span>}
+        mouseEnterDelay={1000}
+        content={<div style={{ padding: "40px" }}>Popover content</div>}
+      >
+        <span style={{ margin: "10px" }}>延迟出现 Popover</span>
+      </Popover>
+    </div>
+    <div
+      style={{ margin: "20px 60px", width: "200px", display: "inline-block" }}
+    >
+      <Popover
+        title={<span>Popover title</span>}
+        mouseLeaveDelay={1000}
+        content={<div style={{ padding: "40px" }}>Popover content</div>}
+      >
+        <span style={{ margin: "10px" }}>延迟消失 Popover</span>
+      </Popover>
+    </div>
+  </section>
+</Playground>
+
+## Different Theme Popover
+
+<Playground>
+  <section>
+    <div
+      style={{ margin: "20px 60px", width: "200px", display: "inline-block" }}
+    >
+      <Popover
+        title={<span>Popover title</span>}
+        theme="dark"
+        content={<div style={{ padding: "40px" }}>Popover content</div>}
+      >
+        <span style={{ margin: "10px" }}>深色 Popover</span>
+      </Popover>
+    </div>
+    <div
+      style={{ margin: "20px 60px", width: "200px", display: "inline-block" }}
+    >
+      <Popover
+        title={<span>Popover title</span>}
+        theme="light"
+        content={<div style={{ padding: "40px" }}>Popover content</div>}
+      >
+        <span style={{ margin: "10px" }}>浅色 Popover</span>
+      </Popover>
+    </div>
+  </section>
+</Playground>

@@ -1,10 +1,22 @@
-export * from "./components/Icon";
+export * from "./components/BackTop";
+export * from "./components/Button";
+export * from "./components/Input";
+export * from "./components/Input";
+export * from "./components/Message";
+export * from "./components/Modal";
+export * from "./components/Progress";
+export * from "./components/Switch";
+export * from "./components/Tooltip";
+export * from "./components/Spin";
 
+export { default as Backtop } from "./components/BackTop";
 export { default as Button } from "./components/Button";
+export { default as Icon } from "./components/Input";
 export { default as Input } from "./components/Input";
-export { default as Progress } from "./components/Progress";
-export { default as Tooltip } from "./components/Tooltip";
-export { default as Popover } from "./components/Popover";
-export { default as Spin } from "./components/Spin";
+export { default as Message } from "./components/Message";
 export { default as Modal } from "./components/Modal";
-export { default as message } from "./components/Message";
+export { default as Popover } from "./components/Popover";
+export { default as Progress } from "./components/Progress";
+export { default as Switch } from "./components/Switch";
+export { default as Tooltip } from "./components/Tooltip";
+export { default as Spin } from "./components/Spin";
