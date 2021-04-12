@@ -29,7 +29,6 @@
   "scripts": {
     "release": "yarn test && yarn lint && yarn build && standard-version",
     "publish": "npm login --registry http://registry.npmjs.org && npm publish --registry http://registry.npmjs.org",
-    "post:version": "npm version patch -m \"feat(version): upgrade to %s for reasons\"",
     "clean": "rimraf ./dist ./docz",
     "start": "yarn docs",
     "build": "yarn clean && yarn build:css && yarn build:ts",
@@ -40,10 +39,8 @@
     "build:css": "lessc ./src/styles/index.less ./dist/index.css",
     "test": "jest",
     "docs": "rm -rf .docz && docz dev",
-    "pub:docs": "yarn build:docs && storybook-to-ghpages --existing-output-dir=storybook-static",
-    "docz:dev": "docz dev",
-    "docz:build": "docz build",
-    "docz:serve": "docz build && docz serve"
+    "build:docs": "docz build",
+    "serve:docz": "docz build && docz serve"
   },
   "husky": {
     "hooks": {
