@@ -4,24 +4,30 @@ route: /message
 ---
 
 import "../../styles/index.less";
-import message from "./Message";
+import Message from "./Message";
 import Button from "../Button";
 import { Playground, Props } from "docz";
 
 # Messages
 
-<Props of={message} />
+<Props of={Message} />
 
 ## Info Message
 
 <Playground>
-  <Button onClick={() => { message.info({ title: " Info message" })}}>Info message</Button>
+  <Button
+    onClick={() => {
+      Message.info({ title: " Info message" });
+    }}
+  >
+    Info message
+  </Button>
 </Playground>
 
 ## Warning Message
 
 <Playground>
-  <Button onClick={() => message.warning({ title: "Warning message" })}>
+  <Button onClick={() => Message.warning({ title: "Warning message" })}>
     Warning message
   </Button>
 </Playground>
@@ -29,7 +35,7 @@ import { Playground, Props } from "docz";
 ## Success Message
 
 <Playground>
-  <Button onClick={() => message.success({ title: "Success message" })}>
+  <Button onClick={() => Message.success({ title: "Success message" })}>
     Success message
   </Button>
 </Playground>
@@ -38,7 +44,7 @@ import { Playground, Props } from "docz";
 
 <Playground>
   <Button
-    onClick={() => message.error({ title: "Error message" })}
+    onClick={() => Message.error({ title: "Error message" })}
     btnType="danger"
   >
     Error message
@@ -49,7 +55,7 @@ import { Playground, Props } from "docz";
 
 <Playground>
   <Button
-    onClick={() => message.loading({ title: "Loading message" })}
+    onClick={() => Message.loading({ title: "Loading message" })}
     btnType="primary"
   >
     Loading message
@@ -60,9 +66,7 @@ import { Playground, Props } from "docz";
 
 <Playground>
   <Button
-    onClick={() =>
-      message.info({ title: "Dark Theme message", theme: "dark" })
-    }
+    onClick={() => Message.info({ title: "Dark Theme message", theme: "dark" })}
     btnType="primary"
   >
     Dark Theme message

@@ -29,7 +29,7 @@ type MessageProps = BaseMessageProps & HTMLAttributes<HTMLElement>;
 
 const prefixClassName = "sun-message";
 const defaultDuration = 2;
-
+const isBrowser = typeof window !== "undefined";
 export interface MessageFuncProps extends FC<MessageProps> {
   open: (props: MessageProps) => void;
 }
@@ -44,13 +44,18 @@ export const Message: MessageFuncProps = (props) => {
     onClose,
     ...restProps
   } = props;
+
   const [visible, setVisible] = useState(true);
+
   useEffect(() => {
     setTimeout(() => {
       setVisible(false);
       onClose && onClose();
     }, duration * 1000);
   }, [duration, onClose, props.onClose]);
+
+  if (!isBrowser) return null;
+
   return visible
     ? createPortal(
         <div
@@ -119,10 +124,10 @@ export interface MessageApi {
 }
 
 const MessageMethods = ["info", "success", "error", "warning", "loading"];
-const api: any = {};
+
 for (const type of MessageMethods) {
-  api[type] = (props: Partial<MessageProps>) =>
+  (Message as any)[type] = (props: Partial<MessageProps>) =>
     Message.open({ ...props, type: type as MessageIconType });
 }
 
-export default api as MessageApi;
+export default (Message as unknown) as MessageApi;

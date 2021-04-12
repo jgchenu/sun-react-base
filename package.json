@@ -25,7 +25,6 @@
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0"
   },
-  "dependencies": {},
   "scripts": {
     "release": "yarn test && yarn lint && yarn build && standard-version",
     "publish": "npm login --registry http://registry.npmjs.org && npm publish --registry http://registry.npmjs.org",
