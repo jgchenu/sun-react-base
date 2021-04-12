@@ -14,7 +14,7 @@ import "sun-react-ui/dist/index.css";
 import { Button } from "sun-react-ui";
 ```
 
-[更多使用参考文档](https://jgchenu.github.io/sun-react-ui)
+[使用参考文档](https://sun.jgchen.xin)
 
 ### 相关知识
 
