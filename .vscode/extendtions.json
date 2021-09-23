@@ -3,6 +3,7 @@
     "editorconfig.editorconfig",
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "amour1688.ts-in-markdown"
   ]
 }
