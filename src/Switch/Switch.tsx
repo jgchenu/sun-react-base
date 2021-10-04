@@ -1,7 +1,8 @@
 import React, { useState, useCallback, HTMLAttributes, FC } from 'react';
 import classnames from 'classnames';
+import './style.less';
 
-interface BasicSwithProps {
+interface BasicSwitchProps {
   defaultChecked?: boolean;
   onChange?: (checked: boolean) => void;
   disabled?: boolean;
@@ -10,16 +11,16 @@ interface BasicSwithProps {
   className?: string;
 }
 
-type SwithProps = BasicSwithProps &
+type SwitchProps = BasicSwitchProps &
   Omit<HTMLAttributes<HTMLElement>, 'onChange'>;
 
 const prefixClassName = 'sun-switch';
 
-const Switch: FC<SwithProps> = (props) => {
+function Switch(props: SwitchProps) {
   const {
-    defaultChecked,
+    defaultChecked = false,
     onChange,
-    disabled,
+    disabled = false,
     checkedChildren,
     unCheckedChildren,
     className,
@@ -47,11 +48,6 @@ const Switch: FC<SwithProps> = (props) => {
       </span>
     </span>
   );
-};
-
-Switch.defaultProps = {
-  defaultChecked: false,
-  disabled: false,
-};
+}
 
 export default Switch;

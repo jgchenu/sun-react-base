@@ -8,13 +8,10 @@ import {
   LoadingIcon,
 } from '../Icon';
 import { render, unmountComponentAtNode, createPortal } from 'react-dom';
-export type MessageTheme = 'dark' | 'light';
-export type MessageIconType =
-  | 'info'
-  | 'success'
-  | 'error'
-  | 'warning'
-  | 'loading';
+import './style.less';
+
+type MessageTheme = 'dark' | 'light';
+type MessageIconType = 'info' | 'success' | 'error' | 'warning' | 'loading';
 
 interface BaseMessageProps {
   theme?: MessageTheme;

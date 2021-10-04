@@ -1,17 +1,26 @@
 import React, { FC, HTMLAttributes, CSSProperties } from 'react';
 import { ThemeProps } from '../Icon';
-export interface BasicProgressProps {
+import './style.less';
+
+interface BasicProgressProps {
   percent: number;
   strokeHeight?: number;
   showText?: boolean;
   styles?: CSSProperties;
   theme?: ThemeProps;
 }
+
 type ProgressProps = BasicProgressProps & HTMLAttributes<HTMLElement>;
 
-const Progress: FC<ProgressProps> = (props) => {
-  const { percent, strokeHeight, showText, styles, theme, ...restProps } =
-    props;
+function Progress(props: ProgressProps) {
+  const {
+    percent,
+    strokeHeight = 15,
+    showText = true,
+    styles,
+    theme = 'primary',
+    ...restProps
+  } = props;
   return (
     <div className="sun-progress-bar" style={styles} {...restProps}>
       <div
@@ -27,12 +36,6 @@ const Progress: FC<ProgressProps> = (props) => {
       </div>
     </div>
   );
-};
-
-Progress.defaultProps = {
-  strokeHeight: 15,
-  showText: true,
-  theme: 'primary',
-};
+}
 
 export default Progress;

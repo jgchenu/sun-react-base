@@ -24,7 +24,7 @@ type AnchorButtonProps = BaseButtonProps &
 
 type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
-const Button: FC<ButtonProps> = (props) => {
+function Button(props: ButtonProps) {
   const {
     type = 'default',
     className,
@@ -52,6 +52,6 @@ const Button: FC<ButtonProps> = (props) => {
       </button>
     );
   }
-};
+}
 
 export default Button;

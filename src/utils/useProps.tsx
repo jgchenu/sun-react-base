@@ -1,8 +1,8 @@
-import { useEffect, MutableRefObject, useRef } from 'react';
+import { MutableRefObject, useRef, useLayoutEffect } from 'react';
 
 export function usePropsRef<T>(props: T): MutableRefObject<T> {
   const propsRef = useRef(props);
-  useEffect(() => {
+  useLayoutEffect(() => {
     propsRef.current = props;
   }, [props]);
   return propsRef;

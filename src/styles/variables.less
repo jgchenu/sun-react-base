@@ -287,10 +287,19 @@
 @modal-z-index: 410;
 @modal-mask-z-index: 400;
 @modal-mask-bg: rgba(0, 0, 0, 0.45);
-@modal-border-color: @gray-500;
+@modal-border-color: @gray-300;
 @modal-title-border-color: @gray-200;
 @modal-bg: @white;
 
+@keyframes spinning {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
 // Spin
 @spin-color: @primary;
 @spin-animation: spinning 1500ms linear infinite;

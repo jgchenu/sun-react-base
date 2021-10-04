@@ -21,7 +21,7 @@ interface BasicInputProps {
 type InputProps = BasicInputProps &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange' | 'disabled'>;
 
-const Input: FC<InputProps> = (props) => {
+function Input(props: InputProps) {
   const { disabled, size, icon, prepend, append, style, ...restProps } = props;
   const classes = classNames('sun-input-wrap', {
     [`input-size-${size}`]: !!size,
@@ -48,6 +48,6 @@ const Input: FC<InputProps> = (props) => {
       {append && <div className="sun-input-group-append">{append}</div>}
     </div>
   );
-};
+}
 
 export default Input;

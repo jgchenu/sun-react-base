@@ -1,23 +1,32 @@
-import React, { HTMLAttributes, FC } from 'react';
+import React, { HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { LoadingIcon } from '../Icon';
+import './style.less';
 
 type Size = 'default' | 'small' | 'large';
 interface BaseSpinProps {
   size?: Size;
-  tip?: string;
-  children: React.ReactElement | null;
-  indicator?: React.ReactElement;
+  tip?: React.ReactNode;
+  indicator?: React.ReactNode;
   className?: string;
   spinning?: boolean;
 }
-export type SpinProps = BaseSpinProps & HTMLAttributes<HTMLElement>;
+
+type SpinProps = BaseSpinProps & HTMLAttributes<HTMLElement>;
 
 const prefixClassName = 'spin';
-const Spin: FC<SpinProps> = (props) => {
-  const { size, indicator, className, tip, children, spinning, ...restProps } =
-    props;
-  if (!spinning) return children;
+
+function Spin(props: SpinProps) {
+  const {
+    size = 'default',
+    indicator = <LoadingIcon />,
+    className,
+    tip,
+    children,
+    spinning = true,
+    ...restProps
+  } = props;
+  if (!spinning) return children as JSX.Element;
   if (!children) {
     return (
       <div className={classnames(prefixClassName, className)} {...restProps}>
@@ -49,13 +58,6 @@ const Spin: FC<SpinProps> = (props) => {
       <div className={classnames(`${prefixClassName}-blur`)}>{children}</div>
     </div>
   );
-};
-
-Spin.defaultProps = {
-  indicator: <LoadingIcon />,
-  spinning: true,
-  children: null,
-  size: 'default',
-};
+}
 
 export default Spin;

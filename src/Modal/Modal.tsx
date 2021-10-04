@@ -13,8 +13,9 @@ import classnames from 'classnames';
 import Button from '../Button';
 import { isUndefined, useDisableBodyScroll } from '../utils';
 import { CloseIcon } from '../Icon';
+import './style.less';
 
-export interface BaseModalProps {
+interface BaseModalProps {
   isStaticMethod?: boolean;
   width?: number;
   style?: CSSProperties;
@@ -25,22 +26,22 @@ export interface BaseModalProps {
   cancelText?: ReactElement | string;
   content?: ReactElement | string;
   visible?: boolean;
-  closable?: boolean;
+  showCloseIcon?: boolean;
   maskClosable?: boolean;
   showMask?: boolean;
   children?: ReactElement;
   className?: string;
 }
 
-export type ModalProps = BaseModalProps &
+type ModalProps = BaseModalProps &
   Omit<HTMLAttributes<HTMLDivElement>, 'title'>;
-export interface ModalFuncProps extends FC<ModalProps> {
+interface ModalFuncProps extends FC<ModalProps> {
   open: (props: ModalProps) => void;
 }
 
 const prefixClassName = 'modal';
 
-export const Modal: ModalFuncProps = (props) => {
+function Modal(props: ModalProps) {
   const {
     isStaticMethod,
     width,
@@ -52,9 +53,9 @@ export const Modal: ModalFuncProps = (props) => {
     cancelText,
     content,
     visible: visibleFromProps,
-    closable,
-    maskClosable,
-    showMask,
+    showCloseIcon,
+    maskClosable = true,
+    showMask = true,
     children,
     className,
     ...restProps
@@ -80,7 +81,6 @@ export const Modal: ModalFuncProps = (props) => {
   const handleMaskClick = useCallback(
     (event: React.MouseEvent) => {
       if (modalRef.current?.contains(event.target as Node)) return;
-      console.log(modalRef.current?.contains(event.target as Node));
       maskClosable && handleCancelClick(event);
     },
     [handleCancelClick, maskClosable, modalRef],
@@ -95,7 +95,7 @@ export const Modal: ModalFuncProps = (props) => {
 
   return computedVisible
     ? createPortal(
-        <div className={`${prefixClassName}-root`}>
+        <>
           {showMask && (
             <div className={classnames(`${prefixClassName}-mask`)} />
           )}
@@ -110,16 +110,14 @@ export const Modal: ModalFuncProps = (props) => {
               }}
               ref={modalRef}
             >
+              {showCloseIcon && (
+                <CloseIcon
+                  className={`${prefixClassName}-close-icon`}
+                  onClick={handleCancelClick}
+                />
+              )}
               {title && (
-                <header className={`${prefixClassName}-title`}>
-                  {title}
-                  {closable && (
-                    <CloseIcon
-                      className={`${prefixClassName}-close-icon`}
-                      onClick={handleCancelClick}
-                    />
-                  )}
-                </header>
+                <header className={`${prefixClassName}-title`}>{title}</header>
               )}
               {(children || content) && (
                 <section className={`${prefixClassName}-content`}>
@@ -144,36 +142,39 @@ export const Modal: ModalFuncProps = (props) => {
               )}
             </div>
           </div>
-        </div>,
+        </>,
         document.body,
       )
     : null;
-};
+}
 
-Modal.defaultProps = {
-  showMask: true,
-  maskClosable: true,
-  closable: true,
-};
-
-// TODO Transition 使用render 函数渲染的时候没生效，考虑使用自定义的class重写
-Modal.open = function (props: ModalProps) {
+Modal.open = function (props: ModalProps): Promise<boolean> {
   const div = document.createElement('div');
   document.body.appendChild(div);
-  render(
-    <Modal
-      {...{ ...Modal.defaultProps, ...props }}
-      isStaticMethod
-      onCancel={(event: React.MouseEvent) => {
-        props.onCancel && props.onCancel(event);
-        setTimeout(() => {
-          unmountComponentAtNode(div);
-          div.remove();
-        }, 0);
-      }}
-    />,
-    div,
-  );
+
+  return new Promise((resolve) => {
+    function destroy(ok: boolean) {
+      unmountComponentAtNode(div);
+      div.remove();
+      resolve(ok);
+    }
+
+    render(
+      <Modal
+        {...props}
+        isStaticMethod
+        onCancel={(event: React.MouseEvent) => {
+          destroy(false);
+          props.onCancel && props.onCancel(event);
+        }}
+        onOk={(event: React.MouseEvent) => {
+          destroy(true);
+          props.onOk && props.onOk(event);
+        }}
+      />,
+      div,
+    );
+  });
 };
 
-export default Modal;
+export default Modal as ModalFuncProps;

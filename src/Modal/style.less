@@ -1,3 +1,5 @@
+@import './../styles/index';
+
 .modal-mask {
   position: fixed;
   z-index: @modal-mask-z-index;
@@ -32,24 +34,23 @@
   background-color: @modal-bg;
   border-radius: 4px;
 
+  .modal-close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: @gray-400;
+    cursor: pointer;
+    font-size: 20px;
+    transform: translateY(-50%);
+
+    &:hover {
+      color: @gray-800;
+    }
+  }
+
   & .modal-title {
-    position: relative;
     padding: 10px;
     border-bottom: 1px solid @modal-title-border-color;
-
-    & .modal-close-icon {
-      position: absolute;
-      top: 50%;
-      right: 10px;
-      color: @gray-400;
-      cursor: pointer;
-      font-size: 20px;
-      transform: translateY(-50%);
-
-      &:hover {
-        color: @gray-800;
-      }
-    }
   }
 
   & .modal-content {

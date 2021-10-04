@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import classnames from 'classnames';
 import Tooltip from '../Tooltip';
 
-export type Placement =
+type Placement =
   | 'top'
   | 'left'
   | 'right'
@@ -15,10 +15,11 @@ export type Placement =
   | 'leftBottom'
   | 'rightTop'
   | 'rightBottom';
-export type PositionType = 'fixed' | 'absolute' | 'sticky';
-export type Theme = 'dark' | 'light';
-export type Trigger = 'hover' | 'click';
-export interface PopoverProps {
+
+type PositionType = 'fixed' | 'absolute' | 'sticky';
+type Theme = 'dark' | 'light';
+type Trigger = 'hover' | 'click';
+interface PopoverProps {
   /**气泡显示隐藏回调函数 */
   onVisibleChange?: (isVisible: boolean) => void;
   /** 提示标题 */
@@ -54,7 +55,8 @@ export interface PopoverProps {
 }
 
 const prefixClassName = 'popover';
-const Popover: FC<PopoverProps> = (props) => {
+function Popover(props: PopoverProps) {
+  const { theme = 'light', ...rest } = props;
   const classes = classnames(`${prefixClassName}-wrap`, props.className);
   const title = (
     <>
@@ -69,22 +71,10 @@ const Popover: FC<PopoverProps> = (props) => {
     </>
   );
   return (
-    <Tooltip {...props} className={classes} title={title}>
+    <Tooltip {...rest} theme={theme} className={classes} title={title}>
       {props.children}
     </Tooltip>
   );
-};
-
-Popover.defaultProps = {
-  placement: 'bottom',
-  trigger: 'hover',
-  theme: 'light',
-  isArrowHidden: false, // 隐藏三角箭头
-  disabled: false,
-  positionType: 'absolute',
-  mouseEnterDelay: 100,
-  mouseLeaveDelay: 100,
-  arrowPointAtCenter: false,
-};
+}
 
 export default Popover;

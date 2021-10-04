@@ -2,7 +2,6 @@ import React, {
   useEffect,
   useState,
   useRef,
-  FC,
   HTMLAttributes,
   ReactElement,
 } from 'react';
@@ -35,7 +34,7 @@ const raf = inBrowser
   ? window.requestAnimationFrame
   : (callback: Function) => setTimeout(callback, 16.6);
 
-const BackTop: FC<BackTopProps> = (props) => {
+function BackTop(props: BackTopProps) {
   const {
     visibilityHeight = 400,
     onClick,
@@ -114,6 +113,6 @@ const BackTop: FC<BackTopProps> = (props) => {
         document.body,
       )
     : null;
-};
+}
 
 export default BackTop;

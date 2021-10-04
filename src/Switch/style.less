@@ -1,3 +1,5 @@
+@import './../styles/index';
+
 .sun-switch {
   position: relative;
   display: inline-block;
@@ -19,16 +21,16 @@
     left: @switch-offset;
     width: @switch-circle-width;
     height: @switch-circle-width;
-    background-color: #fff;
+    background-color: @white;
     border-radius: 50%;
     box-shadow: @default-shadow;
-    content: " ";
+    content: ' ';
     transition: @switch-animation;
   }
 
   .sun-switch-inner {
     margin-left: 24px;
-    color: #fff;
+    color: @white;
     font-size: @font-size-base - 2px;
   }
 
@@ -36,8 +38,7 @@
     background-color: @switch-color;
 
     &::after {
-      left: 100%;
-      margin-left: -@switch-offset;
+      left: calc(100% - @switch-offset);
       transform: translate3d(-100%, 0, 0);
     }
 
@@ -47,8 +48,7 @@
 
     .sun-switch-loading {
       &-icon {
-        left: 100%;
-        margin-left: -@switch-circle-width;
+        left: calc(100% - @switch-circle-width);
         color: @switch-color;
         opacity: 0.8;
         transform: translate3d(-100%, 0, 0);

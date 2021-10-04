@@ -11,7 +11,7 @@ import React, {
 import { createPortal } from 'react-dom';
 import { usePropsRef, debounce, isUndefined } from '../utils';
 
-export type Placement =
+type Placement =
   | 'top'
   | 'left'
   | 'right'
@@ -24,10 +24,10 @@ export type Placement =
   | 'leftBottom'
   | 'rightTop'
   | 'rightBottom';
-export type PositionType = 'fixed' | 'absolute' | 'sticky';
-export type Theme = 'dark' | 'light';
-export type Trigger = 'hover' | 'click';
-export interface TooltipProps {
+type PositionType = 'fixed' | 'absolute' | 'sticky';
+type Theme = 'dark' | 'light';
+type Trigger = 'hover' | 'click';
+interface TooltipProps {
   /**气泡显示隐藏回调函数 */
   onVisibleChange?: (isVisible: boolean) => void;
   /**提示标题 */
@@ -69,21 +69,21 @@ const arrowWidth = 8;
 // 计算居中的buffer
 const bufferOffset = arrowOffset + arrowWidth / 2;
 
-const Tooltip: FC<TooltipProps> = (props) => {
+function Tooltip(props: TooltipProps) {
   const {
     title,
-    theme,
-    trigger,
-    autoAdjustOverflow,
+    theme = 'dark',
+    trigger = 'hover',
+    autoAdjustOverflow = true,
     placement: placementFromProps = 'bottom',
-    isArrowHidden,
-    disabled,
+    isArrowHidden = false,
+    disabled = false,
     onVisibleChange,
     visible: visibleFromProps,
-    positionType: positionTypeFromProps,
-    mouseEnterDelay,
-    mouseLeaveDelay,
-    arrowPointAtCenter,
+    positionType: positionTypeFromProps = 'absolute',
+    mouseEnterDelay = 100,
+    mouseLeaveDelay = 100,
+    arrowPointAtCenter = false,
     className,
   } = props;
   // 是否hover触发
@@ -415,19 +415,6 @@ const Tooltip: FC<TooltipProps> = (props) => {
       })}
     </>
   );
-};
-
-Tooltip.defaultProps = {
-  placement: 'bottom',
-  trigger: 'hover',
-  theme: 'dark',
-  mouseEnterDelay: 100,
-  mouseLeaveDelay: 100,
-  isArrowHidden: false,
-  disabled: false,
-  positionType: 'absolute',
-  arrowPointAtCenter: false,
-  autoAdjustOverflow: true,
-};
+}
 
 export default Tooltip;
