@@ -1,6 +1,6 @@
-.button-size (@padding-y, @padding-x, @font-size, @border-raduis) {
+.button-size (@padding-y, @padding-x, @font-size, @border-radius) {
   padding: @padding-y @padding-x;
-  border-radius: @border-raduis;
+  border-radius: @border-radius;
   font-size: @font-size;
 }
 
@@ -35,73 +35,12 @@
   }
 }
 
-.zoom-animation(
-@direction: "top",
-@scaleStart: scaleY(0),
-@scaleEnd: scaleY(1),
-@origin: center top
-) {
-  .zoom-in-@{direction}-enter {
-    opacity: 0;
-    transform: @scaleStart;
-  }
-
-  .zoom-in-@{direction}-enter-active {
-    opacity: 1;
-    transform: @scaleEnd;
-    transform-origin: @origin;
-    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
-      opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  }
-
-  .zoom-in-@{direction}-exit {
-    opacity: 1;
-  }
-
-  .zoom-in-@{direction}-exit-active {
-    opacity: 0;
-    transform: @scaleStart;
-    transform-origin: @origin;
-    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
-      opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  }
+.border-right-radius(@radius) {
+  border-bottom-right-radius: @radius;
+  border-top-right-radius: @radius;
 }
 
-.slide-animation(
-@direction: "bottom",
-@transformStart: translate3d(0, 15px, 0),
-@transformEnd: translate3d(0, 0, 0)
-) {
-  .slide-in-@{direction}-enter {
-    opacity: 0;
-    transform: @transformStart;
-  }
-
-  .slide-in-@{direction}-enter-active {
-    opacity: 1;
-    transform: @transformEnd;
-    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
-      opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  }
-
-  .slide-in-@{direction}-exit {
-    opacity: 1;
-  }
-
-  .slide-in-@{direction}-exit-active {
-    opacity: 0;
-    transform: @transformStart;
-    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
-      opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  }
-}
-
-.border-right-radius(@raduis) {
-  border-bottom-right-radius: @raduis;
-  border-top-right-radius: @raduis;
-}
-
-.border-left-radius(@raduis) {
-  border-bottom-left-radius: @raduis;
-  border-top-left-radius: @raduis;
+.border-left-radius(@radius) {
+  border-bottom-left-radius: @radius;
+  border-top-left-radius: @radius;
 }

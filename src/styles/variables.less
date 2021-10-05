@@ -30,11 +30,11 @@
 @light: @gray-100;
 @dark: @gray-800;
 
-@font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-  "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+@font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 @font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-  "Liberation Mono", "Courier New", monospace;
+  'Liberation Mono', 'Courier New', monospace;
 @font-family-base: @font-family-sans-serif;
 
 // 字体大小
@@ -72,7 +72,6 @@
 // body
 @body-bg: @white;
 @body-color: @gray-900;
-@body-text-align: null;
 
 // Spacing
 @spacer: 1rem;
@@ -288,12 +287,22 @@
 @modal-z-index: 410;
 @modal-mask-z-index: 400;
 @modal-mask-bg: rgba(0, 0, 0, 0.45);
-@modal-border-color: @gray-500;
+@modal-border-color: @gray-300;
 @modal-title-border-color: @gray-200;
 @modal-bg: @white;
 
 // Spin
 @spin-color: @primary;
+
+@keyframes spinning {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
 @spin-animation: spinning 1500ms linear infinite;
 @spin-tip-color: @primary;
 @spin-small-size: 22px;

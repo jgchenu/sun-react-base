@@ -4,7 +4,6 @@
 /node_modules
 /.pnp
 .pnp.js
-/.docz
 # testing
 /coverage
 
@@ -12,6 +11,7 @@
 /build
 /dist
 /storybook-static
+/docs-dist
 
 # misc
 .DS_Store
@@ -21,5 +21,15 @@
 .env.production.local
 
 npm-debug.log*
-yarn-debug.log*
 yarn-error.log*
+
+# docz
+/.docz
+
+
+# umi
+.umi
+.umi-production
+.umi-test
+.env.local
+
