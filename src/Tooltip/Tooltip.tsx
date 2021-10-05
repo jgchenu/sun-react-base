@@ -6,10 +6,10 @@ import React, {
   useMemo,
   useRef,
   useState,
-  FC,
 } from 'react';
 import { createPortal } from 'react-dom';
 import { usePropsRef, debounce, isUndefined } from '../utils';
+import './style.less';
 
 type Placement =
   | 'top'

@@ -29,8 +29,6 @@
   border: @input-border-width solid @input-border-color;
   background-clip: padding-box;
   background-color: @input-bg;
-
-  // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
   border-radius: @input-border-radius;
   color: @input-color;
   font-family: @input-font-family;
@@ -49,12 +47,10 @@
     box-shadow: @input-focus-box-shadow;
     color: @input-focus-color;
     outline: 0;
-    // Avoid using mixin so we can pass custom focus shadow properly
   }
 
   &::placeholder {
     color: @input-placeholder-color;
-    // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
     opacity: 1;
   }
 
@@ -62,7 +58,6 @@
   &[readonly] {
     border-color: @input-disabled-border-color;
     background-color: @input-disabled-bg;
-    // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
     opacity: 1;
   }
 }
@@ -98,11 +93,6 @@
   padding: @input-padding-y-lg @input-padding-x-lg;
   border-radius: @input-border-radius-lg;
   font-size: @input-font-size-lg;
-}
-
-.sun-input-group-append + .btn {
-  padding: 0;
-  border: 0;
 }
 
 .input-group > .sun-input-group-prepend,

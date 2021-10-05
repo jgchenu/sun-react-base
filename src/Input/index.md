@@ -81,7 +81,7 @@ export default () => (
 );
 ```
 
-### 前缀跟后缀输入框
+### 不同大小的输入框
 
 ```tsx
 import { Input } from 'sun-react-ui';
