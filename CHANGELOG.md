@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.19](https://github.com/jgchenu/sun-react-ui/compare/v0.1.18...v0.1.19) (2021-10-10)
+
+### Bug Fixes
+
+- 规范部分 component class 使用方式 ([c27c23d](https://github.com/jgchenu/sun-react-ui/commit/c27c23d003ddb33b7cdaf3c51e22921d505dc743))
+- 修复 father 不支持别名 ([9be91f7](https://github.com/jgchenu/sun-react-ui/commit/9be91f789ac3a78ae1ee616f7f61e3abacf95136))
+- test run ([8e0ee57](https://github.com/jgchenu/sun-react-ui/commit/8e0ee57de711a3aabf3965780c0881bb8c0d212c))
+
 ### [0.1.18](https://github.com/jgchenu/sun-react-ui/compare/v0.1.17...v0.1.18) (2021-10-10)
 
 ### Features
