@@ -1,5 +1,6 @@
-import React, { FC, ReactNode, InputHTMLAttributes, ChangeEvent } from 'react';
+import React, { ReactNode, InputHTMLAttributes, ChangeEvent } from 'react';
 import classNames from 'classnames';
+import { sunPrefix } from '@/utils';
 import './style.less';
 
 type InputSize = 'large' | 'small';
@@ -21,31 +22,28 @@ interface BasicInputProps {
 type InputProps = BasicInputProps &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange' | 'disabled'>;
 
+const inputPrefixClass = `${sunPrefix}-input`;
+
 function Input(props: InputProps) {
   const { disabled, size, icon, prepend, append, style, ...restProps } = props;
-  const classes = classNames('sun-input-wrap', {
-    [`input-size-${size}`]: !!size,
-    'is-disabled': !!disabled,
-    'input-group': !!prepend || !!append,
-    'input-group-append': !!append,
-    'input-group-prepend': !!prepend,
+  const classes = classNames(`${inputPrefixClass}-wrap`, {
+    [`${inputPrefixClass}-${size}-size`]: !!size,
+    [`${inputPrefixClass}-has-append`]: !!append,
+    [`${inputPrefixClass}-has-prepend`]: !!prepend,
   });
-  const fixControlledValue = (value: any) => {
-    if (typeof value === 'undefined' || value === null) {
-      return '';
-    }
-    return value;
-  };
-  if ('value' in props) {
-    delete restProps.defaultValue;
-    restProps.value = fixControlledValue(props.value);
-  }
+
   return (
     <div className={classes} style={style}>
-      {prepend && <div className="sun-input-group-prepend">{prepend}</div>}
-      {icon && <div className="icon-wrap">{icon}</div>}
-      <input className="sun-input-inner" disabled={disabled} {...restProps} />
-      {append && <div className="sun-input-group-append">{append}</div>}
+      {prepend && (
+        <div className={`${inputPrefixClass}-prepend`}>{prepend}</div>
+      )}
+      {icon && <div className={`${inputPrefixClass}-icon-wrap`}>{icon}</div>}
+      <input
+        className={`${inputPrefixClass}-inner`}
+        disabled={disabled}
+        {...restProps}
+      />
+      {append && <div className={`${inputPrefixClass}-append`}>{append}</div>}
     </div>
   );
 }

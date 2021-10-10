@@ -1,86 +1,82 @@
-@import './../styles/index';
+@import '~@/styles/index';
 
-.sun-message {
+@message-cls: ~'@{sun-prefix}-message';
+
+.@{message-cls} {
   position: fixed;
   z-index: @message-z-index;
-  top: 16px;
+  top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
+  margin: auto;
   font-size: 12px;
   pointer-events: none;
   text-align: center;
 
-  &::before,
-  &::after {
-    display: table;
-    clear: both;
-    content: '';
-    zoom: 1;
-  }
-
-  .sun-message-title-wrap {
+  &-title-wrap {
     display: inline-block;
     padding: @message-padding;
+    margin-top: 16px;
     background-color: @message-theme-light-bg;
     border-radius: @border-radius;
     box-shadow: @default-shadow;
     pointer-events: all;
   }
 
-  .sun-message-icon {
-    svg,
-    i {
+  &-icon {
+    svg {
       font-size: @message-icon-font-size;
       vertical-align: text-bottom;
     }
   }
 
-  .sun-message-title {
+  &-title {
     margin-left: 10px;
     font-size: @message-title-font-size;
   }
 
-  &.sun-message-theme-dark {
-    .sun-message-title-wrap {
-      background: @message-theme-dark-bg;
-      color: @message-theme-dark-font-color;
-    }
-
-    svg,
-    i,
-    .sun-message-title {
-      color: @message-theme-dark-font-color !important;
-    }
-  }
-
-  .sun-message-info {
+  &-info {
     svg {
       color: @primary;
     }
   }
 
-  .sun-message-error {
+  &-error {
     svg {
       color: @danger;
     }
   }
 
-  .sun-message-success {
+  &-success {
     svg {
       color: @success;
     }
   }
 
-  .sun-message-warning {
+  &-warning {
     svg {
       color: @warning;
     }
   }
 
-  .sun-message-loading {
+  &-loading {
     svg {
       animation: @spin-animation;
       color: @primary;
+    }
+  }
+
+  // dark theme message
+  &.@{message-cls}-dark {
+    .@{message-cls}-title-wrap {
+      background: @message-theme-dark-bg;
+      color: @message-dark-theme-font-color;
+    }
+
+    svg,
+    .@{message-cls}-title {
+      color: @message-dark-theme-font-color;
     }
   }
 }

@@ -1,6 +1,8 @@
-@import './../styles/index';
+@import '~@/styles/index';
 
-.sun-back-top {
+@back-top-prefix-cls: ~'@{sun-prefix}-back-top';
+
+.@{back-top-prefix-cls} {
   position: fixed;
   z-index: @back-top-z-index;
   right: 100px;
@@ -8,33 +10,33 @@
   width: 40px;
   height: 40px;
   cursor: pointer;
-}
 
-.sun-back-top-inner {
-  display: inline-block;
+  &-inner {
+    display: inline-block;
 
-  > .sun-back-top-inner-icon {
-    display: flex;
-    width: @back-top-icon-width;
-    height: @back-top-icon-height;
-    align-items: center;
-    justify-content: center;
-    -webkit-appearance: none;
-    background-color: @back-top-bg;
-    border-radius: 50%;
-    box-shadow: @default-shadow;
-    color: @secondary;
-    font-size: @back-top-icon-font-size;
-    outline: none;
+    &-icon {
+      display: flex;
+      width: @back-top-icon-width;
+      height: @back-top-icon-height;
+      align-items: center;
+      justify-content: center;
+      -webkit-appearance: none;
+      background-color: @back-top-bg;
+      border-radius: 50%;
+      box-shadow: @default-shadow;
+      color: @secondary;
+      font-size: @back-top-icon-font-size;
+      outline: none;
 
-    i {
-      display: block;
-    }
+      i {
+        display: block;
+      }
 
-    &:hover {
-      border-color: @primary;
-      background-color: @primary;
-      color: @back-top-icon-hover-color;
+      &:hover {
+        border-color: @primary;
+        background-color: @primary;
+        color: @back-top-icon-hover-color;
+      }
     }
   }
 }

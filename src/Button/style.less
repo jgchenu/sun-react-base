@@ -1,6 +1,8 @@
-@import './../styles/index';
+@import '~@/styles/index';
 
-.btn {
+@btn-prefix-cls: ~'@{sun-prefix}-btn';
+
+.@{btn-prefix-cls} {
   position: relative;
   display: inline-block;
   border: @btn-border-width solid transparent;
@@ -26,59 +28,59 @@
       pointer-events: none;
     }
   }
-}
 
-.btn-large {
-  .button-size(
-    @btn-padding-y-lg,
-    @btn-padding-x-lg,
-    @btn-font-size-lg,
-    @btn-border-radius-lg
-  );
-}
-
-.btn-small {
-  .button-size(
-    @btn-padding-y-sm,
-    @btn-padding-x-sm,
-    @btn-font-size-sm,
-    @btn-border-radius-sm
-  );
-}
-
-.btn-primary {
-  .button-style(@primary, @primary, @white);
-}
-
-.btn-danger {
-  .button-style(@danger, @danger, @white);
-}
-
-.btn-default {
-  .button-style(@white, @gray-400, @body-color, @white, @primary, @primary);
-}
-
-.btn-link {
-  background-color: transparent;
-  box-shadow: none;
-  color: @btn-link-color;
-  font-weight: @font-weight-normal;
-  text-decoration: @link-decoration;
-
-  &:hover {
-    color: @btn-link-hover-color;
-    text-decoration: @link-hover-decoration;
+  &-large {
+    .button-size(
+      @btn-padding-y-lg,
+      @btn-padding-x-lg,
+      @btn-font-size-lg,
+      @btn-border-radius-lg
+    );
   }
 
-  &:focus,
-  &.focus {
+  &-small {
+    .button-size(
+      @btn-padding-y-sm,
+      @btn-padding-x-sm,
+      @btn-font-size-sm,
+      @btn-border-radius-sm
+    );
+  }
+
+  &-primary {
+    .button-style(@primary, @primary, @white);
+  }
+
+  &-danger {
+    .button-style(@danger, @danger, @white);
+  }
+
+  &-default {
+    .button-style(@white, @gray-400, @body-color, @white, @primary, @primary);
+  }
+
+  &-link {
+    background-color: transparent;
     box-shadow: none;
-    text-decoration: @link-hover-decoration;
-  }
+    color: @btn-link-color;
+    font-weight: @font-weight-normal;
+    text-decoration: @link-decoration;
 
-  &:disabled,
-  &.disabled {
-    color: @btn-link-disabled-color;
-    pointer-events: none;
+    &:hover {
+      color: @btn-link-hover-color;
+      text-decoration: @link-hover-decoration;
+    }
+
+    &:focus,
+    &.focus {
+      box-shadow: none;
+      text-decoration: @link-hover-decoration;
+    }
+
+    &:disabled,
+    &.disabled {
+      color: @btn-link-disabled-color;
+      pointer-events: none;
+    }
   }
 }

@@ -1,7 +1,16 @@
-import React, { FC, HTMLAttributes, CSSProperties } from 'react';
-import { ThemeProps } from '../Icon';
+import React, { HTMLAttributes, CSSProperties } from 'react';
+
 import './style.less';
 
+type ThemeProps =
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'info'
+  | 'warning'
+  | 'danger'
+  | 'light'
+  | 'dark';
 interface BasicProgressProps {
   percent: number;
   strokeHeight?: number;
