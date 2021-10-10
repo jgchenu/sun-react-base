@@ -25,6 +25,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: yarn --registry https://registry.npm.taobao.org
-      - run: yarn test
       - run: yarn lint
       - run: yarn build
