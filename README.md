@@ -2,13 +2,13 @@
 
 #### npm
 
-```ts
+```bash
 npm install sun-react-ui --save
 ```
 
 #### yarn
 
-```ts
+```bash
 yarn add sun-react-ui
 ```
 
@@ -50,4 +50,25 @@ yarn lint
 
 # 跑单元测试
 yarn test
+```
+
+## npm 源相关注意事项
+
+### 发包之前需要设置为官方的源
+
+```bash
+npm config registry http://registry.npmjs.org
+```
+
+如果还未登陆过 npm 账户，那么应该手动登陆下
+
+```bash
+npm login
+npm publish
+```
+
+## 如果 npm 装依赖太慢,考虑使用淘宝源
+
+```bash
+npm config set registry https://registry.npm.taobao.org
 ```

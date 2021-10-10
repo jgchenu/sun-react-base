@@ -26,7 +26,7 @@
     "classnames": "^2.2.6"
   },
   "scripts": {
-    "release": "yarn build && standard-version && git push --follow-tags origin master && npm login --registry http://registry.npmjs.org && npm publish --registry http://registry.npmjs.org",
+    "release": "yarn build && standard-version && git push --follow-tags origin master",
     "clean": "rimraf ./dist ./docz",
     "start": "dumi dev",
     "docs:build": "dumi build",
