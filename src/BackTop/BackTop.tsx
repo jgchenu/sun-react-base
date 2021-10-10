@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import classnames from 'classnames';
 import { createPortal } from 'react-dom';
-import { UpIcon } from '@/Icon';
+import { UpIcon } from '../Icon';
 import {
   debounce,
   getScroll,
@@ -14,7 +14,7 @@ import {
   easeInOutCubic,
   usePropsRef,
   sunPrefix,
-} from '@/utils';
+} from '../utils';
 import './style.less';
 
 const backTopPrefixClass = `${sunPrefix}-back-top`;
