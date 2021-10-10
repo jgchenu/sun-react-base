@@ -1,19 +1,23 @@
-import React, { useEffect, useState, FC, HTMLAttributes } from 'react';
+import React, { useEffect, useState, FC, HTMLAttributes, useMemo } from 'react';
+import { render, unmountComponentAtNode, createPortal } from 'react-dom';
+
 import classnames from 'classnames';
+import { sunPrefix, usePropsRef } from '@/utils';
+
 import {
   InfoIcon,
   SuccessIcon,
   ErrorIcon,
   WarningIcon,
   LoadingIcon,
-} from '../Icon';
-import { render, unmountComponentAtNode, createPortal } from 'react-dom';
+} from '@/Icon';
 import './style.less';
 
 type MessageTheme = 'dark' | 'light';
 type MessageIconType = 'info' | 'success' | 'error' | 'warning' | 'loading';
 
 interface BaseMessageProps {
+  top?: number;
   theme?: MessageTheme;
   className?: string;
   title?: string;
@@ -24,8 +28,7 @@ interface BaseMessageProps {
 
 type MessageProps = BaseMessageProps & HTMLAttributes<HTMLElement>;
 
-const prefixClassName = 'sun-message';
-const defaultDuration = 2;
+const messagePrefixCls = `${sunPrefix}-message`;
 const isBrowser = typeof window !== 'undefined';
 
 interface MessageFuncProps extends FC<MessageProps> {
@@ -38,19 +41,27 @@ const Message: MessageFuncProps = (props) => {
     theme = 'light',
     title,
     type = 'info',
-    duration = defaultDuration,
+    duration = 2,
+    top = 16,
     onClose,
+    style,
     ...restProps
   } = props;
 
   const [visible, setVisible] = useState(true);
 
+  const propsRef = usePropsRef({
+    onClose,
+    duration,
+  });
+
+  // 静态方法处理逻辑
   useEffect(() => {
     setTimeout(() => {
       setVisible(false);
-      onClose && onClose();
-    }, duration * 1000);
-  }, [duration, onClose, props.onClose]);
+      propsRef.current.onClose && propsRef.current.onClose();
+    }, propsRef.current.duration * 1000);
+  }, []);
 
   if (!isBrowser) return null;
 
@@ -58,18 +69,19 @@ const Message: MessageFuncProps = (props) => {
     ? createPortal(
         <div
           className={classnames(
-            prefixClassName,
+            messagePrefixCls,
             className,
-            `${prefixClassName}-theme-${theme}`,
+            `${messagePrefixCls}-${theme}`,
           )}
+          style={{ ...style, marginTop: top }}
           {...restProps}
         >
           <div
-            className={classnames(`${prefixClassName}-title-wrap`, {
-              [`${prefixClassName}-${type}`]: !!type,
+            className={classnames(`${messagePrefixCls}-title-wrap`, {
+              [`${messagePrefixCls}-${type}`]: !!type,
             })}
           >
-            <span className={`${prefixClassName}-icon`}>
+            <span className={`${messagePrefixCls}-icon`}>
               {type === 'info' ? <InfoIcon /> : undefined}
               {type === 'success' ? <SuccessIcon /> : undefined}
               {type === 'error' ? <ErrorIcon /> : undefined}
@@ -77,7 +89,7 @@ const Message: MessageFuncProps = (props) => {
               {type === 'loading' ? <LoadingIcon /> : undefined}
             </span>
 
-            <span className={`${prefixClassName}-title`}>{title}</span>
+            <span className={`${messagePrefixCls}-title`}>{title}</span>
           </div>
         </div>,
         document.body,
@@ -88,19 +100,13 @@ const Message: MessageFuncProps = (props) => {
 Message.open = function (props: MessageProps) {
   const div = document.createElement('div');
   document.body.appendChild(div);
-  const mergeProps = {
-    ...Message.defaultProps,
-    ...props,
-  };
   render(
     <Message
-      {...mergeProps}
+      {...props}
       onClose={() => {
-        setTimeout(() => {
-          mergeProps.onClose && mergeProps.onClose();
-          unmountComponentAtNode(div);
-          div.remove();
-        });
+        props.onClose && props.onClose();
+        unmountComponentAtNode(div);
+        div.remove();
       }}
     />,
     div,

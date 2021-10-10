@@ -20,17 +20,7 @@ import {
 import { IoMdCloseCircle } from 'react-icons/io';
 import { FaSearch } from 'react-icons/fa';
 
-export type ThemeProps =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'info'
-  | 'warning'
-  | 'danger'
-  | 'light'
-  | 'dark';
-
-export interface IconBaseProps extends React.SVGAttributes<SVGElement> {
+interface IconBaseProps extends React.SVGAttributes<SVGElement> {
   children?: React.ReactNode;
   size?: string | number;
   color?: string;

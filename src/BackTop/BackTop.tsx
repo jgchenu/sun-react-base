@@ -1,22 +1,23 @@
 import React, {
   useEffect,
   useState,
-  useRef,
   HTMLAttributes,
   ReactElement,
 } from 'react';
 import classnames from 'classnames';
 import { createPortal } from 'react-dom';
+import { UpIcon } from '@/Icon';
 import {
   debounce,
   getScroll,
   getDefaultTarget,
   easeInOutCubic,
   usePropsRef,
-} from '../utils';
-import { UpIcon } from '@/Icon';
+  sunPrefix,
+} from '@/utils';
 import './style.less';
 
+const backTopPrefixClass = `${sunPrefix}-back-top`;
 interface BackTopProps extends HTMLAttributes<HTMLElement> {
   /** 点击的回调函数 */
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
@@ -28,7 +29,6 @@ interface BackTopProps extends HTMLAttributes<HTMLElement> {
   className?: string;
 }
 
-const prefixClassName = 'sun-back-top';
 const inBrowser = typeof window !== 'undefined';
 const raf = inBrowser
   ? window.requestAnimationFrame
@@ -45,13 +45,6 @@ function BackTop(props: BackTopProps) {
   } = props;
   const [visible, setVisible] = useState(false);
   const propsRef = usePropsRef(visibilityHeight);
-
-  const handleScroll = useRef(
-    debounce(() => {
-      const scrollTop = getScroll(targetFunc(), true);
-      setVisible(scrollTop > propsRef.current);
-    }, 10),
-  ).current;
 
   const getCurrentScrollTop = () => {
     const targetNode = targetFunc();
@@ -93,18 +86,27 @@ function BackTop(props: BackTopProps) {
   };
 
   useEffect(() => {
+    const handleScroll = debounce(() => {
+      const scrollTop = getScroll(targetFunc(), true);
+      setVisible(scrollTop > propsRef.current);
+    }, 10);
+
     targetFunc().addEventListener('scroll', handleScroll);
+
     return () => {
       targetFunc().removeEventListener('scroll', handleScroll);
     };
-  }, [handleScroll, targetFunc]);
+  }, [targetFunc]);
 
   return visible
     ? createPortal(
-        <div className={classnames(prefixClassName, className)} {...restProps}>
-          <div className={`${prefixClassName}-inner`} onClick={scrollToTop}>
+        <div
+          className={classnames(backTopPrefixClass, className)}
+          {...restProps}
+        >
+          <div className={`${backTopPrefixClass}-inner`} onClick={scrollToTop}>
             {children || (
-              <div className={`${prefixClassName}-inner-icon`}>
+              <div className={`${backTopPrefixClass}-inner-icon`}>
                 <UpIcon />
               </div>
             )}

@@ -1,5 +1,6 @@
 import React, { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
 import classNames from 'classnames';
+import { sunPrefix } from '@/utils';
 import './style.less';
 
 type ButtonSize = 'large' | 'small';
@@ -24,6 +25,8 @@ type AnchorButtonProps = BaseButtonProps &
 
 type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
+const buttonPrefixClass = `${sunPrefix}-btn`;
+
 function Button(props: ButtonProps) {
   const {
     type = 'default',
@@ -34,9 +37,9 @@ function Button(props: ButtonProps) {
     href,
     ...restProps
   } = props;
-  const classes = classNames('btn', className, {
-    [`btn-${type}`]: type,
-    [`btn-${size}`]: size,
+  const classes = classNames(buttonPrefixClass, className, {
+    [`${buttonPrefixClass}-${type}`]: type,
+    [`${buttonPrefixClass}-${size}`]: size,
     disabled: type === 'link' && disabled,
   });
   if (type === 'link') {
