@@ -1,0 +1,36 @@
+{
+	"name": "sun-react-icons",
+	"version": "0.1.20",
+	"description": "React icons components",
+	"main": "dist/index.js",
+	"module": "dist/index.esm.js",
+	"typings": "dist/index.d.ts",
+	"license": "MIT",
+	"source": "index.ts",
+	"keywords": [
+		"Component",
+		"UI",
+		"React"
+	],
+	"homepage": "https://github.com/jgchenu/sun-react-ui",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jgchenu/sun-react-ui"
+	},
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "package.json"
+  ],
+  "scripts":{
+    "clean:release":"rimraf src dist",
+    "build":"yarn clean:release && node ./scripts/generateIcon.js"
+  },
+	"peerDependencies": {
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1"
+	},
+	"devDependencies": {
+	}
+}

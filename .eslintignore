@@ -1,0 +1,5 @@
+node_modules
+dist
+docs-dist
+*.js
+/packages/sun-react-icons
