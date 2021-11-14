@@ -33,6 +33,9 @@
     "clean:release": "rimraf dist",
     "build": "yarn clean:release && father-build"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com/"
+  },
   "devDependencies": {
     "sun-react-icons": "^0.1.20"
   }
