@@ -6,6 +6,7 @@
       "includeMergedTags": true
     },
     "publish": {
+      "message": "chore: publish",
       "registry": "https://registry.npmjs.org/"
     }
   },
