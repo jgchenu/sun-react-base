@@ -1,14 +1,18 @@
-### 如何安装
+## 如何安装
 
-#### npm
+### 图标库
+
+```bash
+npm install sun-react-icons --save
+# or yarn
+yarn add sun-react-icons
+```
+
+### 组件库
 
 ```bash
 npm install sun-react-ui --save
-```
-
-#### yarn
-
-```bash
+# or yarn
 yarn add sun-react-ui
 ```
 
@@ -17,6 +21,7 @@ yarn add sun-react-ui
 ```javascript
 // 引入组件
 import { Button } from 'sun-react-ui';
+import { XCircle } from 'sun-react-icons';
 ```
 
 [使用参考文档](https://sun.jgchen.xin)
@@ -39,7 +44,7 @@ yarn start
 # 构建组件库文档
 yarn docs:build
 
-# 构建组件库
+# 构建组件库跟图标库
 yarn build
 
 # CI LINT 检查
