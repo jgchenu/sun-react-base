@@ -1,0 +1,39 @@
+{
+  "name": "sun-react-ui",
+  "version": "0.1.20",
+  "description": "React components library",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
+  "source":"index.ts",
+  "license": "MIT",
+  "keywords": [
+    "Component",
+    "UI",
+    "React"
+  ],
+  "homepage": "https://github.com/jgchenu/sun-react-ui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jgchenu/sun-react-ui"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "package.json"
+  ],
+  "peerDependencies": {
+    "classnames": "^2.2.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "sun-react-icons": "^0.1.20"
+  },
+  "scripts": {
+    "clean:release": "rimraf dist docz",
+    "build": "father-build"
+  },
+  "devDependencies": {
+    "sun-react-icons": "^0.1.20"
+  }
+}

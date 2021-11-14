@@ -1,5 +1,5 @@
 {
-  "name": "sun-react-ui",
+  "name": "sun-react-base",
   "version": "0.1.20",
   "description": "React components library",
   "main": "dist/index.js",
@@ -19,25 +19,24 @@
   "files": [
     "dist"
   ],
-  "peerDependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-icons": "^3.10.0",
-    "classnames": "^2.2.6"
-  },
   "scripts": {
-    "release": "yarn build && standard-version && git push --follow-tags origin master",
-    "clean": "rimraf ./dist ./docz",
     "start": "dumi dev",
+    "dev": "yarn start",
     "docs:build": "dumi build",
-    "docs:deploy": "gh-pages -d docs-dist",
-    "build": "father-build",
-    "deploy": "npm run docs:build && npm run docs:deploy",
+    "docs:deploy": "yarn docs:build && gh-pages -d docs-dist",
+    "build": "lerna run build",
+    "build:icons": "lerna run build --scope sun-react-icons",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage",
-    "stylelint": "stylelint src/**/*.less src/**/*.css --fix",
-    "lint": "yarn prettier && yarn stylelint"
+    "eslint": "eslint --ext .ts,.js,.tsx,.jsx packages/sun-react-ui/",
+    "stylelint": "stylelint ./packages/**/src/**/*.less",
+    "lint:fix": "yarn stylelint --fix && yarn eslint --fix",
+    "lint": "yarn eslint && yarn stylelint",
+    "postinstall": "lerna bootstrap",
+    "clean": "lerna clean --yes",
+    "clean:release": "lerna run clean:release",
+    "release": "lerna publish  --yes"
   },
   "husky": {
     "hooks": {
@@ -50,7 +49,7 @@
       "prettier --write"
     ],
     "*.ts?(x)": [
-      "prettier --parser=typescript --write"
+      "eslint"
     ],
     "*.less": [
       "stylelint"
@@ -62,14 +61,25 @@
     "@types/classnames": "^2.2.10",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
     "@umijs/test": "^3.0.5",
-    "dumi": "^1.0.16",
-    "father-build": "^1.17.2",
-    "gh-pages": "^3.0.0",
-    "lint-staged": "^10.0.7",
     "classnames": "^2.2.6",
     "cross-env": "^7.0.0",
+    "dumi": "^1.0.16",
+    "eslint": "^8.2.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "father-build": "^1.17.2",
+    "fs-extra": "^10.0.0",
+    "gh-pages": "^3.0.0",
+    "husky": "^4.2.5",
+    "klaw-sync": "^6.0.0",
+    "lerna": "^4.0.0",
     "less-loader": "^6.2.0",
+    "lint-staged": "^10.0.7",
     "prettier": "^2.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -79,6 +89,6 @@
     "stylelint": "^12.0.0",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-config-standard": "^19.0.0",
-    "husky": "^4.2.5"
+    "typescript": "^4.4.4"
   }
 }
