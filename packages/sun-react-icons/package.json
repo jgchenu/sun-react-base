@@ -9,7 +9,7 @@
 	"source": "index.ts",
 	"keywords": [
 		"Component",
-		"UI",
+		"Icon",
 		"React"
 	],
 	"homepage": "https://github.com/jgchenu/sun-react-ui",
@@ -33,5 +33,9 @@
 	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.com/"
-	}
+	},
+  "authors": {
+    "name": "jgchen",
+    "email": "jgchenu@foxmail.com"
+  }
 }
