@@ -1,6 +1,6 @@
 {
 	"name": "sun-react-icons",
-	"version": "0.1.21",
+	"version": "0.1.22",
 	"description": "React icons components",
 	"main": "dist/index.js",
 	"module": "dist/index.esm.js",
@@ -34,8 +34,8 @@
 	"publishConfig": {
 		"registry": "https://registry.npmjs.com/"
 	},
-  "authors": {
-    "name": "jgchenu",
-    "email": "jgchenu@foxmail.com"
-  }
+	"authors": {
+		"name": "jgchenu",
+		"email": "jgchenu@foxmail.com"
+	}
 }
