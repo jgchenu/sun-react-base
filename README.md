@@ -62,7 +62,7 @@ nrm use npm
 如果还未登陆过 npm 账户，那么应该手动登陆下
 
 ```bash
-npm login # 输入你的npm邮箱跟密码登陆【非github账户】
+npm adduser # 输入你的npm 用户名，邮箱，密码登陆【非github账户，npm账户：http://registry.npmjs.org】
 ```
 
 ## 如果 npm 装依赖太慢,考虑使用淘宝源
