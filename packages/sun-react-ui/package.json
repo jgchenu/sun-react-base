@@ -30,8 +30,8 @@
     "sun-react-icons": "^0.1.20"
   },
   "scripts": {
-    "clean:release": "rimraf dist docz",
-    "build": "father-build"
+    "clean:release": "rimraf dist",
+    "build": "yarn clean:release && father-build"
   },
   "devDependencies": {
     "sun-react-icons": "^0.1.20"

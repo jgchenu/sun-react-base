@@ -24,8 +24,8 @@
     "package.json"
   ],
   "scripts":{
-    "clean:release":"rimraf src dist",
-    "build":"yarn clean:release && node ./scripts/generateIcon.js"
+    "clean:release":"rimraf src dist && node ./scripts/generateIcon.js",
+    "build":"yarn clean:release && father-build"
   },
 	"peerDependencies": {
 		"react": "^16.13.1",

@@ -20,11 +20,11 @@
     "dist"
   ],
   "scripts": {
-    "start": "dumi dev",
+    "start": "yarn clean:release && dumi dev",
     "dev": "yarn start",
     "docs:build": "dumi build",
     "docs:deploy": "yarn docs:build && gh-pages -d docs-dist",
-    "build": "lerna run build",
+    "build": "lerna run build --stream",
     "build:icons": "lerna run build --scope sun-react-icons",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
@@ -36,7 +36,7 @@
     "postinstall": "lerna bootstrap",
     "clean": "lerna clean --yes",
     "clean:release": "lerna run clean:release",
-    "release": "lerna publish  --yes"
+    "release": "yarn clean:release && yarn build && lerna publish  --yes"
   },
   "husky": {
     "hooks": {
