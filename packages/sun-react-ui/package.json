@@ -1,11 +1,11 @@
 {
   "name": "sun-react-ui",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "description": "React components library",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "typings": "dist/index.d.ts",
-  "source":"index.ts",
+  "source": "index.ts",
   "license": "MIT",
   "keywords": [
     "Component",
@@ -37,6 +37,6 @@
     "registry": "https://registry.npmjs.com/"
   },
   "devDependencies": {
-    "sun-react-icons": "^0.1.20"
+    "sun-react-icons": "^0.1.21"
   }
 }
