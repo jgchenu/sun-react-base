@@ -1,24 +1,11 @@
 {
   "name": "sun-react-base",
-  "version": "0.1.20",
-  "description": "React components library",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "typings": "dist/index.d.ts",
+  "private": true,
   "license": "MIT",
-  "keywords": [
-    "Component",
-    "UI",
-    "React"
-  ],
-  "homepage": "https://github.com/jgchenu/sun-react-ui",
   "repository": {
     "type": "git",
     "url": "https://github.com/jgchenu/sun-react-ui"
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "start": "yarn clean:release && dumi dev",
     "dev": "yarn start",
