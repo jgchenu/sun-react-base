@@ -43,13 +43,13 @@ export default () => (
 
 ```tsx
 import React from 'react';
-import { Spin, CloseIcon, CloseCircleIcon, ErrorIcon } from 'sun-react-ui';
+import { Spin } from 'sun-react-ui';
+import { X, XCircle } from 'sun-react-icons';
 
 export default () => (
   <>
-    <Spin indicator={<CloseIcon />} />
-    <Spin indicator={<CloseCircleIcon />} />
-    <Spin indicator={<ErrorIcon />} />
+    <Spin indicator={<X />} />
+    <Spin indicator={<XCircle />} />
   </>
 );
 ```

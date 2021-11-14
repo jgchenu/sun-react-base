@@ -8,7 +8,6 @@ export * from './Progress';
 export * from './Switch';
 export * from './Tooltip';
 export * from './Spin';
-export * from './Icon';
 
 export { default as BackTop } from './BackTop';
 export { default as Button } from './Button';

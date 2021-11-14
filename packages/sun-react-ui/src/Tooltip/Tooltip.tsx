@@ -300,7 +300,7 @@ function Tooltip(props: TooltipProps) {
   ]);
 
   const onResizeHandler = useRef(
-    debounce(() => {
+    debounce<Event>(() => {
       computeAndSetPositions();
     }, 500),
   ).current;

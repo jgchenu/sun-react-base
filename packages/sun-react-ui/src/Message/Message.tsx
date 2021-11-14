@@ -5,8 +5,8 @@ import classnames from 'classnames';
 import { sunPrefix, usePropsRef } from '../utils';
 
 import {
-  Volume2 as InfoIcon,
-  CheckCircle as SuccessIcon,
+  Info as InfoIcon,
+  Check as SuccessIcon,
   XCircle as ErrorIcon,
   AlertCircle as WarningIcon,
   Loader as LoadingIcon,

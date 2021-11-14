@@ -29,7 +29,7 @@
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage",
-    "eslint": "eslint --ext .ts,.js,.tsx,.jsx packages/sun-react-ui/src",
+    "eslint": "eslint --ext .ts,.js,.tsx,.jsx packages/sun-react-ui/",
     "stylelint": "stylelint ./packages/**/src/**/*.less",
     "lint:fix": "yarn stylelint --fix && yarn eslint --fix",
     "lint": "yarn eslint && yarn stylelint",

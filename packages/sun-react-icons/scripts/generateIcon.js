@@ -98,7 +98,7 @@ export default function ${svg.name}(props: SVGProps) {
   const {
     width = '1em',
     height = '1em',
-    fill = 'currentColor',
+    fill = 'none',
     style,
     className,
     ...rest
