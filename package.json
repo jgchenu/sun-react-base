@@ -23,7 +23,8 @@
     "postinstall": "lerna bootstrap",
     "clean": "lerna clean --yes",
     "clean:release": "lerna run clean:release",
-    "release": "yarn build && lerna publish --yes"
+    "release": "yarn build && yarn pub",
+    "pub": "lerna publish patch --yes"
   },
   "husky": {
     "hooks": {
