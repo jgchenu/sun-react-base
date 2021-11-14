@@ -34,7 +34,7 @@
     "build": "yarn clean:release && father-build"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.com/"
+    "registry": "https://registry.npmjs.org"
   },
   "devDependencies": {
     "sun-react-icons": "^0.1.23"
@@ -43,5 +43,5 @@
     "name": "jgchenu",
     "email": "jgchenu@foxmail.com"
   },
-  "gitHead": "e26f8579e5940d6f9b7185f764e7ef5e44a67b04"
+  "gitHead": "443d94ebf9849ee4bddce0718a14361093fc412c"
 }
