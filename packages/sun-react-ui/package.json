@@ -1,6 +1,6 @@
 {
   "name": "sun-react-ui",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "description": "React components library",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -37,7 +37,7 @@
     "registry": "https://registry.npmjs.com/"
   },
   "devDependencies": {
-    "sun-react-icons": "^0.1.22"
+    "sun-react-icons": "^0.1.23"
   },
   "authors": {
     "name": "jgchenu",
