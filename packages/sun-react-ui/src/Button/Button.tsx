@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
 import classNames from 'classnames';
-import { sunPrefix } from '../utils';
+import { sunPrefix } from '../common';
 import './style.less';
 
 type ButtonSize = 'large' | 'small';

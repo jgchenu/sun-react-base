@@ -14,7 +14,7 @@ import {
   easeInOutCubic,
   usePropsRef,
   sunPrefix,
-} from '../utils';
+} from '../common';
 import './style.less';
 
 const backTopPrefixClass = `${sunPrefix}-back-top`;

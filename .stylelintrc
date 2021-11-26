@@ -1,8 +1,8 @@
 {
-  "extends": ["stylelint-config-standard","stylelint-config-idiomatic-order"],
+  "extends": ["stylelint-config-standard", "stylelint-config-idiomatic-order"],
   "rules": {
-      "declaration-colon-newline-after": null,
-      "declaration-block-trailing-semicolon": null,
-      "function-calc-no-invalid": null,
+    "declaration-colon-newline-after": null,
+    "declaration-block-trailing-semicolon": null,
+    "function-calc-no-invalid": null
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import Tooltip from '../Tooltip';
+import { sunPrefix } from '../common';
 
 type Placement =
   | 'top'
@@ -54,7 +55,8 @@ interface PopoverProps {
   className?: string;
 }
 
-const prefixClassName = 'popover';
+const prefixClassName = `${sunPrefix}-popover`;
+
 function Popover(props: PopoverProps) {
   const { theme = 'light', ...rest } = props;
   const classes = classnames(`${prefixClassName}-wrap`, props.className);

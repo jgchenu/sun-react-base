@@ -1,6 +1,6 @@
 import React, { ReactNode, InputHTMLAttributes, ChangeEvent } from 'react';
 import classNames from 'classnames';
-import { sunPrefix } from '../utils';
+import { sunPrefix } from '../common';
 import './style.less';
 
 type InputSize = 'large' | 'small';

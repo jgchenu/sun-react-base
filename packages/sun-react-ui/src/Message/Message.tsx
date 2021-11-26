@@ -2,7 +2,7 @@ import React, { useEffect, useState, FC, HTMLAttributes } from 'react';
 import { render, unmountComponentAtNode, createPortal } from 'react-dom';
 
 import classnames from 'classnames';
-import { sunPrefix, usePropsRef } from '../utils';
+import { sunPrefix, usePropsRef } from '../common';
 
 import {
   Info as InfoIcon,

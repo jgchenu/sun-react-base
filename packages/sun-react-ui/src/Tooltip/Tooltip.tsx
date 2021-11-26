@@ -8,7 +8,7 @@ import React, {
   useState,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { usePropsRef, debounce, isUndefined } from '../utils';
+import { usePropsRef, debounce, isUndefined, sunPrefix } from '../common';
 import './style.less';
 
 type Placement =
@@ -61,7 +61,7 @@ interface TooltipProps {
 }
 
 // 组件的classname前缀
-const prefixClassName = 'tooltip';
+const prefixClassName = `${sunPrefix}-tooltip`;
 // 三角形距离气泡偏移量
 const arrowOffset = 14;
 // 三角形的宽度

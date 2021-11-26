@@ -2,7 +2,6 @@ import React, {
   FC,
   useMemo,
   useState,
-  useRef,
   useCallback,
   HTMLAttributes,
   CSSProperties,
@@ -11,7 +10,7 @@ import React, {
 import { createPortal, render, unmountComponentAtNode } from 'react-dom';
 import classnames from 'classnames';
 import Button from '../Button';
-import { isUndefined, useDisableBodyScroll } from '../utils';
+import { isUndefined, useDisableBodyScroll, sunPrefix } from '../common';
 import { XCircle as CloseIcon } from 'sun-react-icons';
 import './style.less';
 
@@ -39,7 +38,7 @@ interface ModalFuncProps extends FC<ModalProps> {
   open: (props: ModalProps) => void;
 }
 
-const prefixClassName = 'modal';
+const prefixClassName = `${sunPrefix}-modal`;
 
 function Modal(props: ModalProps) {
   const {
@@ -62,7 +61,6 @@ function Modal(props: ModalProps) {
   } = props;
 
   const [visible, setVisible] = useState(!!isStaticMethod);
-  const modalRef = useRef<HTMLDivElement | null>(null);
 
   const computedVisible = useMemo(() => {
     if (!isUndefined(visibleFromProps)) return !!visibleFromProps;
@@ -71,7 +69,6 @@ function Modal(props: ModalProps) {
 
   const handleCancelClick = useCallback(
     (event: React.MouseEvent) => {
-      console.log('handleCancelClick');
       onCancel && onCancel(event);
       setVisible(false);
     },
@@ -80,10 +77,9 @@ function Modal(props: ModalProps) {
 
   const handleMaskClick = useCallback(
     (event: React.MouseEvent) => {
-      if (modalRef.current?.contains(event.target as Node)) return;
       maskClosable && handleCancelClick(event);
     },
-    [handleCancelClick, maskClosable, modalRef],
+    [handleCancelClick, maskClosable],
   );
 
   useDisableBodyScroll(computedVisible);
@@ -95,54 +91,54 @@ function Modal(props: ModalProps) {
 
   return computedVisible
     ? createPortal(
-        <>
+        <div className={`${prefixClassName}-wrap`}>
           {showMask && (
-            <div className={classnames(`${prefixClassName}-mask`)} />
-          )}
-          <div className={`${prefixClassName}-wrap`} onClick={handleMaskClick}>
             <div
-              className={classnames(prefixClassName, className)}
-              {...restProps}
-              style={{
-                ...style,
+              className={classnames(`${prefixClassName}-mask`)}
+              onClick={handleMaskClick}
+            />
+          )}
+          <div
+            className={classnames(prefixClassName, className)}
+            {...restProps}
+            style={{
+              ...style,
 
-                width,
-              }}
-              ref={modalRef}
-            >
-              {showCloseIcon && (
-                <CloseIcon
-                  className={`${prefixClassName}-close-icon`}
-                  onClick={handleCancelClick}
-                />
-              )}
-              {title && (
-                <header className={`${prefixClassName}-title`}>{title}</header>
-              )}
-              {(children || content) && (
-                <section className={`${prefixClassName}-content`}>
-                  {children || content}
-                </section>
-              )}
-              {(okText || cancelText) && (
-                <footer className={`${prefixClassName}-footer`}>
-                  {cancelText && (
-                    <Button onClick={handleCancelClick}>{cancelText}</Button>
-                  )}
-                  {okText && (
-                    <Button
-                      type="primary"
-                      onClick={handleOkClick}
-                      className={`${prefixClassName}-ok-btn`}
-                    >
-                      {okText}
-                    </Button>
-                  )}
-                </footer>
-              )}
-            </div>
+              width,
+            }}
+          >
+            {showCloseIcon && (
+              <CloseIcon
+                className={`${prefixClassName}-close-icon`}
+                onClick={handleCancelClick}
+              />
+            )}
+            {title && (
+              <header className={`${prefixClassName}-title`}>{title}</header>
+            )}
+            {(children || content) && (
+              <section className={`${prefixClassName}-content`}>
+                {children || content}
+              </section>
+            )}
+            {(okText || cancelText) && (
+              <footer className={`${prefixClassName}-footer`}>
+                {cancelText && (
+                  <Button onClick={handleCancelClick}>{cancelText}</Button>
+                )}
+                {okText && (
+                  <Button
+                    type="primary"
+                    onClick={handleOkClick}
+                    className={`${prefixClassName}-ok-btn`}
+                  >
+                    {okText}
+                  </Button>
+                )}
+              </footer>
+            )}
           </div>
-        </>,
+        </div>,
         document.body,
       )
     : null;

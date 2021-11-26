@@ -1,24 +1,27 @@
 @import './../styles/index';
 
+@tooltip-prefix-cls: ~'@{sun-prefix}-tooltip';
+@popover-prefix-cls: ~'@{sun-prefix}-popover';
+
 // 外部组件的包裹层，用于FC组件获取ref
 .fc-component-wrap {
   display: inline-block;
 }
 
 // Popover气泡title的header的默认样式
-.popover-title-header {
+.@{popover-prefix-cls}-title-header {
   padding: 2px;
   border-bottom: 1px solid @popover-title-header-border-color;
 }
 
 // Popover气泡title的content的默认样式
-.popover-title-content {
+.@{popover-prefix-cls}-title-content {
   position: relative;
   display: inline-block;
 }
 
 // 气泡title的默认样式
-.tooltip-title {
+.@{tooltip-prefix-cls}-title {
   padding: 4px 10px;
   border-radius: 2px;
   font-size: 12px;
@@ -26,24 +29,24 @@
   vertical-align: middle;
 }
 
-.popover-wrap {
+.@{popover-prefix-cls}-wrap {
   // 如果是popover，要把默认气泡padding重制
-  & .tooltip-title {
+  & .@{tooltip-prefix-cls}-title {
     padding: 0;
     font-size: 14px;
   }
 }
 
 // 气泡的z-index以及三角形的定位
-.tooltip-wrap {
+.@{tooltip-prefix-cls}-wrap {
   position: absolute;
   z-index: @tooltip-z-index;
 
-  &.tooltip-wrap-fixed {
+  &.@{tooltip-prefix-cls}-wrap-fixed {
     position: fixed;
   }
 
-  .tooltip-arrow {
+  .@{tooltip-prefix-cls}-arrow {
     position: absolute;
     z-index: 1;
     width: @tooltip-triangle-width;
@@ -53,9 +56,9 @@
     background: transparent;
   }
 
-  &.popover-wrap {
+  &.@{popover-prefix-cls}-wrap {
     // popover下的三角形会大一些
-    .tooltip-arrow {
+    .@{tooltip-prefix-cls}-arrow {
       width: @popover-triangle-width;
       height: @popover-triangle-width;
       border-width: @popover-triangle-width / 2;
@@ -63,108 +66,108 @@
   }
 
   // 左，左上，左下的水平偏移
-  &.tooltip-position-left,
-  &.tooltip-position-leftBottom,
-  &.tooltip-position-leftTop {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-left,
+  &.@{tooltip-prefix-cls}-position-leftBottom,
+  &.@{tooltip-prefix-cls}-position-leftTop {
+    .@{tooltip-prefix-cls}-arrow {
       right: -@tooltip-triangle-offset-border;
     }
   }
 
   // 右，右上，右下的水平偏移
-  &.tooltip-position-right,
-  &.tooltip-position-rightBottom,
-  &.tooltip-position-rightTop {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-right,
+  &.@{tooltip-prefix-cls}-position-rightBottom,
+  &.@{tooltip-prefix-cls}-position-rightTop {
+    .@{tooltip-prefix-cls}-arrow {
       left: -@tooltip-triangle-offset-border;
     }
   }
 
   // 右上，左上的垂直偏移
-  &.tooltip-position-rightTop,
-  &.tooltip-position-leftTop {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-rightTop,
+  &.@{tooltip-prefix-cls}-position-leftTop {
+    .@{tooltip-prefix-cls}-arrow {
       top: 14px;
       transform: rotate(45deg);
     }
   }
 
   // 右下，左下 的水平偏移
-  &.tooltip-position-rightBottom,
-  &.tooltip-position-leftBottom {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-rightBottom,
+  &.@{tooltip-prefix-cls}-position-leftBottom {
+    .@{tooltip-prefix-cls}-arrow {
       bottom: 14px;
       transform: rotate(45deg);
     }
   }
 
   // 上，下的水平居中
-  &.tooltip-position-top,
-  &.tooltip-position-bottom {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-top,
+  &.@{tooltip-prefix-cls}-position-bottom {
+    .@{tooltip-prefix-cls}-arrow {
       left: 50%;
       transform: translateX(-50%) rotate(45deg);
     }
   }
 
   // 左，右的垂直居中
-  &.tooltip-position-left,
-  &.tooltip-position-right {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-left,
+  &.@{tooltip-prefix-cls}-position-right {
+    .@{tooltip-prefix-cls}-arrow {
       top: 50%;
       transform: translateY(-50%) rotate(45deg);
     }
   }
 
   // 上，上右，上左的垂直偏移
-  &.tooltip-position-top,
-  &.tooltip-position-topRight,
-  &.tooltip-position-topLeft {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-top,
+  &.@{tooltip-prefix-cls}-position-topRight,
+  &.@{tooltip-prefix-cls}-position-topLeft {
+    .@{tooltip-prefix-cls}-arrow {
       bottom: -@tooltip-triangle-offset-border;
     }
   }
 
   // 上右，下右的水平偏移
-  &.tooltip-position-topRight,
-  &.tooltip-position-bottomRight {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-topRight,
+  &.@{tooltip-prefix-cls}-position-bottomRight {
+    .@{tooltip-prefix-cls}-arrow {
       right: 14px;
       transform: rotate(45deg);
     }
   }
 
   // 上左，下左的水平偏移
-  &.tooltip-position-topLeft,
-  &.tooltip-position-bottomLeft {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-topLeft,
+  &.@{tooltip-prefix-cls}-position-bottomLeft {
+    .@{tooltip-prefix-cls}-arrow {
       left: 14px;
       transform: rotate(45deg);
     }
   }
 
   // 下，下右，下左的垂直偏移
-  &.tooltip-position-bottom,
-  &.tooltip-position-bottomRight,
-  &.tooltip-position-bottomLeft {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-bottom,
+  &.@{tooltip-prefix-cls}-position-bottomRight,
+  &.@{tooltip-prefix-cls}-position-bottomLeft {
+    .@{tooltip-prefix-cls}-arrow {
       top: -@tooltip-triangle-offset-border;
     }
   }
 }
 
 // 深颜色的气泡主题
-.tooltip-dark {
+.@{tooltip-prefix-cls}-dark {
   color: @tooltip-dark-theme-color;
 
-  .tooltip-title {
+  .@{tooltip-prefix-cls}-title {
     background-color: @tooltip-dark-theme-bg;
   }
 
-  &.tooltip-position-top,
-  &.tooltip-position-topRight,
-  &.tooltip-position-topLeft {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-top,
+  &.@{tooltip-prefix-cls}-position-topRight,
+  &.@{tooltip-prefix-cls}-position-topLeft {
+    .@{tooltip-prefix-cls}-arrow {
       border-top-color: transparent;
       border-right-color: @tooltip-dark-theme-bg;
       border-bottom-color: @tooltip-dark-theme-bg;
@@ -172,10 +175,10 @@
     }
   }
 
-  &.tooltip-position-bottom,
-  &.tooltip-position-bottomRight,
-  &.tooltip-position-bottomLeft {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-bottom,
+  &.@{tooltip-prefix-cls}-position-bottomRight,
+  &.@{tooltip-prefix-cls}-position-bottomLeft {
+    .@{tooltip-prefix-cls}-arrow {
       border-top-color: @tooltip-dark-theme-bg;
       border-right-color: transparent;
       border-bottom-color: transparent;
@@ -183,10 +186,10 @@
     }
   }
 
-  &.tooltip-position-left,
-  &.tooltip-position-leftBottom,
-  &.tooltip-position-leftTop {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-left,
+  &.@{tooltip-prefix-cls}-position-leftBottom,
+  &.@{tooltip-prefix-cls}-position-leftTop {
+    .@{tooltip-prefix-cls}-arrow {
       border-top-color: @tooltip-dark-theme-bg;
       border-right-color: @tooltip-dark-theme-bg;
       border-bottom-color: transparent;
@@ -194,10 +197,10 @@
     }
   }
 
-  &.tooltip-position-right,
-  &.tooltip-position-rightBottom,
-  &.tooltip-position-rightTop {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-right,
+  &.@{tooltip-prefix-cls}-position-rightBottom,
+  &.@{tooltip-prefix-cls}-position-rightTop {
+    .@{tooltip-prefix-cls}-arrow {
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: @tooltip-dark-theme-bg;
@@ -207,18 +210,18 @@
 }
 
 // 浅颜色的气泡主题
-.tooltip-light {
+.@{tooltip-prefix-cls}-light {
   color: @tooltip-light-theme-color;
 
-  .tooltip-title {
+  .@{tooltip-prefix-cls}-title {
     background-color: @tooltip-light-theme-bg;
     box-shadow: 0 0 2px lighten(@tooltip-light-theme-color, 30%);
   }
 
-  &.tooltip-position-top,
-  &.tooltip-position-topRight,
-  &.tooltip-position-topLeft {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-top,
+  &.@{tooltip-prefix-cls}-position-topRight,
+  &.@{tooltip-prefix-cls}-position-topLeft {
+    .@{tooltip-prefix-cls}-arrow {
       border-top-color: transparent;
       border-right-color: @tooltip-light-theme-bg;
       border-bottom-color: @tooltip-light-theme-bg;
@@ -227,10 +230,10 @@
     }
   }
 
-  &.tooltip-position-bottom,
-  &.tooltip-position-bottomRight,
-  &.tooltip-position-bottomLeft {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-bottom,
+  &.@{tooltip-prefix-cls}-position-bottomRight,
+  &.@{tooltip-prefix-cls}-position-bottomLeft {
+    .@{tooltip-prefix-cls}-arrow {
       border-top-color: @tooltip-light-theme-bg;
       border-right-color: transparent;
       border-bottom-color: transparent;
@@ -239,10 +242,10 @@
     }
   }
 
-  &.tooltip-position-left,
-  &.tooltip-position-leftBottom,
-  &.tooltip-position-leftTop {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-left,
+  &.@{tooltip-prefix-cls}-position-leftBottom,
+  &.@{tooltip-prefix-cls}-position-leftTop {
+    .@{tooltip-prefix-cls}-arrow {
       border-top-color: @tooltip-light-theme-bg;
       border-right-color: @tooltip-light-theme-bg;
       border-bottom-color: transparent;
@@ -251,10 +254,10 @@
     }
   }
 
-  &.tooltip-position-right,
-  &.tooltip-position-rightBottom,
-  &.tooltip-position-rightTop {
-    .tooltip-arrow {
+  &.@{tooltip-prefix-cls}-position-right,
+  &.@{tooltip-prefix-cls}-position-rightBottom,
+  &.@{tooltip-prefix-cls}-position-rightTop {
+    .@{tooltip-prefix-cls}-arrow {
       border-top-color: transparent;
       border-right-color: transparent;
       border-bottom-color: @tooltip-light-theme-bg;
