@@ -31,13 +31,14 @@
   },
   "scripts": {
     "clean:release": "rimraf dist",
-    "build": "yarn clean:release && father-build"
+    "build": "sun-build -m"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
   "devDependencies": {
-    "sun-react-icons": "^0.1.24"
+    "sun-react-icons": "^0.1.24",
+    "sun-build":"^1.0.0"
   },
   "authors": {
     "name": "jgchenu",

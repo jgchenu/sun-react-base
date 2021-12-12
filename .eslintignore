@@ -3,3 +3,4 @@ dist
 docs-dist
 *.js
 /packages/sun-react-icons
+!.buildrc

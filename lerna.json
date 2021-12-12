@@ -11,5 +11,6 @@
     }
   },
   "version": "independent",
+  "npmClient": "yarn",
   "lerna": "^4.0.0"
 }

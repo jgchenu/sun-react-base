@@ -25,12 +25,15 @@
 	],
 	"scripts": {
 		"clean:release": "rimraf src dist && node ./scripts/generateIcon.js",
-		"build": "yarn clean:release && father-build"
+		"build": "yarn clean:release && sun-build"
 	},
 	"peerDependencies": {
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1"
 	},
+  "devDependencies":{
+    "sun-build":"^1.0.0"
+  },
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org"
 	},
