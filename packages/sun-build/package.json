@@ -17,6 +17,13 @@
     "lib": "lib",
     "test": "__tests__"
   },
+  "files":[
+    "bin",
+    "dist",
+    "lib",
+    "es",
+    "package.json"
+  ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
