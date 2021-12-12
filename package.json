@@ -27,7 +27,7 @@
     "clean": "lerna clean --yes",
     "clean:release": "lerna run clean:release",
     "release": "yarn build && yarn pub",
-    "pub": "lerna publish patch --yes"
+    "pub": "lerna publish ----conventional-commits --yes"
   },
   "husky": {
     "hooks": {
