@@ -59,8 +59,6 @@ export default function ({
       returnRelative: false,
     });
 
-  console.log('configFile', configFile);
-
   if (configFile) {
     const userConfig = testDefault(require(configFile)); // eslint-disable-line
     const userConfigs = Array.isArray(userConfig) ? userConfig : [userConfig];

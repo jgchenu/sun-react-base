@@ -39,8 +39,6 @@ async function build(entry: string, opts: IRollupOpts) {
     sourcemap,
   });
 
-  console.log('rollupConfigs', rollupConfigs);
-
   for (const rollupConfig of rollupConfigs) {
     if (opts.watch) {
       const watcher = watch([

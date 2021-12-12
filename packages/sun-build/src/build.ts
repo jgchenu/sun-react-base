@@ -88,7 +88,6 @@ function isTypescriptFile(filePath: string) {
 }
 
 export async function build(opts: IOpts) {
-  console.log(opts);
   const { cwd, rootPath, watch, sourcemap, buildArgs = {} } = opts;
   const dispose: Dispose[] = [];
 
