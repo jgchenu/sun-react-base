@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://github.com/jgchenu/sun-react-ui/compare/sun-build@1.0.2...sun-build@1.0.3) (2021-12-12)
+
+### Bug Fixes
+
+- add browser require ([79c6839](https://github.com/jgchenu/sun-react-ui/commit/79c683907b730b7083b7eccacf5c13605fcb8ba2))
+
 ## [1.0.2](https://github.com/jgchenu/sun-react-ui/compare/sun-build@1.0.1...sun-build@1.0.2) (2021-12-12)
 
 ### Bug Fixes
