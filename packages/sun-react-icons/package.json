@@ -1,6 +1,6 @@
 {
 	"name": "sun-react-icons",
-	"version": "0.1.24",
+	"version": "0.1.25",
 	"description": "React icons components",
 	"main": "dist/index.js",
 	"module": "dist/index.esm.js",
@@ -31,9 +31,9 @@
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1"
 	},
-  "devDependencies":{
-    "sun-build":"^1.0.0"
-  },
+	"devDependencies": {
+		"sun-build": "^1.0.1"
+	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org"
 	},
