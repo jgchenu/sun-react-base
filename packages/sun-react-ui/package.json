@@ -31,7 +31,7 @@
   },
   "scripts": {
     "clean:release": "rimraf dist",
-    "build": "sun-build -m"
+    "build": "sun-build"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
