@@ -1,141 +1,161 @@
 ## Tooltip
 
-### 默认
+### different direction
 
 ```tsx
+/**
+ * background: '#252525'
+ */
 import React from 'react';
-import { Tooltip } from 'sun-react-ui';
+import { Tooltip, Button } from 'sun-react-ui';
 
 export default () => (
-  <Tooltip title={<span>tooltip title</span>}>
-    <span style={{ margin: '10px' }}>默认 Tooltip</span>
-  </Tooltip>
+  <div className="demo-wrap">
+    <div className="demo-wrap">
+      <Tooltip
+        placement="topLeft"
+        overlay={
+          <div>
+            <span>提示文字</span>
+            <span>提示</span>
+          </div>
+        }
+      >
+        <Button>TL</Button>
+      </Tooltip>
+
+      <Tooltip placement="top" offset={11} overlay={<span>提示文字</span>}>
+        <Button>Top</Button>
+      </Tooltip>
+
+      <Tooltip placement="topRight" overlay={'提示文字很长很长很长很长很长'}>
+        <Button>TR</Button>
+      </Tooltip>
+    </div>
+
+    <div className="demo-wrap">
+      <Tooltip placement="leftTop" overlay={<span>提示文字</span>}>
+        <Button>LT</Button>
+      </Tooltip>
+
+      <Tooltip placement="left" overlay={<span>提示文字</span>}>
+        <Button>Left</Button>
+      </Tooltip>
+
+      <Tooltip placement="leftBottom" overlay={<span>提示文字</span>}>
+        <Button>LB</Button>
+      </Tooltip>
+    </div>
+
+    <div className="demo-wrap">
+      <Tooltip
+        placement="rightTop"
+        overlay={<span>提示文字很长很长很字很长很长很长很长很长</span>}
+      >
+        <Button>RT</Button>
+      </Tooltip>
+
+      <Tooltip placement="right" overlay={<span>提示文字</span>}>
+        <Button>Right</Button>
+      </Tooltip>
+
+      <Tooltip placement="rightBottom" overlay={<span>提示文字</span>}>
+        <Button>RB</Button>
+      </Tooltip>
+    </div>
+
+    <div className="demo-wrap">
+      <Tooltip
+        placement="bottomLeft"
+        overlay={<span>提示文字很长很长很长很长很长</span>}
+      >
+        <Button>BL</Button>
+      </Tooltip>
+
+      <Tooltip placement="bottom" overlay={<span>提示文字</span>}>
+        <Button>Bottom</Button>
+      </Tooltip>
+
+      <Tooltip
+        placement="bottomRight"
+        overlay={<span>提示文字很长很长很长很长很长</span>}
+      >
+        <Button>BR</Button>
+      </Tooltip>
+    </div>
+  </div>
 );
 ```
 
-### 不同触发方式
+### different theme
 
 ```tsx
+/**
+ * background: '#252525'
+ */
 import React from 'react';
-import { Tooltip } from 'sun-react-ui';
+import { Tooltip, Button } from 'sun-react-ui';
 
-export default () => (
-  <>
-    <div
-      style={{ margin: '20px 60px', width: '200px', display: 'inline-block' }}
-    >
-      <Tooltip title={<span>tooltip title</span>}>
-        <span>hover Tooltip</span>
+export default () => {
+  return (
+    <div className="demo-wrap">
+      <Tooltip
+        theme="dark"
+        overlay={<span>dark 提示文字很长很长很长很长很长</span>}
+      >
+        <Button>dark</Button>
+      </Tooltip>
+
+      <Tooltip
+        theme="light"
+        overlay={<span>light 提示文字很长很长很长很长很长</span>}
+      >
+        <Button>light</Button>
       </Tooltip>
     </div>
-    <div
-      style={{ margin: '20px 60px', width: '200px', display: 'inline-block' }}
-    >
-      <Tooltip title={<span>tooltip title</span>} trigger="click">
-        <span>click Tooltip</span>
-      </Tooltip>
-    </div>
-  </>
-);
+  );
+};
 ```
 
-### 不同位置
+### different trigger
 
 ```tsx
+/**
+ * background: '#252525'
+ */
 import React from 'react';
-import { Tooltip } from 'sun-react-ui';
+import { Tooltip, Button } from 'sun-react-ui';
 
-export default () => (
-  <>
-    <Tooltip title={<span>tooltip title</span>} placement="bottomLeft">
-      <span style={{ margin: '10px' }}>bottomLeft</span>
-    </Tooltip>
-    <Tooltip title={<span>tooltip title</span>}>
-      <span style={{ margin: '10px' }}>bottom</span>
-    </Tooltip>
-    <Tooltip title={<span>tooltip title</span>} placement="bottomRight">
-      <span style={{ margin: '10px' }}>bottomRight</span>
-    </Tooltip>
-    <Tooltip title={<span>tooltip title</span>} placement="topLeft">
-      <span style={{ margin: '10px' }}>topLeft</span>
-    </Tooltip>
-    <Tooltip title={<span>tooltip title</span>} placement="top">
-      <span style={{ margin: '10px' }}>top</span>
-    </Tooltip>
-    <Tooltip title={<span>tooltip title</span>} placement="topRight">
-      <span style={{ margin: '10px' }}>topRight</span>
-    </Tooltip>
-    <Tooltip title={<span>tooltip title</span>} placement="leftBottom">
-      <span style={{ margin: '10px' }}>leftBottom</span>
-    </Tooltip>
-    <Tooltip title={<span>tooltip title</span>} placement="left">
-      <span style={{ margin: '10px' }}>left</span>
-    </Tooltip>
-    <Tooltip title={<span>tooltip title</span>} placement="leftTop">
-      <span style={{ margin: '10px' }}>leftTop</span>
-    </Tooltip>
-    <Tooltip title={<span>tooltip title</span>} placement="rightBottom">
-      <span style={{ margin: '10px' }}>rightBottom</span>
-    </Tooltip>
-    <Tooltip title={<span>tooltip title</span>} placement="right">
-      <span style={{ margin: '10px' }}>right</span>
-    </Tooltip>
-    <Tooltip title={<span>tooltip title</span>} placement="rightTop">
-      <span style={{ margin: '10px' }}>right</span>
-    </Tooltip>
-  </>
-);
+export default () => {
+  return (
+    <div className="demo-wrap">
+      <Tooltip trigger="click" overlay={<span>click show</span>}>
+        <Button>click</Button>
+      </Tooltip>
+
+      <Tooltip trigger="hover" overlay={<span>hover show</span>}>
+        <Button>hover</Button>
+      </Tooltip>
+    </div>
+  );
+};
 ```
 
-### 延迟消失跟出现
+## API
 
-```tsx
-import React from 'react';
-import { Tooltip } from 'sun-react-ui';
-
-export default () => (
-  <>
-    <div
-      style={{ margin: '20px 60px', width: '200px', display: 'inline-block' }}
-    >
-      <Tooltip title={<span>tooltip title</span>} mouseEnterDelay={1000}>
-        <span style={{ margin: '10px' }}>延迟出现 Tooltip</span>
-      </Tooltip>
-    </div>
-    <div
-      style={{ margin: '20px 60px', width: '200px', display: 'inline-block' }}
-    >
-      <Tooltip title={<span>tooltip title</span>} mouseLeaveDelay={1000}>
-        <span style={{ margin: '10px' }}>延迟消失 Tooltip</span>
-      </Tooltip>
-    </div>
-  </>
-);
-```
-
-### 不同主题
-
-```tsx
-import React from 'react';
-import { Tooltip } from 'sun-react-ui';
-
-export default () => (
-  <>
-    <div
-      style={{ margin: '20px 60px', width: '200px', display: 'inline-block' }}
-    >
-      <Tooltip title={<span>tooltip title</span>} theme="dark">
-        <span style={{ margin: '10px' }}>深色 Tooltip</span>
-      </Tooltip>
-    </div>
-
-    <div
-      style={{ margin: '20px 60px', width: '200px', display: 'inline-block' }}
-    >
-      <Tooltip title={<span>tooltip title</span>} theme="light">
-        <span style={{ margin: '10px' }}>浅色 Tooltip</span>
-      </Tooltip>
-    </div>
-  </>
-);
-```
+| Property         | Description                       | Type                                                                               | Default |
+| ---------------- | --------------------------------- | ---------------------------------------------------------------------------------- | ------- |
+| theme            | theme of tooltip                  | dark/light                                                                         | dark    |
+| overlay          | popup content                     | ReactNode                                                                          | -       |
+| arrow            | show or hide arrow                | boolean                                                                            | true    |
+| placement        | placement of tooltip              | left/right/top/bottom/topRight/topLeft/rightTop/rightBottom/bottomLeft/bottomRight | bottom  |
+| children         | target of tooltip                 | ReactNode                                                                          | -       |
+| visible          | show or hide of tooltip overlay   | boolean                                                                            | -       |
+| onVisibleChange  | visible change of tooltip overlay | (v: boolean) => void                                                               | -       |
+| overlayClassName | className of tooltip overlay      | string                                                                             | -       |
+| trigger          | trigger overlay of tooltip        | click/hover/contextmenu                                                            | hover   |
+| overlayStyle     | style of tooltip overlay          | React.CssProperties                                                                | -       |
+| offset           | offset of tooltip overlay         | number                                                                             | 10      |
+| align            | align of tooltip overlay          | Align                                                                              | -       |
+| mouseEnterDelay  | show of tooltip overlay delay     | number                                                                             | 0.2     |
+| mouseLeaveDelay  | leave of tooltip overlay delay    | number                                                                             | 0.2     |

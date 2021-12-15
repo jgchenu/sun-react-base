@@ -15,8 +15,10 @@ export { default as Icon } from './Input';
 export { default as Input } from './Input';
 export { default as Message } from './Message';
 export { default as Modal } from './Modal';
-export { default as Popover } from './Popover';
 export { default as Progress } from './Progress';
 export { default as Switch } from './Switch';
 export { default as Tooltip } from './Tooltip';
 export { default as Spin } from './Spin';
+export { default as Skeleton } from './Skeleton';
+
+export * from './common';

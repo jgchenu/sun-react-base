@@ -7,6 +7,7 @@
 @gray-400: #ced4da;
 @gray-500: #adb5bd;
 @gray-600: #6c757d;
+@gray-650: #505050;
 @gray-700: #495057;
 @gray-800: #343a40;
 @gray-900: #212529;
@@ -264,14 +265,11 @@
 
 // Tooltip
 
-// popover下的三角形宽度
-@popover-triangle-width: 8.48528137px;
-// popover title header的border
-@popover-title-header-border-color: @gray-300;
+@tooltip-border-color: @gray-300;
 // tooltip下的三角形宽度
-@tooltip-triangle-width: 7.48528137px;
+@tooltip-triangle-width: 16px;
 // 黑色主题背景颜色
-@tooltip-dark-theme-bg: @gray-800;
+@tooltip-dark-theme-bg: @gray-650;
 // 黑色主题字体颜色
 @tooltip-dark-theme-color: @gray-100;
 // 浅色主题背景颜色
@@ -280,8 +278,6 @@
 @tooltip-light-theme-color: @gray-800;
 // 三角形阴影
 @tooltip-triangle-shadow: rgba(0, 0, 0, 0.2);
-// 三角形距离边框的偏移量
-@tooltip-triangle-offset-border: 3px;
 // Tooltip层级
 @tooltip-z-index: 490;
 
@@ -347,3 +343,8 @@
 @switch-bg-color: rgba(0, 0, 0, 0.25);
 @switch-offset: 2px;
 @switch-animation: @default-animation;
+
+// skeleton
+
+@skeleton-light-theme-bg: @gray-200;
+@skeleton-dark-theme-bg: @gray-900;

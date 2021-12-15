@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useMemo, useState } from 'react';
 import Layout from 'dumi-theme-default/src/layout';
 import { usePrefersColor } from 'dumi/theme';
+import { UIContext } from 'sun-react-ui';
 import './style.less';
 
 function Light() {
@@ -51,14 +52,22 @@ export default ({ children, ...props }) => {
     }
   };
 
+  const contextValue = useMemo<{ theme: 'dark' | 'light'; rtl: boolean }>(
+    () => ({
+      theme: color === 'light' ? 'light' : 'dark',
+      rtl: false,
+    }),
+    [color],
+  );
+
   return (
     <Layout {...propsAny}>
-      <>
+      <UIContext.Provider value={contextValue}>
         <button className="theme-button" onClick={toggleColor}>
           {color === 'light' ? <Dark /> : <Light />}
         </button>
         {children}
-      </>
+      </UIContext.Provider>
     </Layout>
   );
 };

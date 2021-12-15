@@ -1,0 +1,98 @@
+@import './../styles/index';
+
+@skeleton-prefix-cls: ~'@{sun-prefix}-skeleton';
+
+@keyframes skeleton-animation-wave {
+  from {
+    background-position-x: 200%;
+  }
+
+  to {
+    background-position-x: -150%;
+  }
+}
+
+.@{skeleton-prefix-cls} {
+  width: 100%;
+}
+
+.@{skeleton-prefix-cls}-component {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  border-radius: 4px;
+
+  &.dark {
+    background-color: @skeleton-dark-theme-bg;
+    background-image: linear-gradient(
+      90deg,
+      rgba(233, 233, 234, 0) 0%,
+      rgba(233, 233, 234, 0.04) 50.52%,
+      rgba(233, 233, 234, 0) 100%
+    );
+  }
+
+  &.light {
+    background-color: @skeleton-light-theme-bg;
+    background-image: linear-gradient(
+      90deg,
+      rgba(22, 24, 35, 0) 0%,
+      rgba(22, 24, 35, 0.04) 50%,
+      rgba(22, 24, 35, 0) 100%
+    );
+  }
+}
+
+.@{skeleton-prefix-cls}-paragraph {
+  .@{skeleton-prefix-cls}-paragraph-line {
+    width: 100%;
+    height: 12px;
+    animation: skeleton-animation-wave cubic-bezier(0, 0, 1, 1) 1.5s infinite;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &.@{skeleton-prefix-cls}-shrink-last-line {
+    .@{skeleton-prefix-cls}-paragraph-line:last-child {
+      width: 60%;
+    }
+  }
+
+  &.@{skeleton-prefix-cls}-paragraph-rtl {
+    direction: rtl;
+  }
+}
+
+.@{skeleton-prefix-cls}-title {
+  width: 40%;
+  height: 16px;
+  animation: skeleton-animation-wave cubic-bezier(0, 0, 1, 1) 1.5s infinite;
+}
+
+.@{skeleton-prefix-cls}-avatar {
+  width: 100%;
+  height: 100%;
+  animation: skeleton-animation-wave cubic-bezier(0, 0, 1, 1) 1.5s infinite;
+  border-radius: 100%;
+}
+
+.@{skeleton-prefix-cls}-video-cover {
+  width: 100%;
+  min-height: 100px;
+  animation: skeleton-animation-wave cubic-bezier(0, 0, 1, 1) 1.5s infinite;
+}
+
+.@{skeleton-prefix-cls}-button {
+  width: 164px;
+  height: 36px;
+  animation: skeleton-animation-wave cubic-bezier(0, 0, 1, 1) 1.5s infinite;
+}
+
+.@{skeleton-prefix-cls}-textbox {
+  width: 164px;
+  height: 36px;
+  animation: skeleton-animation-wave cubic-bezier(0, 0, 1, 1) 1.5s infinite;
+}

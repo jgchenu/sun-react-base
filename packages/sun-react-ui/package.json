@@ -40,6 +40,9 @@
     "sun-build": "^1.0.3",
     "sun-react-icons": "^0.1.27"
   },
+  "dependencies": {
+    "rc-trigger": "^5.2.10"
+  },
   "authors": {
     "name": "jgchenu",
     "email": "jgchenu@foxmail.com"

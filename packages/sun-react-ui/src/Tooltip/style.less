@@ -1,268 +1,143 @@
 @import './../styles/index';
 
 @tooltip-prefix-cls: ~'@{sun-prefix}-tooltip';
-@popover-prefix-cls: ~'@{sun-prefix}-popover';
 
-// 外部组件的包裹层，用于FC组件获取ref
-.fc-component-wrap {
-  display: inline-block;
-}
-
-// Popover气泡title的header的默认样式
-.@{popover-prefix-cls}-title-header {
-  padding: 2px;
-  border-bottom: 1px solid @popover-title-header-border-color;
-}
-
-// Popover气泡title的content的默认样式
-.@{popover-prefix-cls}-title-content {
-  position: relative;
-  display: inline-block;
-}
-
-// 气泡title的默认样式
-.@{tooltip-prefix-cls}-title {
-  padding: 4px 10px;
-  border-radius: 2px;
-  font-size: 12px;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.@{popover-prefix-cls}-wrap {
-  // 如果是popover，要把默认气泡padding重制
-  & .@{tooltip-prefix-cls}-title {
-    padding: 0;
-    font-size: 14px;
-  }
-}
-
-// 气泡的z-index以及三角形的定位
-.@{tooltip-prefix-cls}-wrap {
+.@{tooltip-prefix-cls} {
   position: absolute;
   z-index: @tooltip-z-index;
+  display: block;
+  box-sizing: border-box;
+  transition: all 0.2s cubic-bezier(0.65, 0, 0.35, 1);
 
-  &.@{tooltip-prefix-cls}-wrap-fixed {
-    position: fixed;
+  &-inner {
+    padding: 12px;
+    background-color: @tooltip-dark-theme-bg;
+    border-radius: 8px;
+    color: @tooltip-dark-theme-color;
+    text-align: left;
+    text-decoration: none;
   }
 
-  .@{tooltip-prefix-cls}-arrow {
+  &.light &-arrow {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDM2IDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMCA4TDYuNjg2MjkgOEM4LjgwODAyIDggMTAuODQyOSA3LjE1NzE0IDEyLjM0MzEgNS42NTY4NUwxNy4yOTI5IDAuNzA3MTA2QzE3LjY4MzQgMC4zMTY1ODIgMTguMzE2NiAwLjMxNjU4MiAxOC43MDcxIDAuNzA3MTA3TDIzLjY1NjkgNS42NTY4NkMyNS4xNTcxIDcuMTU3MTUgMjcuMTkyIDggMjkuMzEzNyA4TDM2IDhMMCA4WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+);
+  }
+
+  &.light &-inner {
+    background-color: @tooltip-light-theme-bg;
+    color: @tooltip-light-theme-color;
+  }
+
+  &-arrow {
     position: absolute;
-    z-index: 1;
-    width: @tooltip-triangle-width;
-    height: @tooltip-triangle-width;
-    border-width: @tooltip-triangle-width / 2;
-    border-style: solid;
-    background: transparent;
+    width: 36px;
+    height: 8px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDM2IDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wIDhoNi42ODZhOCA4IDAgMCAwIDUuNjU3LTIuMzQzbDQuOTUtNC45NWExIDEgMCAwIDEgMS40MTQgMGw0Ljk1IDQuOTVBOCA4IDAgMCAwIDI5LjMxNCA4SDM2IDB6IiBmaWxsPSIjNTQ1NDU0IiBmaWxsLW9wYWNpdHk9Ii45MiIvPjwvc3ZnPg==);
   }
 
-  &.@{popover-prefix-cls}-wrap {
-    // popover下的三角形会大一些
+  &-placement-rightTop {
     .@{tooltip-prefix-cls}-arrow {
-      width: @popover-triangle-width;
-      height: @popover-triangle-width;
-      border-width: @popover-triangle-width / 2;
+      top: 25%;
+      left: -22px;
+      transform: rotate(-90deg);
     }
   }
 
-  // 左，左上，左下的水平偏移
-  &.@{tooltip-prefix-cls}-position-left,
-  &.@{tooltip-prefix-cls}-position-leftBottom,
-  &.@{tooltip-prefix-cls}-position-leftTop {
-    .@{tooltip-prefix-cls}-arrow {
-      right: -@tooltip-triangle-offset-border;
-    }
-  }
-
-  // 右，右上，右下的水平偏移
-  &.@{tooltip-prefix-cls}-position-right,
-  &.@{tooltip-prefix-cls}-position-rightBottom,
-  &.@{tooltip-prefix-cls}-position-rightTop {
-    .@{tooltip-prefix-cls}-arrow {
-      left: -@tooltip-triangle-offset-border;
-    }
-  }
-
-  // 右上，左上的垂直偏移
-  &.@{tooltip-prefix-cls}-position-rightTop,
-  &.@{tooltip-prefix-cls}-position-leftTop {
-    .@{tooltip-prefix-cls}-arrow {
-      top: 14px;
-      transform: rotate(45deg);
-    }
-  }
-
-  // 右下，左下 的水平偏移
-  &.@{tooltip-prefix-cls}-position-rightBottom,
-  &.@{tooltip-prefix-cls}-position-leftBottom {
-    .@{tooltip-prefix-cls}-arrow {
-      bottom: 14px;
-      transform: rotate(45deg);
-    }
-  }
-
-  // 上，下的水平居中
-  &.@{tooltip-prefix-cls}-position-top,
-  &.@{tooltip-prefix-cls}-position-bottom {
-    .@{tooltip-prefix-cls}-arrow {
-      left: 50%;
-      transform: translateX(-50%) rotate(45deg);
-    }
-  }
-
-  // 左，右的垂直居中
-  &.@{tooltip-prefix-cls}-position-left,
-  &.@{tooltip-prefix-cls}-position-right {
+  &-placement-right {
     .@{tooltip-prefix-cls}-arrow {
       top: 50%;
-      transform: translateY(-50%) rotate(45deg);
+      left: -22px;
+      margin-top: -5px;
+      transform: rotate(-90deg);
     }
   }
 
-  // 上，上右，上左的垂直偏移
-  &.@{tooltip-prefix-cls}-position-top,
-  &.@{tooltip-prefix-cls}-position-topRight,
-  &.@{tooltip-prefix-cls}-position-topLeft {
+  &-placement-rightBottom {
     .@{tooltip-prefix-cls}-arrow {
-      bottom: -@tooltip-triangle-offset-border;
+      bottom: 25%;
+      left: -22px;
+      margin-top: 5px;
+      transform: rotate(-90deg);
     }
   }
 
-  // 上右，下右的水平偏移
-  &.@{tooltip-prefix-cls}-position-topRight,
-  &.@{tooltip-prefix-cls}-position-bottomRight {
+  &-placement-leftTop {
     .@{tooltip-prefix-cls}-arrow {
-      right: 14px;
-      transform: rotate(45deg);
+      top: 25%;
+      right: -22px;
+      transform: rotate(90deg);
     }
   }
 
-  // 上左，下左的水平偏移
-  &.@{tooltip-prefix-cls}-position-topLeft,
-  &.@{tooltip-prefix-cls}-position-bottomLeft {
+  &-placement-left {
     .@{tooltip-prefix-cls}-arrow {
-      left: 14px;
-      transform: rotate(45deg);
+      top: 50%;
+      right: -22px;
+      margin-top: -5px;
+      transform: rotate(90deg);
     }
   }
 
-  // 下，下右，下左的垂直偏移
-  &.@{tooltip-prefix-cls}-position-bottom,
-  &.@{tooltip-prefix-cls}-position-bottomRight,
-  &.@{tooltip-prefix-cls}-position-bottomLeft {
+  &-placement-leftBottom {
     .@{tooltip-prefix-cls}-arrow {
-      top: -@tooltip-triangle-offset-border;
+      right: -22px;
+      bottom: 25%;
+      margin-top: 5px;
+      transform: rotate(90deg);
     }
   }
-}
 
-// 深颜色的气泡主题
-.@{tooltip-prefix-cls}-dark {
-  color: @tooltip-dark-theme-color;
-
-  .@{tooltip-prefix-cls}-title {
-    background-color: @tooltip-dark-theme-bg;
-  }
-
-  &.@{tooltip-prefix-cls}-position-top,
-  &.@{tooltip-prefix-cls}-position-topRight,
-  &.@{tooltip-prefix-cls}-position-topLeft {
+  &-placement-topLeft {
     .@{tooltip-prefix-cls}-arrow {
-      border-top-color: transparent;
-      border-right-color: @tooltip-dark-theme-bg;
-      border-bottom-color: @tooltip-dark-theme-bg;
-      border-left-color: transparent;
+      bottom: -8px;
+      left: 25%;
+      margin-left: -18px;
+      transform: rotate(180deg);
     }
   }
 
-  &.@{tooltip-prefix-cls}-position-bottom,
-  &.@{tooltip-prefix-cls}-position-bottomRight,
-  &.@{tooltip-prefix-cls}-position-bottomLeft {
+  &-placement-top {
     .@{tooltip-prefix-cls}-arrow {
-      border-top-color: @tooltip-dark-theme-bg;
-      border-right-color: transparent;
-      border-bottom-color: transparent;
-      border-left-color: @tooltip-dark-theme-bg;
+      bottom: -8px;
+      left: 50%;
+      margin-left: -18px;
+      transform: rotate(180deg);
     }
   }
 
-  &.@{tooltip-prefix-cls}-position-left,
-  &.@{tooltip-prefix-cls}-position-leftBottom,
-  &.@{tooltip-prefix-cls}-position-leftTop {
+  &-placement-topRight {
     .@{tooltip-prefix-cls}-arrow {
-      border-top-color: @tooltip-dark-theme-bg;
-      border-right-color: @tooltip-dark-theme-bg;
-      border-bottom-color: transparent;
-      border-left-color: transparent;
+      right: 25%;
+      bottom: -8px;
+      margin-right: -18px;
+      transform: rotate(180deg);
     }
   }
 
-  &.@{tooltip-prefix-cls}-position-right,
-  &.@{tooltip-prefix-cls}-position-rightBottom,
-  &.@{tooltip-prefix-cls}-position-rightTop {
+  &-placement-bottomLeft {
     .@{tooltip-prefix-cls}-arrow {
-      border-top-color: transparent;
-      border-right-color: transparent;
-      border-bottom-color: @tooltip-dark-theme-bg;
-      border-left-color: @tooltip-dark-theme-bg;
+      top: -8px;
+      left: 25%;
+      margin-left: -18px;
     }
   }
-}
 
-// 浅颜色的气泡主题
-.@{tooltip-prefix-cls}-light {
-  color: @tooltip-light-theme-color;
-
-  .@{tooltip-prefix-cls}-title {
-    background-color: @tooltip-light-theme-bg;
-    box-shadow: 0 0 2px lighten(@tooltip-light-theme-color, 30%);
-  }
-
-  &.@{tooltip-prefix-cls}-position-top,
-  &.@{tooltip-prefix-cls}-position-topRight,
-  &.@{tooltip-prefix-cls}-position-topLeft {
+  &-placement-bottom {
     .@{tooltip-prefix-cls}-arrow {
-      border-top-color: transparent;
-      border-right-color: @tooltip-light-theme-bg;
-      border-bottom-color: @tooltip-light-theme-bg;
-      border-left-color: transparent;
-      box-shadow: 1px 1px 1px @tooltip-triangle-shadow;
+      top: -8px;
+      left: 50%;
+      margin-left: -18px;
     }
   }
 
-  &.@{tooltip-prefix-cls}-position-bottom,
-  &.@{tooltip-prefix-cls}-position-bottomRight,
-  &.@{tooltip-prefix-cls}-position-bottomLeft {
+  &-placement-bottomRight {
     .@{tooltip-prefix-cls}-arrow {
-      border-top-color: @tooltip-light-theme-bg;
-      border-right-color: transparent;
-      border-bottom-color: transparent;
-      border-left-color: @tooltip-light-theme-bg;
-      box-shadow: -1px -1px 1px @tooltip-triangle-shadow;
+      top: -8px;
+      right: 25%;
+      margin-right: -18px;
     }
   }
 
-  &.@{tooltip-prefix-cls}-position-left,
-  &.@{tooltip-prefix-cls}-position-leftBottom,
-  &.@{tooltip-prefix-cls}-position-leftTop {
-    .@{tooltip-prefix-cls}-arrow {
-      border-top-color: @tooltip-light-theme-bg;
-      border-right-color: @tooltip-light-theme-bg;
-      border-bottom-color: transparent;
-      border-left-color: transparent;
-      box-shadow: 1px -1px 1px @tooltip-triangle-shadow;
-    }
-  }
-
-  &.@{tooltip-prefix-cls}-position-right,
-  &.@{tooltip-prefix-cls}-position-rightBottom,
-  &.@{tooltip-prefix-cls}-position-rightTop {
-    .@{tooltip-prefix-cls}-arrow {
-      border-top-color: transparent;
-      border-right-color: transparent;
-      border-bottom-color: @tooltip-light-theme-bg;
-      border-left-color: @tooltip-light-theme-bg;
-      box-shadow: -1px 1px 1px @tooltip-triangle-shadow;
-    }
+  &-hidden {
+    display: none;
   }
 }
