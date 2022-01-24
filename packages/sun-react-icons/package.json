@@ -1,6 +1,6 @@
 {
 	"name": "sun-react-icons",
-	"version": "0.1.27",
+	"version": "0.2.0",
 	"description": "React icons components",
 	"main": "lib/index.js",
 	"module": "es/index.js",
@@ -22,24 +22,24 @@
 		"lib",
 		"es",
 		"package.json",
-    "types"
+		"types"
 	],
-  "sideEffects": [
-    "es/**/style/*",
-    "lib/**/style/*",
-    "*.less"
-  ],
+	"sideEffects": [
+		"es/**/style/*",
+		"lib/**/style/*",
+		"*.less"
+	],
 	"scripts": {
 		"clean:release": "rimraf src es lib types && node ./scripts/generateIcon.js",
 		"build": "yarn clean:release && yarn build:types && father-build",
-    "build:types": "tsc -p tsconfig.json"
+		"build:types": "tsc -p tsconfig.json"
 	},
 	"peerDependencies": {
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1"
 	},
 	"devDependencies": {
-		"sun-build": "^1.0.3"
+		"sun-build": "^1.1.0"
 	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org"
