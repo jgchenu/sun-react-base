@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/jgchenu/sun-react-ui/compare/sun-react-icons@0.2.0...sun-react-icons@0.2.1) (2022-01-24)
+
+### Bug Fixes
+
+- buildrc ([a40f170](https://github.com/jgchenu/sun-react-ui/commit/a40f170c0d1c267395f4641b128d2cc7f33953e5))
+
 # [0.2.0](https://github.com/jgchenu/sun-react-ui/compare/sun-react-icons@0.1.27...sun-react-icons@0.2.0) (2022-01-24)
 
 ### Features
