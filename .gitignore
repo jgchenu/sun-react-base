@@ -33,3 +33,6 @@ yarn-error.log*
 .umi-test
 .env.local
 
+lib
+es
+types

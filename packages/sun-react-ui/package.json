@@ -2,9 +2,9 @@
   "name": "sun-react-ui",
   "version": "0.1.28",
   "description": "React components library",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "typings": "dist/index.d.ts",
+	"main": "lib/index.js",
+	"module": "es/index.js",
+	"typings": "types/index.d.ts",
   "source": "index.ts",
   "license": "MIT",
   "keywords": [
@@ -17,10 +17,12 @@
     "type": "git",
     "url": "https://github.com/jgchenu/sun-react-ui"
   },
+
   "files": [
     "dist",
     "lib",
     "es",
+    "types",
     "package.json"
   ],
   "peerDependencies": {
@@ -29,9 +31,15 @@
     "react-dom": "^16.13.1",
     "sun-react-icons": "^0.1.20"
   },
+  "sideEffects": [
+    "es/**/style/*",
+    "lib/**/style/*",
+    "*.less"
+  ],
   "scripts": {
-    "clean:release": "rimraf dist",
-    "build": "sun-build"
+    "clean:release": "rimraf es lib types",
+    "build:types": "tsc -p tsconfig.json",
+    "build": "yarn clean:release && yarn build:types && father-build"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
