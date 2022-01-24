@@ -1,4 +1,4 @@
 export default {
-  esm: true,
-  cjs: true,
+  esm: 'babel',
+  cjs: 'babel',
 };
