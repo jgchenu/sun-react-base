@@ -82,7 +82,7 @@ function less2css() {
 const buildScripts = gulp.series(compileCJS, compileESM);
 
 // 整体并行执行任务
-const build = gulp.parallel(buildScripts, copyLess, less2css);
+const build = gulp.parallel(buildScripts, less2css);
 
 exports.build = build;
 
