@@ -38,13 +38,12 @@
   "scripts": {
     "clean:release": "rimraf es lib types",
     "build:types": "tsc -p tsconfig.json",
-    "build": "yarn clean:release && yarn build:types && father-build"
+    "build": "yarn clean:release && gulp"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
   "devDependencies": {
-    "sun-build": "^1.1.0",
     "sun-react-icons": "^0.2.1"
   },
   "dependencies": {

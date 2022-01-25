@@ -12,6 +12,9 @@ node_modules
 build
 dist
 docs-dist
+lib
+es
+types
 
 # misc
 .DS_Store
@@ -33,6 +36,4 @@ yarn-error.log*
 .umi-test
 .env.local
 
-lib
-es
-types
+

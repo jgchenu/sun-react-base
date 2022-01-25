@@ -30,16 +30,13 @@
 		"*.less"
 	],
 	"scripts": {
-		"clean:release": "rimraf src es lib types && node ./scripts/generateIcon.js",
-		"build": "yarn clean:release && yarn build:types && father-build",
+		"clean:release": "rimraf src es lib types dist && node ./scripts/generateIcon.js",
+		"build": "yarn clean:release && yarn build:types && gulp",
 		"build:types": "tsc -p tsconfig.json"
 	},
 	"peerDependencies": {
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1"
-	},
-	"devDependencies": {
-		"sun-build": "^1.1.0"
 	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org"
