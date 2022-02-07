@@ -53,8 +53,7 @@ function compileScripts(babelEnv, destDir) {
     .pipe(
       through2.obj(function z(file, encoding, next) {
         // 找到目标
-        if (file.path.match(/\\[^index]\.js/)) {
-          console.log(file.path);
+        if (file.path.match(/[^index]\.js/)) {
           const content = file.contents.toString(encoding);
           file.contents = Buffer.from(cssInjection(content)); // 文件内容处理
           this.push(file); // 新增该文件

@@ -38,7 +38,7 @@
   "scripts": {
     "clean:release": "rimraf es lib types",
     "build:types": "tsc -p tsconfig.json",
-    "build": "yarn clean:release && gulp"
+    "build": "yarn clean:release && yarn build:types && gulp"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"

@@ -2,5 +2,16 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "./types"
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "lib",
+    "es",
+    "types",
+    "typings",
+    "**/__test__",
+    "test",
+    "docs",
+    "tests"
+  ]
 }

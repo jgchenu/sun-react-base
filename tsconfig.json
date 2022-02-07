@@ -17,6 +17,7 @@
     "node_modules",
     "lib",
     "es",
+    "types",
     "typings",
     "**/__test__",
     "test",
