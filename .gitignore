@@ -3,6 +3,8 @@
 # dependencies
 node_modules
 /packages/sun-react-icons/src
+/packages/sun-react-ui/styles
+
 /.pnp
 .pnp.js
 # testing

@@ -1,34 +1,25 @@
 const gulp = require('gulp');
-const babel = require('gulp-babel');
-const less = require('gulp-less');
 const autoprefixer = require('gulp-autoprefixer');
+const babel = require('gulp-babel');
 const cssnano = require('gulp-cssnano');
+const less = require('gulp-less');
 const through2 = require('through2');
+const concat = require('gulp-concat');
 
 const paths = {
   dest: {
-    lib: 'lib', // commonjs 文件存放的目录名 - 本块关注
-    esm: 'es', // ES module 文件存放的目录名 - 暂时不关心
-    dist: 'dist', // umd文件存放的目录名 - 暂时不关心
+    lib: 'lib',
+    esm: 'es',
+    styles: 'styles',
   },
   styles: 'src/**/*.less', // 样式文件路径 - 暂时不关心
   scripts: ['src/**/*.{ts,tsx}', '!src/**/demo/*.{ts,tsx}'], // 脚本文件路径
 };
 
 /**
- * 拷贝less文件
- */
-function copyLess() {
-  return gulp
-    .src(paths.styles)
-    .pipe(gulp.dest(paths.dest.lib))
-    .pipe(gulp.dest(paths.dest.esm));
-}
-
-/**
- * 当前组件样式 import './index.less' => import './index.css'
- * 依赖的其他组件样式 import '../test-comp/style' => import '../test-comp/style/css.js'
- * 依赖的其他组件样式 import '../test-comp/style/index.js' => import '../test-comp/style/css.js'
+ *  import './index.scss' => import './index.css'
+ *  import '../test-comp/style' => import '../test-comp/style/css.js'
+ *  import '../test-comp/style/index.js' => import '../test-comp/style/css.js'
  * @param {string} content
  */
 function cssInjection(content) {
@@ -45,18 +36,19 @@ function cssInjection(content) {
  */
 function compileScripts(babelEnv, destDir) {
   const { scripts } = paths;
-  // 设置环境变量
   process.env.BABEL_ENV = babelEnv;
   return gulp
     .src(scripts)
-    .pipe(babel()) // 使用gulp-babel处理
+    .pipe(babel())
     .pipe(
       through2.obj(function z(file, encoding, next) {
-        // 找到目标
-        if (file.path.match(/[^index]\.js/)) {
+        if (file.path.match(/\.js/)) {
           const content = file.contents.toString(encoding);
-          file.contents = Buffer.from(cssInjection(content)); // 文件内容处理
-          this.push(file); // 新增该文件
+          const regex =
+            /(import '.\/(styles|style).less';)|(require\(".\/(style|styles).less"\);)/;
+          const replaceContent = content.replace(regex, '');
+          file.contents = Buffer.from(cssInjection(replaceContent));
+          this.push(file);
           next();
         } else {
           this.push(file.clone());
@@ -68,7 +60,7 @@ function compileScripts(babelEnv, destDir) {
 }
 
 /**
- * 编译cjs
+ * cjs
  */
 function compileCJS() {
   const { dest } = paths;
@@ -76,28 +68,28 @@ function compileCJS() {
 }
 
 /**
- * 编译esm
+ * esm
  */
 function compileESM() {
   const { dest } = paths;
+
   return compileScripts('esm', dest.esm);
 }
 
 function less2css() {
+  const { dest } = paths;
   return gulp
     .src(paths.styles)
-    .pipe(less()) // 处理less文件
+    .pipe(less())
     .pipe(autoprefixer()) // 根据browserslistrc增加前缀
     .pipe(cssnano({ zindex: false, reduceIdents: false })) // 压缩
-    .pipe(gulp.dest(paths.dest.lib))
-    .pipe(gulp.dest(paths.dest.esm));
+    .pipe(concat('global.css'))
+    .pipe(gulp.dest(dest.styles));
 }
 
-// 串行执行编译脚本任务（cjs,esm） 避免环境变量影响
-const buildScripts = gulp.series(compileCJS, compileESM);
+const buildScripts = gulp.series(less2css, compileCJS, compileESM);
 
-// 整体并行执行任务
-const build = gulp.parallel(buildScripts, less2css);
+const build = gulp.parallel(buildScripts);
 
 exports.build = build;
 
