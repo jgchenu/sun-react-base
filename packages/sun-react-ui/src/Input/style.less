@@ -103,25 +103,27 @@
     white-space: nowrap;
   }
 
-  // clear both radius
-  &-append {
-    .border-left-radius(0);
-  }
-
-  &-has-append {
+  &-prepend-wrap {
     .@{input-inner-cls} {
-      .border-right-radius(0);
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
     }
   }
 
-  // clear both radius
   &-prepend {
-    .border-right-radius(0);
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
   }
 
-  &-has-prepend {
+  &-append-wrap {
     .@{input-inner-cls} {
-      .border-left-radius(0);
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
     }
+  }
+
+  &-append {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
   }
 }

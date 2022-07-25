@@ -28,8 +28,8 @@ function Input(props: InputProps) {
   const { disabled, size, icon, prepend, append, style, ...restProps } = props;
   const classes = classNames(`${inputPrefixClass}-wrap`, {
     [`${inputPrefixClass}-${size}-size`]: !!size,
-    [`${inputPrefixClass}-has-append`]: !!append,
-    [`${inputPrefixClass}-has-prepend`]: !!prepend,
+    [`${inputPrefixClass}-append-wrap`]: !!append,
+    [`${inputPrefixClass}-prepend-wrap`]: !!prepend,
   });
 
   return (

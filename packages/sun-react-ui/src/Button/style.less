@@ -5,18 +5,25 @@
 .@{btn-prefix-cls} {
   position: relative;
   display: inline-block;
+  padding: @btn-padding-y @btn-padding-x;
   border: @btn-border-width solid transparent;
   background-image: none;
+  border-radius: @border-radius;
   box-shadow: @btn-box-shadow;
   color: @body-color;
   cursor: pointer;
+  font-size: @btn-font-size;
   font-weight: @btn-font-weight;
   line-height: @btn-line-height;
   text-align: center;
   transition: @btn-transition;
   vertical-align: middle;
   white-space: nowrap;
-  .button-size(@btn-padding-y, @btn-padding-x, @btn-font-size, @border-radius);
+
+  &:focus,
+  &.focus {
+    outline: none;
+  }
 
   &.disabled,
   &[disabled] {
@@ -30,33 +37,55 @@
   }
 
   &-large {
-    .button-size(
-      @btn-padding-y-lg,
-      @btn-padding-x-lg,
-      @btn-font-size-lg,
-      @btn-border-radius-lg
-    );
+    padding: @btn-padding-y-lg @btn-padding-x-lg;
+    border-radius: @btn-border-radius-lg;
+    font-size: @btn-font-size-lg;
   }
 
   &-small {
-    .button-size(
-      @btn-padding-y-sm,
-      @btn-padding-x-sm,
-      @btn-font-size-sm,
-      @btn-border-radius-sm
-    );
+    padding: @btn-padding-y-sm @btn-padding-x-sm;
+    border-radius: @btn-border-radius-sm;
+    font-size: @btn-font-size-sm;
   }
 
   &-primary {
-    .button-style(@primary, @primary, @white);
+    border-color: @primary;
+    background: @primary;
+    color: @white;
+
+    &:hover {
+      border-color: lighten(@primary, 10%);
+      background: lighten(@primary, 7.5%);
+      color: @white;
+    }
   }
 
   &-danger {
-    .button-style(@danger, @danger, @white);
+    border-color: @danger;
+    background: @danger;
+    color: @white;
+
+    &:hover {
+      border-color: lighten(@danger, 10%);
+      background: lighten(@danger, 7.5%);
+      color: @white;
+    }
   }
 
   &-default {
-    .button-style(@white, @gray-400, @body-color, @white, @primary, @primary);
+    border-color: @gray-400;
+    background: @white;
+    color: @body-color;
+
+    &:hover {
+      border-color: @primary;
+      color: @primary;
+    }
+
+    &[disabled] {
+      border-color: @gray-400;
+      color: @gray-800;
+    }
   }
 
   &-link {
